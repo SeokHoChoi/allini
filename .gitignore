@@ -12,3 +12,19 @@
 
 #!.yarn/cache
 .pnp.*
+
+# dependencies
+/node_modules
+
+# IDE
+/.idea
+/*.iml
+
+# misc
+/.DS_Store
+/yarn-error.log
+/.yarnclean
+/.yarnrc.yml
+
+# environment variables
+/.env
