@@ -1,5 +1,6 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin"); // 추가한 부분
 
 module.exports = {
   module: {
@@ -15,10 +16,6 @@ module.exports = {
           },
         },
       },
-      {
-        test: /\.s[ac]ss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
     ],
   },
   mode: "none", // none, production, development
@@ -31,6 +28,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html", // 번들링한 css, js 파일을 html 파일에 link태그, scripts태그로 추가
     }),
+    new ForkTsCheckerWebpackPlugin(), // 추가한 부분
   ],
   devServer: {
     host: "localhost",
