@@ -1,0 +1,43 @@
+name: Deploy-LIVE
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3 # 프로젝트 코드 checkout
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.18.2" # 워크플로우가 실행되는 환경에서 사용할 Node.js의 버전
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+
+      - name: Current timestamp
+        id: timestamp
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          region: ap-northeast-2
+
+      - name: Copy to S3
+        run: aws s3 cp dist s3://allini
+
+      - name: Invalidate CloudFront
+        run: aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths "/*"
