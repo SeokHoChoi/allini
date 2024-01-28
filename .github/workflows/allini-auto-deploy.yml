@@ -33,6 +33,6 @@ jobs:
         run: |
           aws s3 cp --recursive --region ap-northeast-2 dist s3://allini
 
-      - name: Invalidate CloudFront Cache
-        run: |
-          aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths /*
+      # - name: Invalidate CloudFront Cache
+      #   run: |
+      #     aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths /*
