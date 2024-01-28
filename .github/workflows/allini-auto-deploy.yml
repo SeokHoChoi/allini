@@ -14,11 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4 # 프로젝트 코드 checkout
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20" # 워크플로우가 실행되는 환경에서 사용할 Node.js의 버전
-          cache: "yarn"
+      - name: Check Node v # Node v 확인
+        run: node -v
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
