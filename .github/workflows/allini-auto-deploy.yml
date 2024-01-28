@@ -26,8 +26,10 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Check AWS CLI version
-        run: aws --version
+      - name: Install AWS CLI
+        uses: aws-actions/aws-cli@v2
+        with:
+          aws-version: 2
 
       - name: Deploy
         env:
