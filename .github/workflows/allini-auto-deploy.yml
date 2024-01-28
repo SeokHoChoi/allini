@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
     steps:
       - name: Checkout
-        uses: actions/checkout@v3 # 프로젝트 코드 checkout
+        uses: actions/checkout@v4 # 프로젝트 코드 checkout
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18.18.2" # 워크플로우가 실행되는 환경에서 사용할 Node.js의 버전
+          node-version: "20" # 워크플로우가 실행되는 환경에서 사용할 Node.js의 버전
           cache: "yarn"
 
       - name: Install dependencies
