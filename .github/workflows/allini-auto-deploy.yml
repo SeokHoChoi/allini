@@ -25,11 +25,6 @@ jobs:
       - name: Build
         run: yarn build
 
-      # 현재 시간을 출력하고, 이를 GitHub Actions의 출력 변수에 저장하여 배포 시점 추적 및 버전 관리 수행
-      - name: Current timestamp
-        id: timestamp
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"
-
       - name: Deploy
         run: |
           aws s3 cp dist s3://allini
