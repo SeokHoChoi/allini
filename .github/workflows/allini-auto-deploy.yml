@@ -14,8 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4 # 프로젝트 코드 checkout
 
-      - name: Check Node v
-        uses: node -v
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -30,3 +33,6 @@ jobs:
           AWS_DEFAULT_REGION: ap-northeast-2
         run: |
           aws s3 cp --recursive --region ap-northeast-2 dist s3://allini
+        # run: |
+        #   aws s3 cp dist s3://allini
+        #   aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths "/*"
