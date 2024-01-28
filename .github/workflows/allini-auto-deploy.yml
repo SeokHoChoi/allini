@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest # 해당 github actions 스크립트가 작동할 OS 환경 지정
+    runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
     steps:
       - name: Checkout
         uses: actions/checkout@v4 # 프로젝트 코드 checkout
@@ -35,6 +35,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
           AWS_DEFAULT_REGION: ap-northeast-2
         run: |
+          echo "aws s3 cp --recursive --region ap-northeast-2 dist s3://allini"
           aws s3 cp --recursive --region ap-northeast-2 dist s3://allini
         # run: |
         #   aws s3 cp dist s3://allini
