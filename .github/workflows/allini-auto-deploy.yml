@@ -2,10 +2,10 @@ name: Deploy-LIVE
 on:
   push:
     branches:
-      - main
+      - test-main
   pull_request:
     branches:
-      - main
+      - test-main
 
 jobs:
   build:
