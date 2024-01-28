@@ -14,22 +14,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4 # 프로젝트 코드 checkout
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20" # 워크플로우가 실행되는 환경에서 사용할 Node.js의 버전
-          cache: "yarn"
+      - name: Check Node v
+        uses: node -v
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
       - name: Build
         run: yarn build
 
       - name: Deploy
-        run: |
-          aws s3 cp dist s3://allini
-          aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths "/*"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
           AWS_DEFAULT_REGION: ap-northeast-2
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 build s3://allini
