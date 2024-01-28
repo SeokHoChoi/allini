@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
+    runs-on: ubuntu-latest # 해당 github actions 스크립트가 작동할 OS 환경 지정
     steps:
       - name: Checkout
         uses: actions/checkout@v4 # 프로젝트 코드 checkout
