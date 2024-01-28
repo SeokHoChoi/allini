@@ -31,8 +31,8 @@ jobs:
 
       - name: Deploy
         run: |
-          aws s3 cp --recursive --region ap-northeast-2 dist s3://allini
+          aws s3 cp --recursive --region ap-northeast-2 dist s3://${{ secrets.AWS_S3_BUCKET }}
 
       - name: Invalidate CloudFront Cache
         run: |
-          aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths "/*"
+          aws cloudfront create-invalidation --distribution-id ${{ LIVE_DISTRIBUTION_ID }} --paths "/*"
