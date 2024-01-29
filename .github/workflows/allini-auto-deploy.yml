@@ -1,0 +1,38 @@
+name: Deploy-LIVE
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4 # 프로젝트 코드 checkout
+
+      - name: Check Node v # Node v 확인
+        run: node -v
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: Deploy
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 dist s3://${{ secrets.AWS_S3_BUCKET }}
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ LIVE_DISTRIBUTION_ID }} --paths "/*"
