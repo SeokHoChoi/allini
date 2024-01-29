@@ -7,6 +7,9 @@ on:
     branches:
       - main
 
+env:
+  LIVE_DISTRIBUTION_ID: ${{ secrets.LIVE_DISTRIBUTION_ID }}
+
 jobs:
   build:
     runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
@@ -35,4 +38,4 @@ jobs:
 
       - name: Invalidate CloudFront Cache
         run: |
-          aws cloudfront create-invalidation --distribution-id ${{ LIVE_DISTRIBUTION_ID }} --paths "/*"
+          aws cloudfront create-invalidation --distribution-id ${{ env.LIVE_DISTRIBUTION_ID }} --paths "/*"
