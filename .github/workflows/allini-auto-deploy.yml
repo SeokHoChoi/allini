@@ -12,32 +12,27 @@ jobs:
     runs-on: ubuntu-20.04 # 해당 github actions 스크립트가 작동할 OS 환경 지정
     steps:
       - name: Checkout
-        uses: actions/checkout@v3 # 프로젝트 코드 checkout
+        uses: actions/checkout@v4 # 프로젝트 코드 checkout
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18.18.2" # 워크플로우가 실행되는 환경에서 사용할 Node.js의 버전
-          cache: "yarn"
+      - name: Check Node v # Node v 확인
+        run: node -v
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
 
-      # 현재 시간을 출력하고, 이를 GitHub Actions의 출력 변수에 저장하여 배포 시점 추적 및 버전 관리 수행
-      - name: Current timestamp
-        id: timestamp
-        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H-%M-%S-%3NZ')"
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ap-northeast-2
 
       - name: Deploy
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          region: ap-northeast-2
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 dist s3://${{ secrets.AWS_S3_BUCKET }}
 
-      - name: Copy to S3
-        run: aws s3 cp dist s3://allini
-
-      - name: Invalidate CloudFront
-        run: aws cloudfront create-invalidation --distribution-id E2SSGMISK1VWI1 --paths "/*"
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ LIVE_DISTRIBUTION_ID }} --paths "/*"
