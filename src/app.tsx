@@ -1,5 +1,5 @@
 import styles from "./app.module.scss";
 
 export default function App() {
-  return <div className={styles.renderTest}>TEST - 2</div>;
+  return <div className={styles.renderTest}>TEST - 3</div>;
 }
