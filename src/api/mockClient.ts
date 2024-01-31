@@ -1,5 +1,7 @@
-export default class MockClient {
-  private httpClient;
+import axios from "axios";
 
-  constructor() {}
+export default class MockClient {
+  async getSnacks() {
+    return axios.get("/mock/board.json");
+  }
 }
