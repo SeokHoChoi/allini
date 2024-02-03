@@ -3,9 +3,9 @@ import axios, { AxiosInstance } from "axios";
 export default class MockClient {
   private httpClient: AxiosInstance;
 
-  constructor() {
+  constructor(baseURL: string) {
     this.httpClient = axios.create({
-      baseURL: "https://jsonplaceholder.typicode.com",
+      baseURL,
     });
   }
 

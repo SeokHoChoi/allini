@@ -4,7 +4,7 @@ import styles from "./app.module.scss";
 
 export default function App() {
   /* api 테스트 */
-  const client = new MockClient();
+  const client = new MockClient("https://jsonplaceholder.typicode.com");
   const alliniApi = new AlliniApi(client);
   // alliniApi.searchSnack("소고기").then((res) => console.log(res, "test"));
   // alliniApi.searchSnack().then((res) => console.log(res, "test"));
