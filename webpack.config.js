@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin"); // 추가한 부분
@@ -33,6 +34,9 @@ module.exports = {
       template: "./public/index.html",
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "public/mockServiceWorker.js", to: "." }],
+    }),
   ],
   devServer: {
     host: "localhost",
