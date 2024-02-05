@@ -64,39 +64,50 @@ export default function Pagination({
   );
 
   return (
-    <div>
-      <button onClick={() => onChange(1)}>끝까지</button>
-      <button
-        onClick={() => {
-          if (activePage === 1) {
-            return;
-          }
+    <ul>
+      <li>
+        <button onClick={() => onChange(1)}>끝까지</button>
+      </li>
+      <li>
+        <button
+          onClick={() => {
+            if (activePage === 1) {
+              return;
+            }
 
-          onChange(activePage - 1);
-        }}
-      >
-        이전
-      </button>
+            onChange(activePage - 1);
+          }}
+        >
+          이전
+        </button>
+      </li>
+
       {btnsArr.map((item: number) => {
         return (
-          <button key={item} onClick={() => onChange(item)}>
-            {item}
-          </button>
+          <li>
+            <button key={item} onClick={() => onChange(item)}>
+              {item}
+            </button>
+          </li>
         );
       })}
-      <button
-        onClick={() => {
-          if (activePage === btnsCalculated) {
-            return;
-          }
+      <li>
+        <button
+          onClick={() => {
+            if (activePage === btnsCalculated) {
+              return;
+            }
 
-          onChange(activePage + 1);
-        }}
-      >
-        다음
-      </button>
-      <button onClick={() => onChange(btnsCalculated)}>끝까지</button>
-    </div>
+            onChange(activePage + 1);
+          }}
+        >
+          다음
+        </button>
+      </li>
+      <li>
+        <button onClick={() => onChange(btnsCalculated)}>끝까지</button>
+      </li>
+    </ul>
   );
 }
 
