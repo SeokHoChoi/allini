@@ -46,7 +46,7 @@ export default function Pagination({
 
   useEffect(
     function renderBtns() {
-      const btnsArr: Array<number> = [];
+      const tmepBtnsArr: Array<number> = [];
       for (
         let i = pageRangeDisplayed * rangePhase - (pageRangeDisplayed - 1);
         i <=
@@ -55,10 +55,10 @@ export default function Pagination({
           : pageRangeDisplayed * rangePhase);
         i++
       ) {
-        btnsArr.push(i);
+        tmepBtnsArr.push(i);
       }
 
-      setBtnsArr([...btnsArr]);
+      setBtnsArr([...tmepBtnsArr]);
     },
     [rangePhase]
   );
