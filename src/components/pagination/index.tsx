@@ -6,7 +6,7 @@ interface Props {
   itemsCountPerPage: number;
   activePage: number;
   pageRangeDisplayed: number;
-  onChange: () => void;
+  onChange: (btnNum: number) => void;
 }
 export default function Pagination({
   totalItemsCount,
@@ -16,10 +16,9 @@ export default function Pagination({
   pageRangeDisplayed,
   onChange,
 }: Props) {
-  const [btnsCountPerRange, setBtnsCountPerRange] =
-    useState(pageRangeDisplayed);
-  const [currentPage, setCurrentPage] = useState(activePage);
+  /** 현재 보여지는 범위 단계 */
   const [rangePhase, setRangePhase] = useState(1);
+  /** 렌더링 될 버튼 */
   const [btnsArr, setBtnsArr]: any = useState<number[]>([]);
 
   /** 총 버튼의 수 */
@@ -36,70 +35,67 @@ export default function Pagination({
     btnsCalculated = Math.ceil((totalItemsCount as number) / itemsCountPerPage);
     totalItems = totalItemsCount as number;
   }
-  /** btnsCalculated 를 몇개의 페이지로 나눌지에 대한 변수 */
-  const pageRangeCount = Math.ceil(btnsCalculated / pageRangeDisplayed);
 
   useEffect(
     function calRangePhase() {
-      /** pageRangeCount 의 phase 계산 */
-      setRangePhase(Math.ceil(currentPage / pageRangeDisplayed));
+      /** 보여질 범위의 현재 단계 계산 */
+      setRangePhase(Math.ceil(activePage / pageRangeDisplayed));
     },
-    [currentPage]
+    [activePage]
   );
 
-  useEffect(() => {
-    const btnsArr: Array<number> = [];
-    for (
-      let i = pageRangeDisplayed * rangePhase - (pageRangeDisplayed - 1);
-      i <=
-      (btnsCalculated < pageRangeDisplayed * rangePhase
-        ? btnsCalculated
-        : pageRangeDisplayed * rangePhase);
-      i++
-    ) {
-      btnsArr.push(i);
-    }
-    setBtnsCountPerRange(
-      btnsCountPerRange + pageRangeDisplayed > btnsCalculated
-        ? btnsCalculated
-        : btnsCountPerRange + pageRangeDisplayed
-    );
-    setBtnsArr([...btnsArr]);
-  }, [rangePhase]);
-  console.log(currentPage);
+  useEffect(
+    function renderBtns() {
+      const btnsArr: Array<number> = [];
+      for (
+        let i = pageRangeDisplayed * rangePhase - (pageRangeDisplayed - 1);
+        i <=
+        (btnsCalculated < pageRangeDisplayed * rangePhase
+          ? btnsCalculated
+          : pageRangeDisplayed * rangePhase);
+        i++
+      ) {
+        btnsArr.push(i);
+      }
+
+      setBtnsArr([...btnsArr]);
+    },
+    [rangePhase]
+  );
+
   return (
     <div>
-      <button onClick={() => setCurrentPage(1)}>끝까지</button>
+      <button onClick={() => onChange(1)}>끝까지</button>
       <button
         onClick={() => {
-          if (currentPage === 1) {
+          if (activePage === 1) {
             return;
           }
 
-          setCurrentPage((prev) => prev - 1);
+          onChange(activePage - 1);
         }}
       >
         이전
       </button>
       {btnsArr.map((item: number) => {
         return (
-          <button key={item} onClick={() => setCurrentPage(item)}>
+          <button key={item} onClick={() => onChange(item)}>
             {item}
           </button>
         );
       })}
       <button
         onClick={() => {
-          if (currentPage === btnsCalculated) {
+          if (activePage === btnsCalculated) {
             return;
           }
 
-          setCurrentPage((prev) => prev + 1);
+          onChange(activePage + 1);
         }}
       >
         다음
       </button>
-      <button onClick={() => setCurrentPage(btnsCalculated)}>끝까지</button>
+      <button onClick={() => onChange(btnsCalculated)}>끝까지</button>
     </div>
   );
 }
