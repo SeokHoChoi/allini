@@ -12,11 +12,11 @@ export default function App() {
   return (
     <div className={styles.renderTest}>
       <Pagination
-        totalItemsCount={27}
-        // totalPage=15
-        itemsCountPerPage={4}
+        totalItemsCount={145}
+        // totalPage=7
+        itemsCountPerPage={10}
         activePage={1}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={7}
         onChange={() => {}}
       />
     </div>

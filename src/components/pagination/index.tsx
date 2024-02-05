@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 interface Props {
   totalItemsCount?: number;
   totalPage?: number;
@@ -14,20 +16,43 @@ export default function Pagination({
   pageRangeDisplayed,
   onChange,
 }: Props) {
-  let buttonCount: number = 0;
+  const [btnsCountPerRange, setBtnsCountPerRange] =
+    useState(pageRangeDisplayed);
+  const [currentPage, setCurrentPage] = useState(activePage);
+  const [rangePhase, setRangePhase] = useState(1);
+
+  /** 총 버튼의 수 */
+  let btnsCalculated: number = 0;
+  /** 총 아이템 수 */
+  let totalItems = 0;
   if (totalPage) {
-    buttonCount = totalPage;
+    btnsCalculated = totalPage;
+
+    if (!totalItemsCount) {
+      totalItems = totalPage * itemsCountPerPage;
+    }
   } else {
-    buttonCount = Math.ceil((totalItemsCount as number) / itemsCountPerPage);
+    btnsCalculated = Math.ceil((totalItemsCount as number) / itemsCountPerPage);
+    totalItems = totalItemsCount as number;
+  }
+  /** btnsCalculated 를 몇개의 페이지로 나눌지에 대한 변수 */
+  const pageRangeCount = Math.ceil(btnsCalculated / pageRangeDisplayed);
+
+  useEffect(
+    function calRangePhase() {
+      /** pageRangeCount 의 phase 계산 */
+      setRangePhase(Math.ceil(currentPage / pageRangeDisplayed));
+    },
+    [currentPage]
+  );
+
+  // 임시 테스트
+  const arr: any = [];
+  for (let i = 0; i < btnsCountPerRange; i++) {
+    arr.push(i);
   }
 
-  return (
-    <div>
-      {"<< <"}
-      {buttonCount}
-      {"> >>"}
-    </div>
-  );
+  return <div></div>;
 }
 
 /**
