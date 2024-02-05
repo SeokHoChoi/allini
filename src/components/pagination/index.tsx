@@ -20,6 +20,7 @@ export default function Pagination({
     useState(pageRangeDisplayed);
   const [currentPage, setCurrentPage] = useState(activePage);
   const [rangePhase, setRangePhase] = useState(1);
+  const [btnsArr, setBtnsArr]: any = useState<number[]>([]);
 
   /** 총 버튼의 수 */
   let btnsCalculated: number = 0;
@@ -46,21 +47,69 @@ export default function Pagination({
     [currentPage]
   );
 
-  // 임시 테스트
-  const arr: any = [];
-  for (let i = 0; i < btnsCountPerRange; i++) {
-    arr.push(i);
-  }
+  useEffect(() => {
+    const btnsArr: Array<number> = [];
+    for (
+      let i = pageRangeDisplayed * rangePhase - (pageRangeDisplayed - 1);
+      i <=
+      (btnsCalculated < pageRangeDisplayed * rangePhase
+        ? btnsCalculated
+        : pageRangeDisplayed * rangePhase);
+      i++
+    ) {
+      btnsArr.push(i);
+    }
+    setBtnsCountPerRange(
+      btnsCountPerRange + pageRangeDisplayed > btnsCalculated
+        ? btnsCalculated
+        : btnsCountPerRange + pageRangeDisplayed
+    );
+    setBtnsArr([...btnsArr]);
+  }, [rangePhase]);
+  console.log(currentPage);
+  return (
+    <div>
+      <button onClick={() => setCurrentPage(1)}>끝까지</button>
+      <button
+        onClick={() => {
+          if (currentPage === 1) {
+            return;
+          }
 
-  return <div></div>;
+          setCurrentPage((prev) => prev - 1);
+        }}
+      >
+        이전
+      </button>
+      {btnsArr.map((item: number) => {
+        return (
+          <button key={item} onClick={() => setCurrentPage(item)}>
+            {item}
+          </button>
+        );
+      })}
+      <button
+        onClick={() => {
+          if (currentPage === btnsCalculated) {
+            return;
+          }
+
+          setCurrentPage((prev) => prev + 1);
+        }}
+      >
+        다음
+      </button>
+      <button onClick={() => setCurrentPage(btnsCalculated)}>끝까지</button>
+    </div>
+  );
 }
 
 /**
  * 
- totalItemsCount: 총 아이템 수
-totalPage: 전체 페이지 수
-itemsCountPerPage: 페이지당 보여질 아이템 수
-activePage: 현재 페이지
-pageRangeDisplayed: 한 번에 보여질 총 페이지
-onChange: 페이지 변경 함수
+    totalItemsCount: 총 아이템 수
+    totalPage: 전체 페이지 수
+    itemsCountPerPage: 페이지당 보여질 아이템 수
+    activePage: 현재 페이지
+    pageRangeDisplayed: 한 번에 보여질 총 페이지
+    onChange: 페이지 변경 함수
  */
