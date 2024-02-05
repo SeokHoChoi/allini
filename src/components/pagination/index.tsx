@@ -19,7 +19,7 @@ export default function Pagination({
   /** 현재 보여지는 범위 단계 */
   const [rangePhase, setRangePhase] = useState(1);
   /** 렌더링 될 버튼 */
-  const [btnsArr, setBtnsArr]: any = useState<number[]>([]);
+  const [btnsArr, setBtnsArr] = useState<number[]>([]);
 
   /** 총 버튼의 수 */
   let btnsCalculated: number = 0;
@@ -84,10 +84,8 @@ export default function Pagination({
 
       {btnsArr.map((item: number) => {
         return (
-          <li>
-            <button key={item} onClick={() => onChange(item)}>
-              {item}
-            </button>
+          <li key={item}>
+            <button onClick={() => onChange(item)}>{item}</button>
           </li>
         );
       })}
