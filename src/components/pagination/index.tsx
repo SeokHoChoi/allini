@@ -17,51 +17,42 @@ export default function Pagination({
   onChange,
 }: Props) {
   /** 현재 보여지는 범위 단계 */
-  const [rangePhase, setRangePhase] = useState(1);
-  /** 렌더링 될 버튼 */
-  const [btnsArr, setBtnsArr] = useState<number[]>([]);
+  const [phase, setPhase] = useState(1);
 
   /** 총 버튼의 수 */
-  let btnsCalculated: number = 0;
+  let totalPageCount: number = 0;
   /** 총 아이템 수 */
   let totalItems = 0;
   if (totalPage) {
-    btnsCalculated = totalPage;
+    totalPageCount = totalPage;
 
     if (!totalItemsCount) {
       totalItems = totalPage * itemsCountPerPage;
     }
   } else {
-    btnsCalculated = Math.ceil((totalItemsCount as number) / itemsCountPerPage);
+    totalPageCount = Math.ceil((totalItemsCount as number) / itemsCountPerPage);
     totalItems = totalItemsCount as number;
   }
 
   useEffect(
     function calRangePhase() {
       /** 보여질 범위의 현재 단계 계산 */
-      setRangePhase(Math.ceil(activePage / pageRangeDisplayed));
+      setPhase(Math.ceil(activePage / pageRangeDisplayed));
     },
     [activePage]
   );
 
-  useEffect(
-    function renderBtns() {
-      const tmpBtnsArr: Array<number> = [];
-      for (
-        let i = pageRangeDisplayed * rangePhase - (pageRangeDisplayed - 1);
-        i <=
-        (btnsCalculated < pageRangeDisplayed * rangePhase
-          ? btnsCalculated
-          : pageRangeDisplayed * rangePhase);
-        i++
-      ) {
-        tmpBtnsArr.push(i);
-      }
+  const buttonNumbers: Array<number> = [];
+  for (let i = 0; i < totalPageCount; i++) {
+    buttonNumbers[i] = i + 1;
+  }
 
-      setBtnsArr([...tmpBtnsArr]);
-    },
-    [rangePhase]
-  );
+  const startIndex = pageRangeDisplayed * (phase - 1);
+  const endIndex = Math.min(pageRangeDisplayed * phase, totalPageCount);
+  const currentPhaseButtonNumbers: Array<number> = [];
+  for (let i = startIndex; i < endIndex; i++) {
+    currentPhaseButtonNumbers.push(buttonNumbers[i]);
+  }
 
   return (
     <ul>
@@ -82,7 +73,7 @@ export default function Pagination({
         </button>
       </li>
 
-      {btnsArr.map((item: number) => {
+      {currentPhaseButtonNumbers.map((item: number) => {
         return (
           <li key={item}>
             <button onClick={() => onChange(item)}>{item}</button>
@@ -92,7 +83,7 @@ export default function Pagination({
       <li>
         <button
           onClick={() => {
-            if (activePage === btnsCalculated) {
+            if (activePage === totalPageCount) {
               return;
             }
 
@@ -103,7 +94,7 @@ export default function Pagination({
         </button>
       </li>
       <li>
-        <button onClick={() => onChange(btnsCalculated)}>끝까지</button>
+        <button onClick={() => onChange(totalPageCount)}>끝까지</button>
       </li>
     </ul>
   );

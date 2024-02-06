@@ -17,11 +17,11 @@ export default function App() {
   return (
     <div className={styles.renderTest}>
       <Pagination
-        totalItemsCount={132}
+        totalItemsCount={27}
         // totalPage={7}
-        itemsCountPerPage={5}
+        itemsCountPerPage={4}
         activePage={btnTest}
-        pageRangeDisplayed={4}
+        pageRangeDisplayed={3}
         onChange={changeActivePage}
       />
     </div>
