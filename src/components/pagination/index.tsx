@@ -8,6 +8,17 @@ interface Props {
   pageRangeDisplayed: number;
   onChange: (btnNum: number) => void;
 }
+
+/**
+ * 
+    totalItemsCount: 총 아이템 수
+    totalPage: 전체 페이지 수
+    itemsCountPerPage: 페이지당 보여질 아이템 수
+    activePage: 현재 페이지
+    pageRangeDisplayed: 한 번에 보여질 총 페이지
+    onChange: 페이지 변경 함수
+ */
+
 export default function Pagination({
   totalItemsCount,
   totalPage,
@@ -19,20 +30,15 @@ export default function Pagination({
   /** 현재 보여지는 범위 단계 */
   const [phase, setPhase] = useState(1);
 
-  /** 총 버튼의 수 */
-  let totalPageCount: number = 0;
-  /** 총 아이템 수 */
-  let totalItems = 0;
-  if (totalPage) {
-    totalPageCount = totalPage;
+  /** totalItemsCount prop이 넘어오지 않는 상황을 대비합니다. */
+  const totalItems =
+    !totalItemsCount && totalPage
+      ? totalPage * itemsCountPerPage
+      : (totalItemsCount as number);
 
-    if (!totalItemsCount) {
-      totalItems = totalPage * itemsCountPerPage;
-    }
-  } else {
-    totalPageCount = Math.ceil((totalItemsCount as number) / itemsCountPerPage);
-    totalItems = totalItemsCount as number;
-  }
+  const totalPageCount = totalPage
+    ? totalPage
+    : Math.ceil((totalItems as number) / itemsCountPerPage);
 
   useEffect(
     function calRangePhase() {
@@ -99,13 +105,3 @@ export default function Pagination({
     </ul>
   );
 }
-
-/**
- * 
-    totalItemsCount: 총 아이템 수
-    totalPage: 전체 페이지 수
-    itemsCountPerPage: 페이지당 보여질 아이템 수
-    activePage: 현재 페이지
-    pageRangeDisplayed: 한 번에 보여질 총 페이지
-    onChange: 페이지 변경 함수
- */
