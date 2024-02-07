@@ -1,29 +1,19 @@
-import { useState } from "react";
-import AlliniApi from "./api/alliniApi";
-import HttpClient from "./api/httpClient";
+import { useEffect, useState } from "react";
 import styles from "./app.module.scss";
-import Pagination from "./components/pagination";
+import useDebounce from "./hooks/useDebounce";
 
 export default function App() {
-  const [btnTest, setBtnTest] = useState(1);
-  /* api 테스트 */
-  const client = new HttpClient("https://jsonplaceholder.typicode.com");
-  const alliniApi = new AlliniApi(client);
-  // alliniApi.searchSnack().then((res) => console.log(res));
-  const changeActivePage = (btnNum: number) => {
-    setBtnTest(btnNum);
-  };
+  const [state, setState] = useState("");
+  const debouncedState = useDebounce(state, 300);
+
+  useEffect(() => {
+    // 정상 출력 pr 확인용 console.log
+    console.log(`/test/search/api/${debouncedState}`);
+  }, [debouncedState]);
 
   return (
     <div className={styles.renderTest}>
-      <Pagination
-        totalItemsCount={27}
-        // totalPage={7}
-        itemsCountPerPage={4}
-        activePage={btnTest}
-        pageRangeDisplayed={3}
-        onChange={changeActivePage}
-      />
+      <input value={state} onChange={(e) => setState(e.target.value)} />
     </div>
   );
 }
