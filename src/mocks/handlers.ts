@@ -11,4 +11,12 @@ export const handlers = [
   http.get("https://jsonplaceholder.typicode.com/posts", () => {
     return HttpResponse.json(data);
   }),
+
+  http.get(`https://jsonplaceholder.typicode.com/posts/:keyword`, (req) => {
+    const keyword = req.params.keyword as string;
+    const filteredData = data.filter((item) => item.snack.includes(keyword));
+    const isFindData = Array.isArray(filteredData) && filteredData.length;
+    const response = isFindData ? filteredData : [];
+    return HttpResponse.json(response);
+  }),
 ];
