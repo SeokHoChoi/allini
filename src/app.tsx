@@ -1,11 +1,13 @@
+import { Outlet } from "react-router-dom";
 import styles from "./app.module.scss";
-import Home from "./pages/home/page";
-import Routes from "./routes/routes";
+import { ApiProvider } from "./context/apiContext";
 
 export default function App() {
   return (
     <div className={styles.renderTest}>
-      <Routes />
+      <ApiProvider>
+        <Outlet />
+      </ApiProvider>
     </div>
   );
 }
