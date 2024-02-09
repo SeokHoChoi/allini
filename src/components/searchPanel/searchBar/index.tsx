@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 interface Props {
   keyword: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
