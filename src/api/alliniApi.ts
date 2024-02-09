@@ -8,6 +8,6 @@ export default class AlliniApi {
   }
 
   async getSnackById(snackId: string) {
-    return this.httpClient.get(`/pet-food-items/${snackId}`);
+    return this.httpClient.get(`/pet-food-items/goods/${snackId}`);
   }
 }

@@ -26,7 +26,7 @@ export const handlers = [
   ),
 
   http.get(
-    "https://jsonplaceholder.typicode.com/pet-food-items/:searchId",
+    "https://jsonplaceholder.typicode.com/pet-food-items/goods/:searchId",
     (req) => {
       const searchId = req.params.searchId as string;
       const filteredData = data.filter((item) => item.id === Number(searchId));

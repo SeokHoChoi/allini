@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useApi } from "../../context/apiContext";
 
-export default function List() {
+export default function PetFoodItems() {
   const api = useApi();
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query");

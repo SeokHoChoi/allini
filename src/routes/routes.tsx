@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home/page";
 import App from "../app";
-import List from "../pages/list/page";
-import DetailList from "../pages/list/detail-list/page";
+import List from "../pages/pet-food-items/page";
+import DetailList from "../pages/pet-food-items/goods/page";
 
 const router = createBrowserRouter([
   {
