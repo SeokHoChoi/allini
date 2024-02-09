@@ -12,11 +12,16 @@ export const handlers = [
     return HttpResponse.json(data);
   }),
 
-  http.get(`https://jsonplaceholder.typicode.com/posts/:keyword`, (req) => {
-    const keyword = req.params.keyword as string;
-    const filteredData = data.filter((item) => item.snack.includes(keyword));
-    const isFindData = Array.isArray(filteredData) && filteredData.length;
-    const response = isFindData ? filteredData : [];
-    return HttpResponse.json(response);
-  }),
+  http.get(
+    `https://jsonplaceholder.typicode.com/posts/search`,
+    ({ request }) => {
+      const url = new URL(request.url);
+      const query = url.searchParams.get("query");
+      const keyword = query ? decodeURIComponent(query) : "";
+      const filteredData = data.filter((item) => item.snack.includes(keyword));
+      const isFindData = Array.isArray(filteredData) && filteredData.length;
+      const response = isFindData ? filteredData : [];
+      return HttpResponse.json(response);
+    }
+  ),
 ];
