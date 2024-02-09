@@ -77,7 +77,9 @@ export default function SearchModal({
         </ul>
       </div>
       <div>
-        <button onClick={clearSearchHistory}>검색기록 삭제</button>
+        {!keyword && (
+          <button onClick={clearSearchHistory}>검색기록 삭제</button>
+        )}
         <button onClick={() => handlePanel()}>닫기</button>
       </div>
     </section>
