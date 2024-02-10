@@ -29,7 +29,7 @@ export default function SearchModal({
   const navigate = useNavigate();
 
   const handleDeleteKeyword = (keyword: string) => {
-    const newSearchList = filterKeyword(keyword, searchList);
+    const newSearchList = searchList.filter((item: string) => item !== keyword);
     setSearchList(newSearchList);
     setItem(storageKey, newSearchList);
   };

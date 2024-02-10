@@ -3,7 +3,6 @@ import { getItem } from "../../utils/getItem";
 import { setItem } from "../../utils/setItem";
 import SearchBar from "./searchBar";
 import { useNavigate } from "react-router-dom";
-import { filterKeyword } from "../../utils/filterKeyword";
 import { useSearchModal } from "../../context/searchModalContext";
 import SearchModal from "./searchModal";
 
@@ -52,7 +51,7 @@ export default function SearchPanel({
     // 2. 검색어 저장
     if (keyword === "") return;
     const items = getItem(storageKey) || [];
-    const newSearchList = filterKeyword(keyword, items);
+    const newSearchList = items.filter((item: string) => item !== keyword);
     newSearchList.unshift(keyword);
     setItem(storageKey, newSearchList);
     setSearchList(newSearchList);
