@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { setItem } from "../../../utils/setItem";
-import { filterKeyword } from "../../../utils/filterKeyword";
 
 interface DataType {
   id: number;
