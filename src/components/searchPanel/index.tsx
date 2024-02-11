@@ -8,7 +8,8 @@ import SearchModal from "./searchModal";
 
 interface DataType {
   id: number;
-  snack: string;
+  snack?: string; // 간식
+  feed?: string; // 사료
   content: string;
   allergy: boolean;
 }
@@ -16,17 +17,17 @@ interface DataType {
 interface Props {
   storageKey: string;
   keyword: string;
-  snackList: Array<DataType>;
+  itemsList: Array<DataType>;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  apiCall: () => Promise<void>;
+  displayPropertyName: keyof DataType;
 }
 
 export default function SearchPanel({
   storageKey,
   keyword,
-  snackList,
+  itemsList,
   onChange,
-  apiCall,
+  displayPropertyName,
 }: Props) {
   const [searchList, setSearchList] = useState<string[]>([]);
   const { state, actions } = useSearchModal();
@@ -40,7 +41,7 @@ export default function SearchPanel({
 
     // 1. 페이지 이동
     const queryParams = new URLSearchParams({
-      domain: "snack",
+      domain: displayPropertyName,
       query: keyword,
     });
     navigate({
@@ -75,9 +76,10 @@ export default function SearchPanel({
         <SearchModal
           keyword={keyword}
           searchList={searchList}
-          snackList={snackList}
+          itemsList={itemsList}
           storageKey={storageKey}
           setSearchList={setSearchList}
+          displayPropertyName={displayPropertyName}
           handlePanel={() => setIsOpen(false)}
         />
       )}

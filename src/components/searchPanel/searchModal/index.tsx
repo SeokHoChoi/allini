@@ -3,7 +3,8 @@ import { setItem } from "../../../utils/setItem";
 
 interface DataType {
   id: number;
-  snack: string;
+  snack?: string; // 간식
+  feed?: string; // 사료
   content: string;
   allergy: boolean;
 }
@@ -11,16 +12,18 @@ interface DataType {
 interface Props {
   keyword: string;
   searchList: Array<string>;
-  snackList: Array<DataType>;
+  itemsList: Array<DataType>;
   storageKey: string;
   setSearchList: React.Dispatch<React.SetStateAction<Array<string>>>;
   handlePanel: () => void;
+  displayPropertyName: keyof DataType;
 }
 
 export default function SearchModal({
   keyword,
   searchList,
-  snackList,
+  itemsList,
+  displayPropertyName,
   storageKey,
   setSearchList,
   handlePanel,
@@ -61,15 +64,17 @@ export default function SearchModal({
         )}
 
         <ul>
-          {snackList.map((snack: DataType) => {
+          {itemsList.map((item: DataType) => {
+            const displayValue = item[displayPropertyName];
+
             return (
               <li
-                key={snack.id}
-                onClick={() => navigate(`/pet-food-items/goods/${snack.id}`)}
+                key={item.id}
+                onClick={() => navigate(`/pet-food-items/goods/${item.id}`)}
               >
-                <span>{snack.snack}</span>
-                <span>{snack.content}</span>
-                <span>{snack.allergy.toString()}</span>
+                <span>{displayValue}</span>
+                <span>{item.content}</span>
+                <span>{item.allergy.toString()}</span>
               </li>
             );
           })}

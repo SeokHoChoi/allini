@@ -32,9 +32,9 @@ export default function Home() {
       <SearchPanel
         storageKey={"home"}
         keyword={keyword}
-        snackList={snackList}
+        itemsList={snackList}
         onChange={handleSearch}
-        apiCall={searchSnackApi}
+        displayPropertyName="snack"
       />
     </div>
   );
