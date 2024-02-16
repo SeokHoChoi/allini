@@ -12,25 +12,19 @@ export const handlers = [
     return HttpResponse.json(data);
   }),
 
-  http.get(
-    `https://jsonplaceholder.typicode.com/snacks/search`,
-    ({ request }) => {
-      const url = new URL(request.url);
-      const query = url.searchParams.get("query");
-      const keyword = query ? decodeURIComponent(query) : "";
-      const filteredData = data.filter((item) => item.snack.includes(keyword));
-      const isFindData = Array.isArray(filteredData) && filteredData.length;
-      const response = isFindData ? filteredData : [];
-      return HttpResponse.json(response);
-    }
-  ),
+  http.get(`https://jsonplaceholder.typicode.com/snacks`, ({ request }) => {
+    const url = new URL(request.url);
+    const query = url.searchParams.get("query");
+    const keyword = query ? decodeURIComponent(query) : "";
+    const filteredData = data.filter((item) => item.snack.includes(keyword));
+    const isFindData = Array.isArray(filteredData) && filteredData.length;
+    const response = isFindData ? filteredData : [];
+    return HttpResponse.json(response);
+  }),
 
-  http.get(
-    "https://jsonplaceholder.typicode.com/snacks/snack/:searchId",
-    (req) => {
-      const searchId = req.params.searchId as string;
-      const filteredData = data.filter((item) => item.id === Number(searchId));
-      return HttpResponse.json(filteredData[0]);
-    }
-  ),
+  http.get("https://jsonplaceholder.typicode.com/snacks/:searchId", (req) => {
+    const searchId = req.params.searchId as string;
+    const filteredData = data.filter((item) => item.id === Number(searchId));
+    return HttpResponse.json(filteredData[0]);
+  }),
 ];
