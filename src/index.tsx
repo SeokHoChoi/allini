@@ -4,6 +4,8 @@ import Routes from "./routes/routes";
 import { ApiProvider } from "./context/apiContext";
 import { SearchModalProvider } from "./context/searchModalContext";
 
+import "./reset.css";
+
 async function enableMocking() {
   if (process.env.NODE_ENV !== "development") {
     return;
