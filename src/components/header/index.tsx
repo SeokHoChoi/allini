@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import LOGO from "../../assets/allini/testimg.jpeg";
 
 export default function Header() {
   return (
@@ -7,7 +8,9 @@ export default function Header() {
         <ul>
           <li>
             <h1>
-              <Link to="/">Allini</Link>
+              <Link to="/">
+                <img src={LOGO} alt="Allini-Home-Link" />
+              </Link>
             </h1>
           </li>
           <li>
