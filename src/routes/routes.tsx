@@ -3,12 +3,13 @@ import Home from "../pages/home/page";
 import App from "../app";
 import SnackList from "../pages/snack-list/page";
 import Snack from "../pages/snack-list/snack/page";
+import NotFound from "../pages/not-found/page";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <NotFoundxsss />,
+    errorElement: <NotFound />,
     children: [
       { index: true, path: "/", element: <Home /> },
       { path: "/snack-list", element: <SnackList /> },

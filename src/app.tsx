@@ -8,6 +8,7 @@ export default function App() {
   const handleTogglePanel = () => {
     setIsOpen(false);
   };
+
   return (
     <div className={styles.renderTest} onClick={handleTogglePanel}>
       <DefaultLayout>
