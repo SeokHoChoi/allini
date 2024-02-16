@@ -1,25 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import { setItem } from "../../../utils/setItem";
-
 interface DataType {
   id: number;
-  snack?: string; // 간식
-  feed?: string; // 사료
   content: string;
   allergy: boolean;
 }
 
-interface Props {
+interface Props<T> {
   keyword: string;
   searchList: Array<string>;
-  itemsList: Array<DataType>;
+  itemsList: Array<T>;
   storageKey: string;
   setSearchList: React.Dispatch<React.SetStateAction<Array<string>>>;
   handlePanel: () => void;
-  displayPropertyName: keyof DataType;
+  displayPropertyName: keyof T;
 }
 
-export default function SearchModal({
+export default function SearchModal<T extends DataType>({
   keyword,
   searchList,
   itemsList,
@@ -27,7 +24,7 @@ export default function SearchModal({
   storageKey,
   setSearchList,
   handlePanel,
-}: Props) {
+}: Props<T>) {
   const navigate = useNavigate();
 
   const handleDeleteKeyword = (keyword: string) => {
@@ -49,7 +46,7 @@ export default function SearchModal({
           <div>
             <h2>최근 검색어</h2>
             <ul>
-              {searchList.map((keyword) => (
+              {searchList.map((keyword: string) => (
                 <li key={keyword}>
                   <span onClick={() => navigate(`/${keyword}`)}>{keyword}</span>
                   <button onClick={() => handleDeleteKeyword(keyword)}>
@@ -64,8 +61,8 @@ export default function SearchModal({
         )}
 
         <ul>
-          {itemsList.map((item: DataType) => {
-            const displayValue = item[displayPropertyName];
+          {itemsList.map((item: T) => {
+            const displayValue = item[displayPropertyName] as React.ReactNode;
 
             return (
               <li

@@ -8,27 +8,25 @@ import SearchModal from "./searchModal";
 
 interface DataType {
   id: number;
-  snack?: string; // 간식
-  feed?: string; // 사료
   content: string;
   allergy: boolean;
 }
 
-interface Props {
+interface Props<T> {
   storageKey: string;
   keyword: string;
-  itemsList: Array<DataType>;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  displayPropertyName: keyof DataType;
+  itemsList: Array<T>;
+  displayPropertyName: keyof T;
 }
 
-export default function SearchPanel({
+export default function SearchPanel<T extends DataType>({
   storageKey,
   keyword,
   itemsList,
   onChange,
   displayPropertyName,
-}: Props) {
+}: Props<T>) {
   const [searchList, setSearchList] = useState<string[]>([]);
   const { state, actions } = useSearchModal();
   const { isOpen } = state;
@@ -41,7 +39,7 @@ export default function SearchPanel({
 
     // 1. 페이지 이동
     const queryParams = new URLSearchParams({
-      domain: displayPropertyName,
+      domain: displayPropertyName as string,
       query: keyword,
     });
     navigate({
@@ -73,7 +71,7 @@ export default function SearchPanel({
         onFocus={showLatestSearchList}
       />
       {isOpen && (
-        <SearchModal
+        <SearchModal<T>
           keyword={keyword}
           searchList={searchList}
           itemsList={itemsList}

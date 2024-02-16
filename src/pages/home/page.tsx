@@ -3,6 +3,13 @@ import SearchPanel from "../../components/searchPanel";
 import useDebounce from "../../hooks/useDebounce";
 import { useApi } from "../../context/apiContext";
 
+interface SnackItem {
+  id: number;
+  content: string;
+  allergy: boolean;
+  snack: string;
+}
+
 export default function Home() {
   const [keyword, setKeyword] = useState("");
   const [snackList, setSnackList] = useState([]);
@@ -29,12 +36,12 @@ export default function Home() {
 
   return (
     <div>
-      <SearchPanel
+      <SearchPanel<SnackItem>
         storageKey={"home"}
         keyword={keyword}
         itemsList={snackList}
         onChange={handleSearch}
-        displayPropertyName="snack"
+        displayPropertyName={"snack"}
       />
     </div>
   );
