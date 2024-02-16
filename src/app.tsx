@@ -1,29 +1,15 @@
-import { useState } from "react";
-import AlliniApi from "./api/alliniApi";
-import HttpClient from "./api/httpClient";
+import { Outlet } from "react-router-dom";
 import styles from "./app.module.scss";
-import Pagination from "./components/pagination";
+import { useSearchModal } from "./context/searchModalContext";
 
 export default function App() {
-  const [btnTest, setBtnTest] = useState(1);
-  /* api 테스트 */
-  const client = new HttpClient("https://jsonplaceholder.typicode.com");
-  const alliniApi = new AlliniApi(client);
-  // alliniApi.searchSnack().then((res) => console.log(res));
-  const changeActivePage = (btnNum: number) => {
-    setBtnTest(btnNum);
+  const { setIsOpen } = useSearchModal().actions;
+  const handleTogglePanel = () => {
+    setIsOpen(false);
   };
-
   return (
-    <div className={styles.renderTest}>
-      <Pagination
-        totalItemsCount={27}
-        // totalPage={7}
-        itemsCountPerPage={4}
-        activePage={btnTest}
-        pageRangeDisplayed={3}
-        onChange={changeActivePage}
-      />
+    <div className={styles.renderTest} onClick={handleTogglePanel}>
+      <Outlet />
     </div>
   );
 }
