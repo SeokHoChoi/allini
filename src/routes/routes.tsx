@@ -11,6 +11,7 @@ const router = createBrowserRouter([
     // errorElement: <NotFoundxsss />,
     children: [
       { index: true, path: "/", element: <Home /> },
+      { path: "/snack-list", element: <SnackList /> },
       { path: "/snack-list/search", element: <SnackList /> },
       { path: "/snack-list/snack/:snackId", element: <Snack /> },
     ],
