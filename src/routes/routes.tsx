@@ -1,18 +1,18 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/home/page";
 import App from "../app";
-import List from "../pages/pet-food-items/page";
-import DetailList from "../pages/pet-food-items/goods/page";
+import SnackList from "../pages/snack-list/page";
+import Snack from "../pages/snack-list/snack/page";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <NotFound />,
+    // errorElement: <NotFoundxsss />,
     children: [
       { index: true, path: "/", element: <Home /> },
-      { path: "/pet-food-items/search", element: <List /> },
-      { path: "/pet-food-items/goods/:snackId", element: <DetailList /> },
+      { path: "/snack-list/search", element: <SnackList /> },
+      { path: "/snack-list/snack/:snackId", element: <Snack /> },
     ],
   },
 ]);

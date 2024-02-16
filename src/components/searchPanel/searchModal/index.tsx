@@ -67,7 +67,7 @@ export default function SearchModal<T extends DataType>({
             return (
               <li
                 key={item.id}
-                onClick={() => navigate(`/pet-food-items/goods/${item.id}`)}
+                onClick={() => navigate(`/snack-list/snack/${item.id}`)}
               >
                 <span>{displayValue}</span>
                 <span>{item.content}</span>

@@ -43,7 +43,7 @@ export default function SearchPanel<T extends DataType>({
       query: keyword,
     });
     navigate({
-      pathname: "/pet-food-items/search",
+      pathname: "/snack-list/search",
       search: `?${queryParams}`,
     });
 
