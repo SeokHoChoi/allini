@@ -3,45 +3,64 @@ import SearchPanel from "../../components/searchPanel";
 import useDebounce from "../../hooks/useDebounce";
 import { useApi } from "../../context/apiContext";
 
-interface SnackItem {
+interface ItemBase {
   id: number;
   content: string;
   allergy: boolean;
+}
+
+interface SnackItem extends ItemBase {
   snack: string;
 }
 
+interface FoodItem extends ItemBase {
+  food: string;
+}
+
+type SnackOrFood = SnackItem | FoodItem;
+
 export default function Home() {
   const [keyword, setKeyword] = useState("");
-  const [snackList, setSnackList] = useState([]);
+  const [searchType, setSearchType] = useState("snack");
+  const [searchList, setSearchList] = useState([]);
   const api = useApi();
 
   const searched = useDebounce(keyword);
+
+  const handleSearchType = (type: string) => {
+    setSearchType(type);
+  };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
 
-  const searchSnackApi = async () => {
-    const snack = await api.searchSnack(`?domain=snack&query=${searched}`);
+  const searchFeedApi = async () => {
+    const searchFeed =
+      searchType === "snack"
+        ? await api.searchSnack(`?domain=${searchType}&query=${searched}`)
+        : await api.searchFood(`?domain=${searchType}&query=${searched}`);
+
     if (searched) {
-      setSnackList(snack);
+      setSearchList(searchFeed);
     } else {
-      setSnackList(snack.slice(0, 3));
+      setSearchList(searchFeed.slice(0, 3));
     }
   };
 
   useEffect(() => {
-    searchSnackApi();
-  }, [searched]);
+    searchFeedApi();
+  }, [searched, searchType]);
 
   return (
     <div>
-      <SearchPanel<SnackItem>
+      <SearchPanel<SnackOrFood>
         storageKey={"home"}
         keyword={keyword}
-        itemsList={snackList}
+        itemsList={searchList}
+        changeSearchType={handleSearchType}
         onChange={handleSearch}
-        displayPropertyName={"snack"}
+        searchType={searchType}
       />
     </div>
   );

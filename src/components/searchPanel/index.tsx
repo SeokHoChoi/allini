@@ -17,7 +17,8 @@ interface Props<T> {
   keyword: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   itemsList: Array<T>;
-  displayPropertyName: keyof T;
+  changeSearchType: (type: string) => void;
+  searchType: string;
 }
 
 export default function SearchPanel<T extends DataType>({
@@ -25,7 +26,8 @@ export default function SearchPanel<T extends DataType>({
   keyword,
   itemsList,
   onChange,
-  displayPropertyName,
+  changeSearchType,
+  searchType,
 }: Props<T>) {
   const [searchList, setSearchList] = useState<string[]>([]);
   const { state, actions } = useSearchModal();
@@ -39,11 +41,11 @@ export default function SearchPanel<T extends DataType>({
 
     // 1. 페이지 이동
     const queryParams = new URLSearchParams({
-      domain: displayPropertyName as string,
+      domain: searchType as string,
       query: keyword,
     });
     navigate({
-      pathname: "/snack-list",
+      pathname: `/${searchType}-list`,
       search: `?${queryParams}`,
     });
 
@@ -65,6 +67,17 @@ export default function SearchPanel<T extends DataType>({
 
   return (
     <form onSubmit={handleSubmit}>
+      <select
+        value={searchType}
+        onChange={(e) => changeSearchType(e.target.value)}
+      >
+        {["snack", "food"].map((feed) => (
+          <option key={feed} value={feed}>
+            {feed}
+          </option>
+        ))}
+      </select>
+
       <SearchBar
         keyword={keyword}
         onChange={onChange}
@@ -77,8 +90,8 @@ export default function SearchPanel<T extends DataType>({
           itemsList={itemsList}
           storageKey={storageKey}
           setSearchList={setSearchList}
-          displayPropertyName={displayPropertyName}
           handlePanel={() => setIsOpen(false)}
+          searchType={searchType}
         />
       )}
     </form>
