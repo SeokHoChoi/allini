@@ -10,4 +10,12 @@ export default class AlliniApi {
   async getSnackById(snackId: string) {
     return this.httpClient.get(`/snacks/${snackId}`);
   }
+
+  async searchFood(query: string) {
+    return this.httpClient.get(`/foods/${query}`);
+  }
+
+  async getFoodById(foodId: string) {
+    return this.httpClient.get(`/foods/${foodId}`);
+  }
 }
