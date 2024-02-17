@@ -41,11 +41,8 @@ export default function Home() {
         ? await api.searchSnack(`?domain=${searchType}&query=${searched}`)
         : await api.searchFood(`?domain=${searchType}&query=${searched}`);
 
-    if (searched) {
-      setSearchList(searchFeed);
-    } else {
-      setSearchList(searchFeed.slice(0, 3));
-    }
+    const searchedItem = searched ? searchFeed : searchFeed.slice(0, 3);
+    setSearchList(searchedItem);
   };
 
   useEffect(() => {
