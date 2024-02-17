@@ -41,6 +41,9 @@ export default function Header() {
                 <li>
                   <Link to="/mypage">마이페이지</Link>
                 </li>
+                <li>
+                  <Link to="/meal-registration">사료/간식 등록</Link>
+                </li>
               </ul>
             )}
           </li>
