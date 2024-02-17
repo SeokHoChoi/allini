@@ -9,7 +9,7 @@ export default function Header() {
           <li>
             <h1>
               <Link to="/">
-                <img src={LOGO} alt="Allini-Home-Link" />
+                <img src={LOGO} alt="Allini" />
               </Link>
             </h1>
           </li>
