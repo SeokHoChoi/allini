@@ -1,7 +1,12 @@
 import HttpClient from "./httpClient";
 
 export default class AlliniApi {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.searchSnack = this.searchSnack.bind(this);
+    this.getSnackById = this.getSnackById.bind(this);
+    this.searchFood = this.searchFood.bind(this);
+    this.getFoodById = this.getFoodById.bind(this);
+  }
 
   async searchSnack(query: string) {
     return this.httpClient.get(`/snacks/${query}`);

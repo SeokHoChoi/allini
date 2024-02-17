@@ -37,11 +37,10 @@ export default function Home() {
 
   const searchFeedApi = async () => {
     const searchFeed =
-      searchType === "snack"
-        ? await api.searchSnack(`?domain=${searchType}&query=${searched}`)
-        : await api.searchFood(`?domain=${searchType}&query=${searched}`);
+      searchType === "snack" ? api.searchSnack : api.searchFood;
+    const feed = await searchFeed(`?domain=${searchType}&query=${searched}`);
 
-    const searchedItem = searched ? searchFeed : searchFeed.slice(0, 3);
+    const searchedItem = searched ? feed : feed.slice(0, 3);
     setSearchList(searchedItem);
   };
 
