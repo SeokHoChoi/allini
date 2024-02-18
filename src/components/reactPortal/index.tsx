@@ -25,7 +25,7 @@ export default function ReactPortal({
   useEffect(() => {
     el.current.className = Array.isArray(className)
       ? className.join(" ")
-      : className || "";
+      : className;
   }, [className]);
 
   useEffect(() => {
