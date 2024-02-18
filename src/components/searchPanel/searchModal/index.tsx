@@ -13,17 +13,17 @@ interface Props<T> {
   storageKey: string;
   setSearchList: React.Dispatch<React.SetStateAction<Array<string>>>;
   handlePanel: () => void;
-  displayPropertyName: keyof T;
+  searchType: string;
 }
 
 export default function SearchModal<T extends DataType>({
   keyword,
   searchList,
   itemsList,
-  displayPropertyName,
   storageKey,
   setSearchList,
   handlePanel,
+  searchType,
 }: Props<T>) {
   const navigate = useNavigate();
 
@@ -62,12 +62,12 @@ export default function SearchModal<T extends DataType>({
 
         <ul>
           {itemsList.map((item: T) => {
-            const displayValue = item[displayPropertyName] as React.ReactNode;
+            const displayValue = item[searchType];
 
             return (
               <li
                 key={item.id}
-                onClick={() => navigate(`/pet-food-items/goods/${item.id}`)}
+                onClick={() => navigate(`/${searchType}-list/${item.id}`)}
               >
                 <span>{displayValue}</span>
                 <span>{item.content}</span>

@@ -1,33 +1,41 @@
-interface DataType {
+interface ItemBase {
   id: number;
-  snack: string;
   content: string;
   allergy: boolean;
 }
 
+interface SnackItem extends ItemBase {
+  snack: string;
+}
+
+interface FoodItem extends ItemBase {
+  food: string;
+}
+
+type SnackOrFood = SnackItem | FoodItem;
+
 export const createListMock = (
-  snacksArr: Array<string>,
+  feed: string,
+  feedsArr: Array<string>,
   contentsArr: Array<string>
 ) => {
-  const dataArr: Array<DataType> = [];
+  const dataArr: Array<SnackOrFood> = [];
 
   for (let i = 0; i < 15; i++) {
-    const snackIndex = Math.floor(Math.random() * snacksArr.length);
+    const feedIndex = Math.floor(Math.random() * feedsArr.length);
     const contentIndex = Math.floor(Math.random() * contentsArr.length);
     const allergy = Math.random() >= 0.5; // 50% chance of being true
 
-    const obj: {
-      id: number;
-      snack: string;
-      content: string;
-      allergy: boolean;
-    } = {
-      id: i + 1,
-      snack: `${i + 1} - ${snacksArr[snackIndex]}`,
-      content: `${i + 1} - ${contentsArr[contentIndex]}`,
-      allergy: allergy,
-    };
+    const isSnack = feed === "snack";
+    const itemContent = `${i + 1} - ${contentsArr[contentIndex]}`;
+    const feedValue = `${i + 1} - ${feedsArr[feedIndex]}`;
 
+    const obj: SnackOrFood = {
+      id: i + 1,
+      content: itemContent,
+      allergy: allergy,
+      ...(isSnack ? { snack: feedValue } : { food: feedValue }),
+    };
     dataArr.push(obj);
   }
 
