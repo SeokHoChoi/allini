@@ -1,4 +1,6 @@
-import CustomSelect from "../../components/customSelect";
+import { useState } from "react";
+import ListItem from "../../components/customSelect/listItem";
+import ListModal from "../../components/customSelect/listModal";
 
 const options = [
   { id: 1, value: " 사료" },
@@ -8,14 +10,20 @@ const options = [
 
 /** v1 에선 사료/간식은 동일한 데이터를 받을 예정입니다. */
 export default function MealRegistration() {
+  const [feed, setFeed] = useState("food");
+
   return (
     <div>
       {/* 사료 or 간식 */}
-      <CustomSelect
-        options={options}
-        // selected="간식"
-        // defaultOptionMessage="아무것도 고르지 않으면 무언가 골라주세요!"
-      />
+
+      <ListModal value={feed} onChagne={(feed) => setFeed(feed)}>
+        <ListItem value="" defaultOptionMessage>
+          사료/간식 - 선택해 주세요!
+        </ListItem>
+        <ListItem value="food">사료</ListItem>
+        <ListItem value="snack">간식</ListItem>
+        <ListItem value="temp">임시</ListItem>
+      </ListModal>
       {/* 대표 이미지 설정 - 없을시 화이트 슈나우져 그림이나 사진 보여주기 */}
       {/* 간식명 */}
       {/* 브랜드명 */}

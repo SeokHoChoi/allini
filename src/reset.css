@@ -23,7 +23,10 @@ p,
 figure,
 blockquote,
 dl,
-dd {
+dd,
+ul,
+ol,
+li {
   margin-block-end: 0;
   padding: 0;
   margin: 0;
