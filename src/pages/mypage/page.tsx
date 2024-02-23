@@ -7,9 +7,7 @@ export default function Mypage() {
   function handleSelectedValue(e: ChangeEvent<HTMLInputElement>) {
     setValue(e.target.value);
   }
-  useEffect(() => {
-    console.log(value, " 값변함ㄴㅌ");
-  }, [value]);
+
   return (
     <div>
       <Select value={value} onChange={handleSelectedValue}>
