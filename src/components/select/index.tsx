@@ -32,7 +32,6 @@ import SelectLabel from "./selectLabel";
  *     </Select>
  *   );
  * };
- *
  */
 export const Select = Object.assign(SelectMain, {
   Label: SelectLabel,
