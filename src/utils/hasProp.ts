@@ -8,5 +8,5 @@
  *      - hasProp<{ disabled: ReactNode }>(obj, "disabled")
  */
 export function hasProp<T>(obj: any, propName: keyof T): obj is T {
-  return obj && propName in obj;
+  return typeof obj === "object" && obj !== null && propName in obj;
 }
