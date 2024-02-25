@@ -18,7 +18,7 @@ import {
   SelectedMenuItem,
   focusedChildType,
 } from "./types";
-import { isChildDisabled } from "../../../utils/isChildDisabled";
+import { isDisabledMenuItem } from "../../../utils/isDisabledMenuItem";
 
 /**
  * SelectLabel 컴포넌트의 타입을 가져옵니다.
@@ -184,7 +184,7 @@ export default function SelectMain({
     const increment = direction > 0 ? 1 : -1;
     while (newIndex >= 0 && newIndex < listChildLength) {
       const focusedChild = renderedMenuItems[newIndex];
-      if (isChildDisabled(focusedChild)) {
+      if (isDisabledMenuItem(focusedChild)) {
         count++;
         newIndex += increment; // disabled items 건너뜁니다!
       } else {

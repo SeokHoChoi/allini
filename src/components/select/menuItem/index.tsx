@@ -50,7 +50,6 @@ export default function MenuItem({
         background: `${isSelected ? "black" : "white"}`,
       }}
     >
-      <input type="text" readOnly value={value} style={{ display: "none" }} />
       {children}
     </li>
   );

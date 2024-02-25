@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { isChildDisabled } from "./isChildDisabled";
+import { isDisabledMenuItem } from "./isDisabledMenuItem";
 
 /**
  * @param newIndex - 계산된 새 인덱스
@@ -19,7 +19,7 @@ export const calculateFinalIndex = (
 ): number => {
   let calNewIndex = Math.max(0, Math.min(newIndex, listChildLength - 1));
 
-  if (isChildDisabled(calChild)) {
+  if (isDisabledMenuItem(calChild)) {
     if (direction > 0) {
       if (calNewIndex === listChildLength - 1) {
         calNewIndex = calNewIndex - count;
