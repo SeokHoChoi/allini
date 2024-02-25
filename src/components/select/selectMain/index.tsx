@@ -11,12 +11,14 @@ import {
 import SelectLabel from "../selectLabel";
 import MenuItem from "../menuItem";
 import { hasProp } from "../../../utils/hasProp";
+import { calculateFinalIndex } from "../../../utils/calculateFinalIndex";
 import {
   MenuItemProps,
   SelectMainProps,
   SelectedMenuItem,
   focusedChildType,
 } from "./types";
+import { isChildDisabled } from "../../../utils/isChildDisabled";
 
 /**
  * SelectLabel 컴포넌트의 타입을 가져옵니다.
@@ -182,11 +184,7 @@ export default function SelectMain({
     const increment = direction > 0 ? 1 : -1;
     while (newIndex >= 0 && newIndex < listChildLength) {
       const focusedChild = renderedMenuItems[newIndex];
-      if (
-        isValidElement(focusedChild) &&
-        hasProp<{ disabled: ReactNode }>(focusedChild.props, "disabled") &&
-        focusedChild.props.disabled
-      ) {
+      if (isChildDisabled(focusedChild)) {
         count++;
         newIndex += increment; // disabled items 건너뜁니다!
       } else {
@@ -194,25 +192,16 @@ export default function SelectMain({
       }
     }
 
-    let calNewIndex = Math.max(0, Math.min(newIndex, listChildLength - 1));
+    const calNewIndex = Math.max(0, Math.min(newIndex, listChildLength - 1));
     const calChild = renderedMenuItems[calNewIndex];
-    if (
-      isValidElement(calChild) &&
-      hasProp<{ disabled: ReactNode }>(calChild.props, "disabled") &&
-      calChild.props.disabled
-    ) {
-      if (direction > 0) {
-        if (calNewIndex === listChildLength - 1) {
-          calNewIndex = calNewIndex - count;
-        }
-      } else {
-        if (calNewIndex === 0) {
-          calNewIndex = calNewIndex + count;
-        }
-      }
-    }
 
-    return calNewIndex;
+    return calculateFinalIndex(
+      newIndex,
+      listChildLength,
+      count,
+      calChild,
+      direction
+    );
   };
 
   /**
