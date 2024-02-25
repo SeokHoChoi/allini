@@ -1,5 +1,4 @@
 import {
-  ChangeEvent,
   Children,
   ReactNode,
   cloneElement,
@@ -69,7 +68,15 @@ export default function SelectMain({
   onChange = () => {},
 }: SelectMainProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [focusedIndex, setFocusedIndex] = useState(0);
+  const [focusedIndex, setFocusedIndex] = useState(() => {
+    const menuItems = getMenuItems(children);
+    const initialIndex = menuItems.findIndex(
+      (child) =>
+        isValidElement<MenuItemProps>(child) && child.props.value === value
+    );
+
+    return initialIndex !== -1 ? initialIndex : 0;
+  });
   const initSelectedMenuItem = () => {
     const menuItems = getMenuItems(children);
     /**
@@ -85,6 +92,7 @@ export default function SelectMain({
         isValidElement<MenuItemProps>(child) && child.props.value === value
       );
     });
+
     const defaultMenuItem = isValidElement<MenuItemProps>(menuItems[0])
       ? menuItems[0].props.children
       : "";
@@ -94,7 +102,7 @@ export default function SelectMain({
       : defaultMenuItem;
   };
   const [selectedMenuItem, setSelectedMenuItem] = useState<SelectedMenuItem>(
-    initSelectedMenuItem()
+    () => initSelectedMenuItem()
   );
   const [isSelected, setIsSelected] = useState(false);
   const listRef = useRef<HTMLUListElement>(null);
@@ -217,10 +225,8 @@ export default function SelectMain({
     ) {
       const { children, value } = focusedChild.props;
       if (children !== undefined) {
-        // Promise.resolve().then(() => {
-        onChange({ target: { value } } as ChangeEvent<HTMLInputElement>); // 수정 필요 (InputElement에서 value를 가져오지 않습니다.)
+        onChange(value); // 수정 필요 (InputElement에서 value를 가져오지 않습니다.)
         setSelectedMenuItem(children);
-        // });
       }
     }
   };

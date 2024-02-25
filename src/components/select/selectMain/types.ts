@@ -1,14 +1,9 @@
-import {
-  ChangeEvent,
-  JSXElementConstructor,
-  ReactElement,
-  ReactNode,
-} from "react";
+import { JSXElementConstructor, ReactElement, ReactNode } from "react";
 
 export interface SelectMainProps {
   children?: ReactNode;
-  value: number | string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: number | string | undefined;
+  onChange: (value: string | number | undefined) => void;
 }
 
 export interface MenuItemProps {
