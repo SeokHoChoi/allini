@@ -217,13 +217,18 @@ export default function SelectMain({
     ) {
       const { children, value } = focusedChild.props;
       if (children !== undefined) {
-        Promise.resolve().then(() => {
-          onChange({ target: { value } } as ChangeEvent<HTMLInputElement>);
-          setSelectedMenuItem(children);
-        });
+        // Promise.resolve().then(() => {
+        onChange({ target: { value } } as ChangeEvent<HTMLInputElement>); // 수정 필요 (InputElement에서 value를 가져오지 않습니다.)
+        setSelectedMenuItem(children);
+        // });
       }
     }
   };
+
+  useEffect(() => {
+    const focusedChild = renderedMenuItems[focusedIndex];
+    handleMenuItemChange(focusedChild as focusedChildType);
+  }, [focusedIndex]);
 
   /**
    * @description
@@ -238,18 +243,14 @@ export default function SelectMain({
       case "ArrowUp":
         setFocusedIndex((prevIndex) => {
           const newIndex = getNextValidIndex(prevIndex, -1, listChildLength);
-          const focusedChild = renderedMenuItems[newIndex];
 
-          handleMenuItemChange(focusedChild as focusedChildType);
           return newIndex;
         });
         break;
       case "ArrowDown":
         setFocusedIndex((prevIndex) => {
           const newIndex = getNextValidIndex(prevIndex, +1, listChildLength);
-          const focusedChild = renderedMenuItems[newIndex];
 
-          handleMenuItemChange(focusedChild as focusedChildType);
           return newIndex;
         });
         break;
