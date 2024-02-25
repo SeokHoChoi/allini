@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, isValidElement } from "react";
+import { ReactNode, isValidElement } from "react";
 import { hasProp } from "./hasProp";
 
 /**
