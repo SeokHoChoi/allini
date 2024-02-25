@@ -30,7 +30,7 @@ Y --> H["Snack List(All states accessible)"] --> J["Snack Detail(All states acce
 
 # 플로우차트 설명
 
-## Allini 사용자 탐색
+## Allini 플로우차트
 
 이 플로우차트는 Allini 애플리케이션 사용자의 페이지 탐색 흐름을 보여줍니다. 각 노드와 화살표는 특정 상태나 동작에 해당하며, 성공 또는 실패에 따라 사용자를 안내합니다.
 
