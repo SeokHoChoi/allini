@@ -59,6 +59,9 @@ module.exports = {
     static: path.resolve(__dirname, "dist"),
     historyApiFallback: true,
     hot: true,
+    client: {
+      overlay: false, // Disable the overlay
+    },
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],

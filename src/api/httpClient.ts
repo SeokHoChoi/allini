@@ -9,7 +9,6 @@ interface RequestOptions {
 
 export default class HttpClient {
   private httpClient: AxiosInstance;
-  private state: { hasError: boolean };
 
   constructor(baseURL: string) {
     this.httpClient = axios.create({
@@ -19,9 +18,6 @@ export default class HttpClient {
         "Content-Type": "application/json",
       },
     });
-    this.state = {
-      hasError: false,
-    };
   }
 
   private async makeRequest(config: RequestOptions): Promise<AxiosResponse> {
@@ -29,12 +25,13 @@ export default class HttpClient {
       return await this.httpClient(config);
     } catch (error) {
       // 에러처리 추가필요
+
       throw new Error("요청 도중 에러가 발생했습니다");
     }
   }
 
   private async request(params: Record<string, any>) {
-    const { method = "GET", url, headers = {}, body } = params;
+    const { method = "GET", url, headers = {}, body = {} } = params;
     const config: RequestOptions = {
       url,
       method,

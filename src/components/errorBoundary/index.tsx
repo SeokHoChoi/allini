@@ -41,7 +41,6 @@ export class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = initialState;
-    this.captureReject = this.captureReject.bind(this);
   }
 
   /**
@@ -49,34 +48,7 @@ export class ErrorBoundary extends Component<Props, State> {
    * 에러 정보를 상태에 저장합니다.
    */
   static getDerivedStateFromError(errorInfo: Error | AxiosError) {
-    return { hasError: true, errorInfo: errorInfo };
-  }
-
-  /**
-   * 컴포넌트가 마운트될 때, 비동기 에러 캡처를 위한 이벤트 리스너를 추가합니다.
-   */
-  componentDidMount() {
-    window.addEventListener("unhandledrejection", this.captureReject);
-  }
-
-  /**
-   * 컴포넌트가 언마운트될 때, 비동기 에러 캡처를 위한 이벤트 리스너를 제거합니다.
-   */
-  componentWillUnmount() {
-    window.removeEventListener("unhandledrejection", this.captureReject);
-  }
-
-  /**
-   * 비동기 에러를 캡처하는 이벤트 핸들러입니다.
-   * 에러 정보를 상태에 저장합니다.
-   */
-  captureReject(e: PromiseRejectionEvent) {
-    e.preventDefault();
-
-    console.log(e.reason);
-    console.log(e.reason instanceof Error);
-
-    this.setState({ hasError: true, errorInfo: e.reason });
+    return { hasError: true };
   }
 
   /**
@@ -84,7 +56,7 @@ export class ErrorBoundary extends Component<Props, State> {
    * 에러 정보와 에러 정보를 생성한 스택 추적을 콘솔에 출력합니다.
    * 추후 백엔드 or 센트리에서 활용 예정입니다.
    */
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.log("error", error, "errorInfo", errorInfo);
   }
 
@@ -114,7 +86,7 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <this.props.fallback
-          onError={this.state.errorInfo}
+          errorInfo={this.state.errorInfo}
           onReset={this.onResetErrorBoundary}
         />
       );
