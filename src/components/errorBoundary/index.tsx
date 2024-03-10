@@ -3,6 +3,7 @@
  */
 import { AxiosError } from "axios";
 import { Component, ElementType, ErrorInfo, ReactNode } from "react";
+import { HTTP_ERROR_MESSAGE } from "./HTTP_ERROR_MESSAGE";
 
 /**
  * ErrorBoundary 컴포넌트에 전달되는 props 타입입니다.
@@ -18,7 +19,12 @@ interface Props {
  */
 interface State {
   hasError: boolean; // 에러 발생 여부
-  errorInfo: Error | AxiosError | null; // 에러 정보
+  errorInfo: AxiosError | null;
+  customError: {
+    HEADING: string;
+    BODY: string;
+    BUTTON: string;
+  } | null;
 }
 
 /**
@@ -27,6 +33,7 @@ interface State {
 const initialState: State = {
   hasError: false,
   errorInfo: null,
+  customError: null,
 };
 
 /**
@@ -47,8 +54,11 @@ export class ErrorBoundary extends Component<Props, State> {
    * 자식 컴포넌트에서 발생한 에러를 잡아내는 클래스 메서드입니다.
    * 에러 정보를 상태에 저장합니다.
    */
-  static getDerivedStateFromError(errorInfo: Error | AxiosError) {
-    return { hasError: true };
+  static getDerivedStateFromError(errorInfo: AxiosError | null) {
+    const status = errorInfo?.response?.status;
+    const customError = status ? HTTP_ERROR_MESSAGE[status] : null;
+
+    return { hasError: true, customError };
   }
 
   /**
@@ -87,6 +97,7 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <this.props.fallback
           errorInfo={this.state.errorInfo}
+          customError={this.state.customError}
           onReset={this.onResetErrorBoundary}
         />
       );

@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Routes from "./routes/routes";
-import { ApiProvider } from "./context/apiContext";
-import { SearchModalProvider } from "./context/searchModalContext";
+import { ApiProvider } from "./contexts/apiContext";
+import { SearchModalProvider } from "./contexts/searchModalContext";
 
 import "./reset.css";
 

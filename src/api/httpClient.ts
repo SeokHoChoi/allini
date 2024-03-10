@@ -24,9 +24,7 @@ export default class HttpClient {
     try {
       return await this.httpClient(config);
     } catch (error) {
-      // 에러처리 추가필요
-
-      throw new Error("요청 도중 에러가 발생했습니다");
+      throw error;
     }
   }
 

@@ -56,8 +56,10 @@ export const handlers = [
     "https://jsonplaceholder.typicode.com/snacks/nonexistentEndpoint",
     () => {
       return new HttpResponse(null, {
-        status: 404,
-        statusText: "Not Found",
+        // status: 404,
+        // status: 500,
+        // status: 401,
+        statusText: "Incorrect request address format.",
       });
     }
   ),
