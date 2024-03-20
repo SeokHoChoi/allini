@@ -3,7 +3,7 @@ import { getItem } from "../../utils/getItem";
 import { setItem } from "../../utils/setItem";
 import SearchBar from "./searchBar";
 import { useNavigate } from "react-router-dom";
-import { useSearchModal } from "../../context/searchModalContext";
+import { useSearchModal } from "../../contexts/searchModalContext";
 import SearchModal from "./searchModal";
 
 interface DataType {

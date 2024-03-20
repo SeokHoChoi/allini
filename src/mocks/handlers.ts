@@ -52,13 +52,25 @@ export const handlers = [
     return HttpResponse.json(filteredData);
   }),
 
-  http.get("https://jsonplaceholder.typicode.com/snacks/:searchId", (req) => {
-    const searchId = req.params.searchId as string;
-    const filteredData = snacksData.filter(
-      (item) => item.id === Number(searchId)
-    );
-    return HttpResponse.json(filteredData[0]);
-  }),
+  http.get(
+    "https://jsonplaceholder.typicode.com/snacks/nonexistentEndpoint",
+    () => {
+      return new HttpResponse(null, {
+        // status: 404,
+        // status: 500,
+        // status: 401,
+        statusText: "Incorrect request address format.",
+      });
+    }
+  ),
+
+  // http.get("https://jsonplaceholder.typicode.com/snacks/:searchId", (req) => {
+  //   const searchId = req.params.searchId as string;
+  //   const filteredData = snacksData.filter(
+  //     (item) => item.id === Number(searchId)
+  //   );
+  //   return HttpResponse.json(filteredData[0]);
+  // }),
 
   http.get("https://jsonplaceholder.typicode.com/foods", ({ request }) => {
     const url = new URL(request.url);

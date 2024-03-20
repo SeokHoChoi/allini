@@ -4,7 +4,6 @@ import AlliniApi from "../api/alliniApi";
 
 const httpClient = new HttpClient("https://jsonplaceholder.typicode.com");
 const alliniApi = new AlliniApi(httpClient);
-
 const ApiContext = createContext(alliniApi);
 
 export function ApiProvider({ children }: { children: React.ReactNode }) {
