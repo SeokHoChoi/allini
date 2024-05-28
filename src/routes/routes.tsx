@@ -6,7 +6,7 @@ import Snack from "../pages/snack-list/snack/page";
 import NotFound from "../pages/not-found/page";
 import FoodList from "../pages/food-list/page";
 import Food from "../pages/food-list/food/page";
-import Signin from "../pages/signin/page";
+import Login from "../pages/login";
 import Signup from "../pages/signup/page";
 import Mypage from "../pages/mypage/page";
 import MealRegistration from "../pages/meal-registration/page";
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       { path: "/snack-list/:snackId", element: <Snack /> },
       { path: "/food-list", element: <FoodList /> },
       { path: "/food-list/:foodId", element: <Food /> },
-      { path: "/signin", element: <Signin /> },
+      { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/mypage", element: <Mypage /> },
       { path: "/meal-registration", element: <MealRegistration /> },
