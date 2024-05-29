@@ -4,6 +4,7 @@ import { useSearchModal } from "./contexts/searchModalContext";
 import DefaultLayout from "./layout/defaultLayout";
 import { ErrorBoundary } from "./components/errorBoundary";
 import { Suspense } from "react";
+import "./assets/fonts/font.css";
 
 export default function App() {
   const { setIsOpen } = useSearchModal().actions;
