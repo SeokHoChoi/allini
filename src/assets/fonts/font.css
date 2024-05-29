@@ -15,6 +15,22 @@
 }
 
 @font-face {
+  font-family: "Pretendard Bold";
+  font-weight: 700;
+  font-display: swap;
+  src: local("Pretendard Bold"),
+    url("./woff2-subset/Pretendard-Bold.subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard SemiBold";
+  font-weight: 600;
+  font-display: swap;
+  src: local("Pretendard SemiBold"),
+    url("./woff2-subset/Pretendard-SemiBold.subset.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "Pretendard Regular";
   font-weight: 400;
   font-display: swap;

@@ -4,32 +4,41 @@ import GOGLE from "../../assets/image/social/gogle.png";
 import KAKAO from "../../assets/image/social/kakao.png";
 import USER from "../../assets/image/etc/user.png";
 import UNLOCK from "../../assets/image/etc/unlock.png";
+import ALLINI from "../../assets/image/allini/allini_text.png";
 
 export default function Login() {
   return (
     <section className={styles.loginArea}>
-      <div className={styles.loginImage}>
+      <div className={styles.welcomeWrapper}>
         <img src={LOGO} alt="Allini" />
-      </div>
-      <div className={styles.welcomeText}>
-        <h2>
-          <strong>알리니</strong>에 오신걸 <b>환영합니다!</b>
+        <h2 className={styles.welcomeText}>
+          <span className={styles.alliniTextWrapper}>
+            <strong>
+              <img src={ALLINI} alt="알리니" />
+            </strong>
+            <span className={styles.connectionText}>에 오신걸</span>
+          </span>
+          <b>환영합니다!</b>
         </h2>
       </div>
       <div className={styles.loginForm}>
         <form>
-          <label htmlFor="email">
-            <img src={USER} alt="ID" />
-            이메일
-          </label>
-          <input type="email" id="email" name="email" required />
-
-          <label htmlFor="password">
-            <img src={UNLOCK} alt="PASSWORD" />
-            비밀번호
-          </label>
-          <input type="password" id="password" name="password" required />
-
+          <div className={styles.inputWrapper}>
+            <input
+              className={styles.emailInput}
+              type="email"
+              name="email"
+              placeholder="이메일"
+              required
+            />
+            <input
+              className={styles.passwordInput}
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              required
+            />
+          </div>
           <button type="submit">로그인</button>
         </form>
         <button className={styles.signupButton}>회원가입</button>
