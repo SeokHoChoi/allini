@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LOGO from "../../assets/allini/testimg.jpeg";
+import LOGO from "../../assets/image/allini/testimg.jpeg";
 
 export default function Header() {
   return (

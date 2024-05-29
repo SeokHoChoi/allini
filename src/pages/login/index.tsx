@@ -1,10 +1,15 @@
 import styles from "./index.module.scss";
+import LOGO from "../../assets/image/allini/login_logo.png";
+import GOGLE from "../../assets/image/social/gogle.png";
+import KAKAO from "../../assets/image/social/kakao.png";
+import USER from "../../assets/image/etc/user.png";
+import UNLOCK from "../../assets/image/etc/unlock.png";
 
 export default function Login() {
   return (
     <section className={styles.loginArea}>
       <div className={styles.loginImage}>
-        <img src="대표이미지.jpg" alt="Allini" />
+        <img src={LOGO} alt="Allini" />
       </div>
       <div className={styles.welcomeText}>
         <h2>
@@ -14,13 +19,13 @@ export default function Login() {
       <div className={styles.loginForm}>
         <form>
           <label htmlFor="email">
-            <img src="사람모양.jpg" alt="ID" />
+            <img src={USER} alt="ID" />
             이메일
           </label>
           <input type="email" id="email" name="email" required />
 
           <label htmlFor="password">
-            <img src="자물쇠모양.jpg" alt="PASSWORD" />
+            <img src={UNLOCK} alt="PASSWORD" />
             비밀번호
           </label>
           <input type="password" id="password" name="password" required />
@@ -33,10 +38,10 @@ export default function Login() {
         </p>
         <div className={styles.socialLoginWrapper}>
           <button className={styles.googleLogin}>
-            <img src={"googleIcon"} alt="구글 로그인" />
+            <img src={GOGLE} alt="구글 로그인" />
           </button>
           <button className={styles.kakaoLogin}>
-            <img src={"kakaoIcon"} alt="카카오 로그인" />
+            <img src={KAKAO} alt="카카오 로그인" />
           </button>
         </div>
       </div>
