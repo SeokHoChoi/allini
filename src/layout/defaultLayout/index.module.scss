@@ -1,0 +1,11 @@
+.mainArea {
+  flex: 1;
+  margin: 0 auto;
+  width: 343px;
+}
+
+.layoutArea {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
