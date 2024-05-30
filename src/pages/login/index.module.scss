@@ -39,10 +39,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 48px;
 
     .emailInput,
     .passwordInput {
-      width: 343px;
+      width: 100%;
       height: 48px;
       border: none;
       padding-left: 1em;
@@ -91,16 +92,54 @@
       @include placeholder("../../assets/image/etc/unlock.png");
     }
   }
-}
 
-.signupButton {
-}
+  .loginButton {
+    width: 100%;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    color: #ffffff;
+    padding: 0.75em 1.25em;
+    border: none;
+    background-color: #00b896;
+    margin-bottom: 13px;
+  }
 
-.socialLoginWrapper {
-}
+  .anotherPageWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
 
-.googleLogin {
-}
+    .signupButton {
+      font-size: 0.75rem;
+      color: #00b896;
+      font-family: "Pretendard Medium";
+      border: none;
+      background-color: #ffffff;
+      cursor: pointer;
+    }
+  }
 
-.kakaoLogin {
+  .findAccountBtn {
+    font-size: 0.75rem;
+    color: #777777;
+  }
+  .socialLoginWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      background-color: #ffffff;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .googleLogin {
+    }
+
+    .kakaoLogin {
+    }
+  }
 }

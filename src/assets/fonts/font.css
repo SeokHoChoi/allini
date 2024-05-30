@@ -29,6 +29,13 @@
   src: local("Pretendard SemiBold"),
     url("./woff2-subset/Pretendard-SemiBold.subset.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Pretendard Medium";
+  font-weight: 500;
+  font-display: swap;
+  src: local("Pretendard Medium"),
+    url("./woff2-subset/Pretendard-Medium.subset.woff2") format("woff2");
+}
 
 @font-face {
   font-family: "Pretendard Regular";
