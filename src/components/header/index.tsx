@@ -20,10 +20,14 @@ export default function Header() {
       <li>
         <ul className={styles.mobileMenuWrapper}>
           <li>
-            <img src={SEARCH} alt="검색" />
+            <button>
+              <img src={SEARCH} alt="검색" />
+            </button>
           </li>
           <li>
-            <img src={MENU} alt="메뉴" />
+            <button>
+              <img src={MENU} alt="메뉴" />
+            </button>
           </li>
         </ul>
       </li>
