@@ -10,24 +10,30 @@ export default function MealRegistration() {
   return (
     <div>
       <nav role="tablist" aria-label="Sample Tabs">
-        <button
-          role="tab"
-          aria-selected={isMealTab} // 현재 선택된 탭을 식별하는 데 사용
-          id="tab-meal"
-          onClick={() => setIsMealTab(true)}
-          aria-controls="panel-meal" // 탭 버튼이 제어하는 탭 패널을 식별
-        >
-          상품 정보
-        </button>
-        <button
-          role="tab"
-          aria-selected={!isMealTab}
-          id="tab-puppy"
-          onClick={() => setIsMealTab(false)}
-          aria-controls="panel-puppy"
-        >
-          강아지 정보
-        </button>
+        <ul>
+          <li role="presentation">
+            <button
+              role="tab"
+              aria-selected={isMealTab} // 현재 선택된 탭을 식별하는 데 사용
+              id="tab-meal"
+              onClick={() => setIsMealTab(true)}
+              aria-controls="panel-meal" // 탭 버튼이 제어하는 탭 패널을 식별
+            >
+              상품 정보
+            </button>
+          </li>
+          <li role="presentation">
+            <button
+              role="tab"
+              aria-selected={!isMealTab}
+              id="tab-puppy"
+              onClick={() => setIsMealTab(false)}
+              aria-controls="panel-puppy"
+            >
+              강아지 정보
+            </button>
+          </li>
+        </ul>
       </nav>
       <div>{selectedTab}</div>
     </div>
