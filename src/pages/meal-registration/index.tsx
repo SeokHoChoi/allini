@@ -12,7 +12,7 @@ export default function MealRegistration() {
     <div>
       <nav role="tablist" aria-label="Sample Tabs">
         <ul className={styles.tabWrapper}>
-          <li role="presentation" className={styles.tab}>
+          <li role="presentation">
             <button
               role="tab"
               aria-selected={isMealTab} // 현재 선택된 탭을 식별하는 데 사용
