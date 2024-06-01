@@ -38,7 +38,13 @@ export default function MealRegistration() {
           </li>
         </ul>
       </nav>
-      <div>{selectedTab}</div>
+      <article
+        className={`${styles.panelArea} ${
+          isMealTab ? styles.mealPanel : styles.puppyPanel
+        }`}
+      >
+        {selectedTab}
+      </article>
     </div>
   );
 }
