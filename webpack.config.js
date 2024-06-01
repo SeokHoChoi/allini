@@ -19,7 +19,18 @@ module.exports = {
       },
       {
         test: /\.module\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]--[hash:base64:5]", // CSS Module 클래스명 설정
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
         test: /\.css$/,
