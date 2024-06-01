@@ -40,6 +40,8 @@
   }
 }
 .panelArea {
+  width: 343px; // iPhone SE 기준 내부 사이즈
+  margin: 0 auto;
 }
 
 .mealPanel {
