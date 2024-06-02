@@ -1,3 +1,5 @@
+@use "../../styles/base/colors.scss" as colors;
+
 .tabWrapper {
   display: flex;
   align-items: center;
@@ -32,7 +34,7 @@
 
       &.selected {
         transition: all 0s;
-        color: #00b896; // 선택된 색상
+        color: colors.$primary-color; // 선택된 색상
         border-color: #00b896;
         font-family: "Pretendard SemiBold";
       }
