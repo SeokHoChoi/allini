@@ -10,6 +10,8 @@ import Login from "../pages/login";
 import Signup from "../pages/signup";
 import Mypage from "../pages/mypage";
 import MealRegistration from "../pages/meal-registration";
+import Meal from "../pages/meal-registration/meal";
+import Puppy from "../pages/meal-registration/puppy";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,14 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/mypage", element: <Mypage /> },
-      { path: "/meal-registration", element: <MealRegistration /> },
+      {
+        path: "/meal-registration",
+        element: <MealRegistration />,
+        children: [
+          { path: "meal", element: <Meal /> },
+          { path: "puppy", element: <Puppy /> },
+        ],
+      },
     ],
   },
 ]);
