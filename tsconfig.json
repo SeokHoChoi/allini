@@ -17,7 +17,20 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+
+    // 절대 경로
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@assets/images": ["assets/images/*"],
+      "@styles/*": ["styles/*"],
+      "@api/*": ["api/*"],
+      "@contexts/*": ["contexts/*"],
+      "@hooks/*": ["hooks/*"],
+      "@layouts/*": ["layouts/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
   "include": ["src/**/*", "declarations.d.ts"],
   "exclude": ["node_modules", ".vscode"]
