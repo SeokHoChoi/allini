@@ -9,15 +9,15 @@ import {
 } from "react";
 import SelectLabel from "../selectLabel";
 import MenuItem from "../menuItem";
-import { hasProp } from "../../../utils/hasProp";
-import { calculateFinalIndex } from "../../../utils/calculateFinalIndex";
+import { hasProp } from "@utils/hasProp";
+import { calculateFinalIndex } from "@utils/calculateFinalIndex";
 import {
   MenuItemProps,
   SelectMainProps,
   SelectedMenuItem,
   focusedChildType,
 } from "./types";
-import { isDisabledMenuItem } from "../../../utils/isDisabledMenuItem";
+import { isDisabledMenuItem } from "@utils/isDisabledMenuItem";
 
 /**
  * SelectLabel 컴포넌트의 타입을 가져옵니다.

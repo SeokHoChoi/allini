@@ -1,5 +1,6 @@
 .loginArea {
   width: 343px; // iPhone SE 사이즈
+  margin: 0 auto;
 }
 
 .welcomeWrapper {
@@ -61,7 +62,7 @@
       border-radius: 0 0 12px 12px;
     }
 
-    @mixin placeholder($bg-url: "../../assets/image/etc/user.png") {
+    @mixin placeholder($bg-url: "@images/etc/user.png") {
       background: url($bg-url) no-repeat 5px center;
       color: #bebebe;
       background-position: 0;
@@ -82,15 +83,15 @@
     }
 
     .passwordInput::placeholder {
-      @include placeholder("../../assets/image/etc/unlock.png");
+      @include placeholder("@images/etc/unlock.png");
     }
 
     .passwordInput::-webkit-input-placeholder {
-      @include placeholder("../../assets/image/etc/unlock.png");
+      @include placeholder("@images/etc/unlock.png");
     }
 
     .passwordInput:-ms-input-placeholder {
-      @include placeholder("../../assets/image/etc/unlock.png");
+      @include placeholder("@images/etc/unlock.png");
     }
   }
 

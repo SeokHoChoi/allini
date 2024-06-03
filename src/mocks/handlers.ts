@@ -1,6 +1,6 @@
 // src/mocks/handlers.ts
 import { http, HttpResponse } from "msw";
-import { createListMock } from "../utils/mockUtils/createListMock";
+import { createListMock } from "@utils/mockUtils/createListMock";
 
 interface ItemBase {
   id: number;

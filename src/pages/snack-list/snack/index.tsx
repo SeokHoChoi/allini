@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useApi } from "../../../contexts/apiContext";
+import { useApi } from "@contexts/apiContext";
 import { useEffect } from "react";
 
 export default function Snack() {

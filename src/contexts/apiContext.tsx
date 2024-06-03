@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import HttpClient from "../api/httpClient";
-import AlliniApi from "../api/alliniApi";
+import HttpClient from "@api/httpClient";
+import AlliniApi from "@api/alliniApi";
 
 const httpClient = new HttpClient("https://jsonplaceholder.typicode.com");
 const alliniApi = new AlliniApi(httpClient);

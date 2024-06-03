@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SearchPanel from "../../components/searchPanel";
-import useDebounce from "../../hooks/useDebounce";
-import { useApi } from "../../contexts/apiContext";
+import SearchPanel from "@components/searchPanel";
+import useDebounce from "@hooks/useDebounce";
+import { useApi } from "@contexts/apiContext";
 
 interface ItemBase {
   id: number;

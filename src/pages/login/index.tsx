@@ -1,8 +1,8 @@
 import styles from "./index.module.scss";
-import LOGO from "../../assets/image/allini/login_logo.png";
-import GOGLE from "../../assets/image/social/gogle.png";
-import KAKAO from "../../assets/image/social/kakao.png";
-import ALLINI from "../../assets/image/allini/allini_text.png";
+import LOGO from "@images/allini/login_logo.png";
+import GOGLE from "@images/social/gogle.png";
+import KAKAO from "@images/social/kakao.png";
+import ALLINI from "@images/allini/allini_text.png";
 
 export default function Login() {
   return (

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { setItem } from "../../../utils/setItem";
+import { setItem } from "@utils/setItem";
 interface DataType {
   id: number;
   content: string;

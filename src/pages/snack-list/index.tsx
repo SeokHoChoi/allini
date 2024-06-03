@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useApi } from "../../contexts/apiContext";
-import { ErrorBoundary } from "../../components/errorBoundary";
+import { useApi } from "@contexts/apiContext";
 
 export default function SnackList() {
   const [snacks, setSnacks] = useState([]);

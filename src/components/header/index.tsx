@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
-import LOGO from "../../assets/image/allini/logo_header.png";
-import ALLINI from "../../assets/image/allini/allini_header.png";
-import SEARCH from "../../assets/image/etc/search.png";
-import MENU from "../../assets/image/etc/hamburger_menu.png";
-import HeaderLayout from "../../layout/headerLayout";
+import LOGO from "@images/allini/logo_header.png";
+import ALLINI from "@images/allini/allini_header.png";
+import SEARCH from "@images/etc/search.png";
+import MENU from "@images/etc/hamburger_menu.png";
+import HeaderLayout from "@layouts/headerLayout";
 
 export default function Header() {
   return (
