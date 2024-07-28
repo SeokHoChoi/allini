@@ -1,0 +1,47 @@
+@use "@styles/base/colors.scss" as colors;
+
+.tabWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  li {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 1em;
+
+    a {
+      color: #777777; // 기본 색상
+      font-family: "Pretendard Medium";
+      font-size: 0.875rem;
+      background-color: rgba(255, 255, 255, 0);
+      border: none;
+      width: 100%;
+      padding-top: 0.78em;
+      padding-bottom: 0.7em;
+      border-bottom: 1.5px solid #eaeaea;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.9;
+      }
+
+      &:active {
+        opacity: 0.8;
+      }
+
+      &.selected {
+        transition: all 0s;
+        color: colors.$primary-color; // 선택된 색상
+        border-color: #00b896;
+        font-family: "Pretendard SemiBold";
+      }
+    }
+  }
+}
+.panelArea {
+  width: 343px; // iPhone SE 기준 내부 사이즈
+  margin: 0 auto;
+}
