@@ -25,6 +25,7 @@
 /yarn-error.log
 /.yarnclean
 /.yarnrc.yml
+/.yarn
 
 # environment variables
 /.env
