@@ -48,7 +48,7 @@ module.exports = {
     ],
   },
   mode: "none",
-  entry: "./src/index.tsx",
+  entry: "./src/app/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -76,14 +76,15 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@styles": path.resolve(__dirname, "./src/styles"),
-      "@images": path.resolve(__dirname, "./src/assets/images"),
-      "@api": path.resolve(__dirname, "./src/api"),
-      "@contexts": path.resolve(__dirname, "./src/contexts"),
-      "@hooks": path.resolve(__dirname, "./src/hooks"),
-      "@layouts": path.resolve(__dirname, "./src/layouts"),
-      "@utils": path.resolve(__dirname, "./src/utils"),
+      "@components": path.resolve(__dirname, "./src/shared/components"),
+      "@pages": path.resolve(__dirname, "./src/pages"),
+      "@styles": path.resolve(__dirname, "./src/shared/assets/styles"),
+      "@images": path.resolve(__dirname, "./src/shared/assets/images"),
+      "@api": path.resolve(__dirname, "./src/shared/api"),
+      "@contexts": path.resolve(__dirname, "./src/shared/contexts"),
+      "@hooks": path.resolve(__dirname, "./src/shared/hooks"),
+      "@layouts": path.resolve(__dirname, "./src/shared/layouts"),
+      "@utils": path.resolve(__dirname, "./src/shared/utils"),
     },
   },
 };

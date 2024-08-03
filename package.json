@@ -1,6 +1,6 @@
 {
   "name": "allini",
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.4.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --mode=development & open 'http://localhost:3000'",

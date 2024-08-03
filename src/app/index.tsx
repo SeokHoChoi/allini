@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Routes from "./routes/routes";
+
+import "./reset.css";
 import { ApiProvider } from "@contexts/apiContext";
 import { SearchModalProvider } from "@contexts/searchModalContext";
-
-import "@styles/base/reset.scss";
+import Routes from "../shared/routes/routes";
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== "development") {
     return;
   }
 
-  const { worker } = await import("./mocks/browser");
+  const { worker } = await import("../mocks/browser");
   return worker.start();
 }
 

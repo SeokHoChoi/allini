@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { getItem } from "@utils/getItem";
-import { setItem } from "@utils/setItem";
+import { getItem } from "../../utils/getItem";
+import { setItem } from "../../utils/setItem";
 import SearchBar from "./searchBar";
 import { useNavigate } from "react-router-dom";
-import { useSearchModal } from "@contexts/searchModalContext";
+import { useSearchModal } from "../../contexts/searchModalContext";
 import SearchModal from "./searchModal";
 
 interface DataType {
