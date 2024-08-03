@@ -1,0 +1,15 @@
+.mainArea {
+  flex: 1;
+  margin: 0 auto;
+  width: 343px;
+}
+
+.layoutArea {
+  // 반응형 시안이 나오기 전까지 iPhone SE 사이즈만 적용
+  margin: 0 auto;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

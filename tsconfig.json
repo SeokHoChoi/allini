@@ -22,14 +22,15 @@
     // 절대 경로
     "baseUrl": "src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@assets/images": ["assets/images/*"],
-      "@styles/*": ["styles/*"],
-      "@api/*": ["api/*"],
-      "@contexts/*": ["contexts/*"],
-      "@hooks/*": ["hooks/*"],
-      "@layouts/*": ["layouts/*"],
-      "@utils/*": ["utils/*"]
+      "@components/*": ["shared/components/*"],
+      "@pages/*": ["pages/*"],
+      "@assets/images": ["shared/assets/images/*"],
+      "@styles/*": ["shared/assets/styles/*"],
+      "@api/*": ["shared/api/*"],
+      "@contexts/*": ["shared/contexts/*"],
+      "@hooks/*": ["shared/hooks/*"],
+      "@layouts/*": ["shared/layouts/*"],
+      "@utils/*": ["shared/utils/*"]
     }
   },
   "include": ["src/**/*", "declarations.d.ts"],
