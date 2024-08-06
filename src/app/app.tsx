@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styles from "./app.module.scss";
 import { Suspense } from "react";
-import "../shared/assets/fonts/font.css";
 import { useSearchModal } from "@contexts/searchModalContext";
 import DefaultLayout from "@layouts/defaultLayout";
 import { ErrorBoundary } from "@components/errorBoundary";

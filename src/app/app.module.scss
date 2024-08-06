@@ -1,15 +1,17 @@
+@use "@styles/base/mixins" as *;
+
 .renderTest {
   height: 100vh;
 }
 
 .pretendardBold {
-  font-family: "Pretendard Bold", sans-serif;
+  @include pretendard-bold;
 }
 
 .pretendardMedium {
-  font-family: "Pretendard Medium", sans-serif;
+  @include pretendard-medium;
 }
 
 .pretendardRegular {
-  font-family: "Pretendard Regular", sans-serif;
+  @include pretendard-regular;
 }
