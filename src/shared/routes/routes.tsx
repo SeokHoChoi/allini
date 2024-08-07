@@ -1,6 +1,7 @@
 import App from "../../app/app";
 import FoodList from "@pages/food-list";
 import Food from "@pages/food-list/food";
+import FoodTracker from "@pages/food-tracker";
 import Home from "@pages/home";
 import Login from "@pages/login";
 import MealRegistration from "@pages/meal-registration";
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { index: true, path: "/", element: <Home /> },
       { path: "/snack-list", element: <SnackList /> },
       { path: "/snack-list/:snackId", element: <Snack /> },
+      { path: "/food-tracker", element: <FoodTracker /> },
       { path: "/food-list", element: <FoodList /> },
       { path: "/food-list/:foodId", element: <Food /> },
       { path: "/login", element: <Login /> },
