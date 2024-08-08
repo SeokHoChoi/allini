@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useApi } from "@contexts/apiContext";
 import { useEffect } from "react";
 
-export default function Snack() {
+export default function FoodDetail() {
   const api = useApi();
   const { snackId } = useParams();
 

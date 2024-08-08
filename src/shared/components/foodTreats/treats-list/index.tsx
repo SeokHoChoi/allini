@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useApi } from "@contexts/apiContext";
 
-export default function SnackList() {
-  const [snacks, setSnacks] = useState([]);
+export default function TreatsList() {
+  const [treats, setTreats] = useState([]);
   const [error, setError] = useState(null);
   const api = useApi();
   const [searchParams] = useSearchParams();
@@ -12,9 +12,9 @@ export default function SnackList() {
   useEffect(() => {
     api
       .searchSnack(`nonexistentEndpoint`)
-      // .searchSnack(`?domain=snack&query`)
-      // .searchSnack(`?domain=snack&query=${query}`)
-      .then((res) => setSnacks(res))
+      // .setTreats(`?domain=snack&query`)
+      // .setTreats(`?domain=snack&query=${query}`)
+      .then((res) => setTreats(res))
       .catch((error) => setError(error));
   }, [api, query]);
 
@@ -24,7 +24,7 @@ export default function SnackList() {
 
   return (
     <ul>
-      {snacks.map(
+      {treats.map(
         (snack: {
           id: number;
           allergy: boolean;
