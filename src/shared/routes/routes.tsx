@@ -2,7 +2,7 @@ import App from "../../app/app";
 import FoodTracker from "@pages/food-tracker";
 import Home from "@pages/home";
 import Login from "@pages/login";
-import MealRegistration from "@pages/meal-registration";
+import Register from "@pages/register";
 import Mypage from "@pages/mypage";
 import NotFound from "@pages/not-found";
 import Signup from "@pages/signup";
@@ -11,6 +11,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import FoodTreats from "@pages/food-tracker/food-treats";
 import Today from "@pages/food-tracker/today";
 import Report from "@pages/food-tracker/report";
+import Food from "@pages/register/food";
+import Puppy from "@pages/register/puppy";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,9 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/mypage", element: <Mypage /> },
-      { path: "/meal-registration", element: <MealRegistration /> },
+      { path: "/register", element: <Register /> },
+      { path: "/register/food", element: <Food /> },
+      { path: "/register/puppy", element: <Puppy /> },
     ],
   },
 ]);
