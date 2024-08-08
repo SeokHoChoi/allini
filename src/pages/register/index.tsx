@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { NavLink, Outlet } from "react-router-dom";
 
 /** v1 에선 사료/간식은 동일한 데이터를 받을 예정입니다. */
-export default function MealRegistration() {
+export default function Registration() {
   const cx = classNames.bind(styles);
 
   return (
@@ -12,11 +12,11 @@ export default function MealRegistration() {
         <ul className={cx("tabWrapper")}>
           <li role="presentation">
             <NavLink
-              to="meal"
+              to="food"
               role="tab"
               className={({ isActive }) => cx({ selected: isActive })}
-              id="tab-meal"
-              aria-controls="panel-meal" // 탭 버튼이 제어하는 탭 패널을 식별
+              id="tab-food"
+              aria-controls="panel-food" // 탭 버튼이 제어하는 탭 패널을 식별
             >
               상품 정보
             </NavLink>
