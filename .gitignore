@@ -29,3 +29,6 @@
 
 # environment variables
 /.env
+
+# build
+/dist
