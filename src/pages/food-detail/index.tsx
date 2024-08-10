@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useApi } from "@contexts/apiContext";
 import { useEffect } from "react";
+import { useApi } from "@contexts/apiContext";
 
 export default function FoodDetail() {
   const api = useApi();

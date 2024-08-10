@@ -22,7 +22,7 @@
     // 절대 경로
     "baseUrl": "src",
     "paths": {
-      "@components/*": ["shared/components/*"],
+      "@ui/*": ["shared/ui/*"],
       "@pages/*": ["pages/*"],
       "@assets/images": ["shared/assets/images/*"],
       "@styles/*": ["shared/assets/styles/*"],
@@ -30,7 +30,9 @@
       "@contexts/*": ["shared/contexts/*"],
       "@hooks/*": ["shared/hooks/*"],
       "@layouts/*": ["shared/layouts/*"],
-      "@utils/*": ["shared/utils/*"]
+      "@utils/*": ["shared/utils/*"],
+      "@features/*": ["features/*"],
+      "@widgets/*": ["widgets/*"]
     }
   },
   "include": ["src/**/*", "declarations.d.ts"],

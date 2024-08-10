@@ -76,7 +76,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      "@components": path.resolve(__dirname, "./src/shared/components"),
+      "@ui": path.resolve(__dirname, "./src/shared/ui"),
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@styles": path.resolve(__dirname, "./src/shared/assets/styles"),
       "@images": path.resolve(__dirname, "./src/shared/assets/images"),
@@ -85,6 +85,8 @@ module.exports = {
       "@hooks": path.resolve(__dirname, "./src/shared/hooks"),
       "@layouts": path.resolve(__dirname, "./src/shared/layouts"),
       "@utils": path.resolve(__dirname, "./src/shared/utils"),
+      "@features": path.resolve(__dirname, "./src/features"),
+      "@widgets": path.resolve(__dirname, "./src/widgets"),
     },
   },
 };

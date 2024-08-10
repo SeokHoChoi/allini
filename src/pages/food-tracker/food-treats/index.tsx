@@ -1,6 +1,6 @@
-import AllList from "@components/foodTreats/all-list";
-import PetFoodList from "@components/foodTreats/pet-food-list";
-import TreatsList from "@components/foodTreats/treats-list";
+import AllList from "@features/foodTreats/all-list";
+import PetFoodList from "@features/foodTreats/pet-food-list";
+import TreatsList from "@features/foodTreats/treats-list";
 
 export default function FoodTreats() {
   return (
