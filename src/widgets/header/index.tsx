@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 import LOGO from "@images/allini/logo_header.png";
 import ALLINI from "@images/allini/allini_header.png";
-import SEARCH from "@images/etc/search.png";
-import MENU from "@images/etc/hamburger_menu.png";
 import HeaderLayout from "@layouts/headerLayout";
+import MobileHeader from "./mobileHeader";
+import DesktopHeader from "./desktopHeader";
+import { useResponsive } from "@hooks/useResponsive";
 
 export default function Header() {
+  const isMobile = useResponsive();
+
   return (
     <HeaderLayout>
       <li>
@@ -17,16 +20,7 @@ export default function Header() {
           </Link>
         </h1>
       </li>
-      <li>
-        <ul className={styles.mobileMenuWrapper}>
-          <li>
-            <img src={SEARCH} alt="검색" />
-          </li>
-          <li>
-            <img src={MENU} alt="메뉴" />
-          </li>
-        </ul>
-      </li>
+      <li>{isMobile ? <MobileHeader /> : <DesktopHeader />}</li>
     </HeaderLayout>
   );
 }
