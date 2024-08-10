@@ -1,0 +1,24 @@
+################
+# <type>: <subject>
+# The subject should be within 50 characters / Clearly state "what" has been changed / No period at the end
+# Example: feat: add login functionality
+
+# Do not remove the blank line below (used to separate subject from body)
+
+################
+# Body (Detailed explanation)
+# Use "-" to separate multiple lines of message (One line should be within 72 characters)
+
+################
+# Footer (Include related issue numbers or references)
+# Example: Close #7
+
+################
+# feat: new feature added
+# fix: bug fix
+# docs: documentation update
+# test: test code added
+# refact: code refactoring
+# style: changes that do not affect the meaning of the code
+# chore: changes to the build process or package manager
+################
