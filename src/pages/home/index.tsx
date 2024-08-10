@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SearchPanel from "@components/searchPanel";
+import SearchPanel from "@ui/searchPanel";
 import useDebounce from "@hooks/useDebounce";
 import { useApi } from "@contexts/apiContext";
 

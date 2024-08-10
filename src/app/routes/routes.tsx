@@ -1,4 +1,3 @@
-import App from "../../app/app";
 import FoodTracker from "@pages/food-tracker";
 import Home from "@pages/home";
 import Login from "@pages/login";
@@ -13,6 +12,7 @@ import Today from "@pages/food-tracker/today";
 import Report from "@pages/food-tracker/report";
 import Food from "@pages/register/food";
 import Puppy from "@pages/register/puppy";
+import App from "../app";
 
 const router = createBrowserRouter([
   {

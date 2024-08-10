@@ -1,5 +1,5 @@
-import Footer from "../../components/footer";
-import Header from "../../components/header";
+import Footer from "@widgets/footer";
+import Header from "@widgets/header";
 import styles from "./index.module.scss";
 
 export default function DefaultLayout({ children }) {
