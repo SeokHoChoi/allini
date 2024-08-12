@@ -1,6 +1,5 @@
 @use "@styles/base/mixins" as mixins;
 
-.mobileNavWrapper {
+.desktopNavWrapper {
   @include mixins.flex();
-  gap: 1.5em;
 }

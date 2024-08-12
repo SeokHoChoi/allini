@@ -1,7 +1,7 @@
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@mixin flex($display: flex, $justifyContent: center, $alignItems: center) {
+  display: $display;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
 }
 
 @mixin pretendard-bold {

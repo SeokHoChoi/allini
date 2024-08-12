@@ -1,37 +1,49 @@
-import FoodTracker from "@pages/food-tracker";
-import Home from "@pages/home";
-import Login from "@pages/login";
-import Register from "@pages/register";
-import Mypage from "@pages/mypage";
-import NotFound from "@pages/not-found";
-import Signup from "@pages/signup";
-import FoodDetail from "@pages/food-detail";
+// routes.js or Routes.jsx
+
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import FoodTreats from "@pages/food-tracker/food-treats";
+import App from "../app";
+import DefaultLayout from "@layouts/defaultLayout";
+import NoHeaderLayout from "@layouts/noHeaderLayout";
+import Home from "@pages/home";
+import FoodDetail from "@pages/food-detail";
+import FoodTracker from "@pages/food-tracker";
 import Today from "@pages/food-tracker/today";
+import FoodTreats from "@pages/food-tracker/food-treats";
 import Report from "@pages/food-tracker/report";
+import Mypage from "@pages/mypage";
+import Register from "@pages/register";
 import Food from "@pages/register/food";
 import Puppy from "@pages/register/puppy";
-import App from "../app";
+import Login from "@pages/login";
+import Signup from "@pages/signup";
+import NotFound from "@pages/not-found";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <App />, // Root component
     errorElement: <NotFound />,
     children: [
-      { index: true, path: "/", element: <Home /> },
-      { path: "/food-detail/:foodId", element: <FoodDetail /> },
-      { path: "/food-tracker", element: <FoodTracker /> },
-      { path: "/food-tracker/today", element: <Today /> },
-      { path: "/food-tracker/food-treats", element: <FoodTreats /> },
-      { path: "/food-tracker/report", element: <Report /> },
-      { path: "/login", element: <Login /> },
-      { path: "/signup", element: <Signup /> },
-      { path: "/mypage", element: <Mypage /> },
-      { path: "/register", element: <Register /> },
-      { path: "/register/food", element: <Food /> },
-      { path: "/register/puppy", element: <Puppy /> },
+      {
+        element: <DefaultLayout />, // Layout with Header and Footer
+        children: [
+          { index: true, element: <Home /> },
+          { path: "food-detail/:foodId", element: <FoodDetail /> },
+          { path: "food-tracker", element: <FoodTracker /> },
+          { path: "food-tracker/today", element: <Today /> },
+          { path: "food-tracker/food-treats", element: <FoodTreats /> },
+          { path: "food-tracker/report", element: <Report /> },
+          { path: "mypage", element: <Mypage /> },
+          { path: "register", element: <Register /> },
+          { path: "register/food", element: <Food /> },
+          { path: "register/puppy", element: <Puppy /> },
+          { path: "signup", element: <Signup /> },
+        ],
+      },
+      {
+        element: <NoHeaderLayout />,
+        children: [{ path: "login", element: <Login /> }],
+      },
     ],
   },
 ]);

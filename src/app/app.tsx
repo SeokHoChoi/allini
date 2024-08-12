@@ -13,13 +13,11 @@ export default function App() {
 
   return (
     <div className={styles.renderTest} onClick={handleTogglePanel}>
-      <DefaultLayout>
-        <ErrorBoundary fallback={FallbackComponent} onReset={() => {}}>
-          <Suspense fallback={<div>로딩중..</div>}>
-            <Outlet />
-          </Suspense>
-        </ErrorBoundary>
-      </DefaultLayout>
+      <ErrorBoundary fallback={FallbackComponent} onReset={() => {}}>
+        <Suspense fallback={<div>로딩중..</div>}>
+          <Outlet />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }

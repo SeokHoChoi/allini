@@ -1,7 +1,11 @@
+import styles from "./index.module.scss";
+
 export default function DesktopHeader() {
   return (
-    <>
-      <h1>DesktopHeader Component</h1>
-    </>
+    <ul className={styles.desktopNavWrapper}>
+      <li>로그인</li>
+      <li>회원가입</li>
+      <li>사료/간식</li>
+    </ul>
   );
 }
