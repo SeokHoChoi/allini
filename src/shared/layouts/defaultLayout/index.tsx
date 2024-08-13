@@ -8,7 +8,6 @@ export default function DefaultLayout() {
     <div className={styles.layoutArea}>
       <Header />
       <main className={styles.mainArea}>
-        {" "}
         <Outlet />
       </main>
       <Footer />
