@@ -2,8 +2,7 @@
   width: 100%;
 
   .listWrapper {
-    // 반응형 시안이 나오기 전까지 iPhone SE 사이즈만 적용
-    max-width: 375px; // iPhone SE 사이즈
+    max-width: 1440px;
     margin: 0 auto;
 
     display: flex;
