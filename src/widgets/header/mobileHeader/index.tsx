@@ -1,15 +1,19 @@
 import SEARCH from "@images/etc/search.png";
-import MENU from "@images/etc/hamburger_menu.png";
 import styles from "./index.module.scss";
+import Hamburger from "@assets/icons/hamburger.svg";
 
 export default function MobileHeader() {
   return (
     <ul className={styles.mobileNavWrapper}>
       <li>
-        <img src={SEARCH} alt="검색" />
+        <button>
+          <img src={SEARCH} alt="검색" />
+        </button>
       </li>
       <li>
-        <img src={MENU} alt="메뉴" />
+        <button>
+          <Hamburger />
+        </button>
       </li>
     </ul>
   );
