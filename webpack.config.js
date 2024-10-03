@@ -42,12 +42,22 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(jpg|jpeg|gif|png|svg|eot|woff|ttf)$/i,
+        test: /\.(jpg|jpeg|gif|png|eot|woff|ttf)$/i,
         type: "asset/resource",
       },
       {
-        test: "/\\.svg$/",
-        use: ["@svgr/webpack"],
+        test: /\.svg$/,
+        oneOf: [
+          {
+            use: ["@svgr/webpack"],
+            issuer: /\.[jt]sx?$/,
+            resourceQuery: { not: [/url/] },
+          },
+          {
+            type: "asset",
+            resourceQuery: /url/, // *.svg?url
+          },
+        ],
       },
     ],
   },
@@ -84,6 +94,7 @@ module.exports = {
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@styles": path.resolve(__dirname, "./src/shared/assets/styles"),
       "@images": path.resolve(__dirname, "./src/shared/assets/images"),
+      "@assets": path.resolve(__dirname, "./src/shared/assets"),
       "@api": path.resolve(__dirname, "./src/shared/api"),
       "@contexts": path.resolve(__dirname, "./src/shared/contexts"),
       "@hooks": path.resolve(__dirname, "./src/shared/hooks"),
