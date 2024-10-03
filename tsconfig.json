@@ -25,6 +25,7 @@
       "@ui/*": ["shared/ui/*"],
       "@pages/*": ["pages/*"],
       "@assets/images": ["shared/assets/images/*"],
+      "@assets/*": ["shared/assets/*"],
       "@styles/*": ["shared/assets/styles/*"],
       "@api/*": ["shared/api/*"],
       "@contexts/*": ["shared/contexts/*"],
