@@ -12,7 +12,7 @@ export default function MobileHeader() {
       </li>
       <li>
         <button>
-          <Hamburger />
+          <Hamburger width="24px" height="24px" />
         </button>
       </li>
     </ul>
