@@ -12,12 +12,14 @@ export default function App() {
   };
 
   return (
-    <div className={styles.renderTest} onClick={handleTogglePanel}>
-      <ErrorBoundary fallback={FallbackComponent} onReset={() => {}}>
-        <Suspense fallback={<div>로딩중..</div>}>
-          <Outlet />
-        </Suspense>
-      </ErrorBoundary>
+    <div className={styles.area} onClick={handleTogglePanel}>
+      <div className={styles.wrapper}>
+        <ErrorBoundary fallback={FallbackComponent} onReset={() => {}}>
+          <Suspense fallback={<div>로딩중..</div>}>
+            <Outlet />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
     </div>
   );
 }
