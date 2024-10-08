@@ -1,8 +1,6 @@
 import SEARCH from "@images/etc/search.png";
 import styles from "./index.module.scss";
 import Hamburger from "@assets/icons/hamburger.svg";
-import { useState } from "react";
-import Sidebar from "../sidebar";
 import { useSidebar } from "@contexts/sidebarContext";
 
 export default function MobileHeader() {

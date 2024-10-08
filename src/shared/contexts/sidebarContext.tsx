@@ -20,7 +20,7 @@ const SidebarContext = createContext<{
 }>({
   state: { isOpen: false },
   actions: {
-    setIsOpen: () => {}, // Placeholder function, to be replaced in the provider
+    setIsOpen: () => {},
   },
 });
 
