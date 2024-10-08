@@ -21,7 +21,13 @@ export default function Sidebar({ className }: { className?: string }) {
   };
 
   return (
-    <ul className={cx("sidebar", className)} onClick={() => handleToggle(true)}>
+    <ul
+      className={cx("sidebar", className)}
+      onClick={() => {
+        handleToggle(false);
+        setRecordActive(false);
+      }}
+    >
       <li>
         <NavLink
           to="/about"
@@ -42,10 +48,9 @@ export default function Sidebar({ className }: { className?: string }) {
         <button
           onClick={(e) => {
             e.stopPropagation();
-            if (recordActive) {
-              return;
+            if (!recordActive) {
+              toggleRecord();
             }
-            toggleRecord();
           }}
           className={styles.recordButton}
         >
@@ -57,16 +62,14 @@ export default function Sidebar({ className }: { className?: string }) {
           className={cx("subList", { open: isRecordOpen })}
           onClick={(e) => {
             e.stopPropagation();
+            setRecordActive(true);
             handleToggle(true);
           }}
         >
           <li>
             <NavLink
               to="/food-tracker/today"
-              className={({ isActive }) => {
-                setRecordActive(true);
-                return cx({ selected: isActive });
-              }}
+              className={({ isActive }) => cx({ selected: isActive })}
             >
               오늘의 기록하기
             </NavLink>
@@ -74,10 +77,7 @@ export default function Sidebar({ className }: { className?: string }) {
           <li>
             <NavLink
               to="/food-tracker/report"
-              className={({ isActive }) => {
-                setRecordActive(true);
-                return cx({ selected: isActive });
-              }}
+              className={({ isActive }) => cx({ selected: isActive })}
             >
               기록 통계
             </NavLink>
