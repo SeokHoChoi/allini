@@ -11,9 +11,9 @@ export default function TreatsList() {
 
   useEffect(() => {
     api
-      .searchSnack(`nonexistentEndpoint`)
-      // .setTreats(`?domain=snack&query`)
-      // .setTreats(`?domain=snack&query=${query}`)
+      // .searchSnack(`nonexistentEndpoint`)
+      .searchSnack(`?domain=snack&query`)
+      // .searchSnack(`?domain=snack&query=${query}`)
       .then((res) => setTreats(res))
       .catch((error) => setError(error));
   }, [api, query]);
@@ -24,7 +24,7 @@ export default function TreatsList() {
 
   return (
     <ul>
-      {treats.map(
+      {treats?.map(
         (snack: {
           id: number;
           allergy: boolean;
