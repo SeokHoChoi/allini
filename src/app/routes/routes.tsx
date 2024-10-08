@@ -17,6 +17,7 @@ import Puppy from "@pages/register/puppy";
 import Login from "@pages/login";
 import Signup from "@pages/signup";
 import NotFound from "@pages/not-found";
+import About from "@pages/about";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
           { path: "register/food", element: <Food /> },
           { path: "register/puppy", element: <Puppy /> },
           { path: "signup", element: <Signup /> },
+          { path: "about", element: <About /> },
         ],
       },
       {
