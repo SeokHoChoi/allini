@@ -1,8 +1,16 @@
 import SEARCH from "@images/etc/search.png";
 import styles from "./index.module.scss";
 import Hamburger from "@assets/icons/hamburger.svg";
+import { useState } from "react";
+import Sidebar from "../sidebar";
+import { useSidebar } from "@contexts/sidebarContext";
 
 export default function MobileHeader() {
+  const { setIsOpen } = useSidebar().actions;
+  const toggleSidebar = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <ul className={styles.mobileNavWrapper}>
       <li>
@@ -11,7 +19,7 @@ export default function MobileHeader() {
         </button>
       </li>
       <li>
-        <button>
+        <button onClick={toggleSidebar}>
           <Hamburger width="24px" height="24px" />
         </button>
       </li>
