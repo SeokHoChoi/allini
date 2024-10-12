@@ -1,18 +1,13 @@
-import classnames from "classnames/bind";
+import clsx from "clsx";
 import Sidebar from "@widgets/header/sidebar";
 import styles from "./index.module.scss";
-import { useSidebar } from "@contexts/sidebarContext";
-
-const cx = classnames.bind(styles);
 
 export default function HeaderLayout({ children }) {
-  const { isOpen } = useSidebar().state;
-
   return (
-    <header className={cx("area")}>
-      <ul className={cx("listWrapper")}>{children}</ul>
+    <header className={clsx(styles.area)}>
+      <ul className={clsx(styles.listWrapper)}>{children}</ul>
       <li>
-        <Sidebar className={cx({ open: isOpen })} />
+        <Sidebar />
       </li>
     </header>
   );
