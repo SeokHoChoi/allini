@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useApi } from "@contexts/apiContext";
 
+interface Snack {
+  id: number;
+  allergy: boolean;
+  content: string;
+  snack: string;
+}
+
 export default function TreatsList() {
-  const [treats, setTreats] = useState([]);
+  const [treats, setTreats] = useState<Snack[]>([]);
   const [error, setError] = useState(null);
   const api = useApi();
   const [searchParams] = useSearchParams();
@@ -24,16 +31,9 @@ export default function TreatsList() {
 
   return (
     <ul>
-      {treats?.map(
-        (snack: {
-          id: number;
-          allergy: boolean;
-          content: string;
-          snack: string;
-        }) => (
-          <li key={snack.id}>{snack.content}</li>
-        )
-      )}
+      {treats.map((snack) => (
+        <li key={snack.id}>{snack.content}</li>
+      ))}
     </ul>
   );
 }
