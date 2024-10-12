@@ -1,13 +1,14 @@
-import classnames from "classnames/bind";
-import styles from "./index.module.scss";
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
+import styles from "./index.module.scss";
 import { useState } from "react";
 import { useSidebar } from "@contexts/sidebarContext";
 
-const cx = classnames.bind(styles);
-
-export default function Sidebar({ className }: { className?: string }) {
-  const { setIsOpen } = useSidebar().actions;
+export default function Sidebar() {
+  const {
+    actions: { setIsOpen },
+    state: { isOpen },
+  } = useSidebar();
   const [isRecordOpen, setRecordOpen] = useState(false);
   const [recordActive, setRecordActive] = useState(false);
 
@@ -22,7 +23,7 @@ export default function Sidebar({ className }: { className?: string }) {
 
   return (
     <ul
-      className={cx("sidebar", className)}
+      className={clsx(styles.sidebar, { [styles.open]: isOpen })}
       onClick={() => {
         handleToggle(false);
         setRecordActive(false);
@@ -31,7 +32,7 @@ export default function Sidebar({ className }: { className?: string }) {
       <li>
         <NavLink
           to="/about"
-          className={({ isActive }) => cx({ selected: isActive })}
+          className={({ isActive }) => clsx({ [styles.selected]: isActive })}
         >
           알리니 소개
         </NavLink>
@@ -39,7 +40,7 @@ export default function Sidebar({ className }: { className?: string }) {
       <li>
         <NavLink
           to="/food-tracker/food-treats"
-          className={({ isActive }) => cx({ selected: isActive })}
+          className={({ isActive }) => clsx({ [styles.selected]: isActive })}
         >
           사료/간식 목록
         </NavLink>
@@ -52,14 +53,14 @@ export default function Sidebar({ className }: { className?: string }) {
               toggleRecord();
             }
           }}
-          className={styles.recordButton}
+          className={clsx(styles.recordButton)}
         >
           알리니 기록
         </button>
       </li>
       {isRecordOpen && (
         <ul
-          className={cx("subList", { open: isRecordOpen })}
+          className={clsx(styles.subList, { [styles.open]: isRecordOpen })}
           onClick={(e) => {
             e.stopPropagation();
             setRecordActive(true);
@@ -69,7 +70,9 @@ export default function Sidebar({ className }: { className?: string }) {
           <li>
             <NavLink
               to="/food-tracker/today"
-              className={({ isActive }) => cx({ selected: isActive })}
+              className={({ isActive }) =>
+                clsx({ [styles.selected]: isActive })
+              }
             >
               오늘의 기록하기
             </NavLink>
@@ -77,7 +80,9 @@ export default function Sidebar({ className }: { className?: string }) {
           <li>
             <NavLink
               to="/food-tracker/report"
-              className={({ isActive }) => cx({ selected: isActive })}
+              className={({ isActive }) =>
+                clsx({ [styles.selected]: isActive })
+              }
             >
               기록 통계
             </NavLink>
@@ -87,7 +92,7 @@ export default function Sidebar({ className }: { className?: string }) {
       <li>
         <NavLink
           to="/mypage"
-          className={({ isActive }) => cx({ selected: isActive })}
+          className={({ isActive }) => clsx({ [styles.selected]: isActive })}
         >
           마이페이지
         </NavLink>
