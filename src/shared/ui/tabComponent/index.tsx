@@ -2,7 +2,16 @@ import clsx from "clsx";
 import { NavLink, Outlet } from "react-router-dom";
 import styles from "./index.module.scss";
 
-const TabComponent = ({ tabs }) => {
+interface Tab {
+  path: string;
+  label: string;
+}
+
+interface TabComponentProps {
+  tabs: Tab[];
+}
+
+const TabComponent = ({ tabs }: TabComponentProps) => {
   return (
     <div>
       <nav role="tablist" aria-label="Sample Tabs">
