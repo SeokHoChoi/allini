@@ -13,7 +13,7 @@ interface TabComponentProps {
 
 const TabComponent = ({ tabs }: TabComponentProps) => {
   return (
-    <div>
+    <div className={clsx(styles.tabArea)}>
       <nav role="tablist" aria-label="Sample Tabs">
         <ul className={clsx(styles.tabWrapper)}>
           {tabs.map((tab) => (
