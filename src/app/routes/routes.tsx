@@ -1,6 +1,10 @@
 // routes.js or Routes.jsx
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import App from "../app";
 import DefaultLayout from "@layouts/defaultLayout";
 import NoHeaderLayout from "@layouts/noHeaderLayout";
@@ -30,10 +34,17 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Home /> },
           { path: "food-detail/:foodId", element: <FoodDetail /> },
-          { path: "food-tracker", element: <FoodTracker /> },
-          { path: "food-tracker/today", element: <Today /> },
-          { path: "food-tracker/food-treats", element: <FoodTreats /> },
-          { path: "food-tracker/report", element: <Report /> },
+          {
+            path: "food-tracker",
+            element: <FoodTracker />,
+            // food-tracker로 진입 시 today로 리다이렉트
+            children: [
+              { index: true, element: <Navigate to="today" /> },
+              { path: "today", element: <Today /> },
+              { path: "food-treats", element: <FoodTreats /> },
+              { path: "report", element: <Report /> },
+            ],
+          },
           { path: "mypage", element: <Mypage /> },
           { path: "register", element: <Register /> },
           { path: "register/food", element: <Food /> },
