@@ -1,3 +1,5 @@
+import clsx from "clsx";
+import styles from "./index.module.scss";
 import TabComponent from "@ui/tabComponent";
 
 const tabs = [
@@ -7,5 +9,9 @@ const tabs = [
 ];
 
 export default function FoodTracker() {
-  return <TabComponent tabs={tabs} />;
+  return (
+    <div className={clsx(styles.trackerArea)}>
+      <TabComponent tabs={tabs} />
+    </div>
+  );
 }
