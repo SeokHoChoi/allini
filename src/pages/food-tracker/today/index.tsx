@@ -43,11 +43,11 @@ function GrassSVGWrapper() {
         rotation={-17}
       />
       <GrassSVG
-        top="60.8%"
+        top="60.5%"
         left="62.5%"
         width={"50px"}
-        leftHeight={40}
-        rightHeight={55}
+        leftHeight={25}
+        rightHeight={40}
         position="absolute"
         rotation={5.4}
       />
