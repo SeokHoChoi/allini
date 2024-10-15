@@ -2,7 +2,6 @@ import clsx from "clsx";
 import styles from "./index.module.scss";
 import Sign from "@assets/icons/dog-heart-sign.svg";
 import EmptyBowl from "@assets/icons/empty-bowl.svg";
-import DroneFly from "@assets/icons/dragonfly.svg";
 import Bowl from "@assets/icons/bowl.svg";
 import ToyBall from "@assets/icons/toy-ball.svg";
 import Dog from "@assets/icons/dog.svg";
@@ -39,7 +38,8 @@ export default function Today() {
         selectedCharacter={selectedCharacter}
         onSelectCharacter={selectCharacter}
       />
-      <div>사료먹기 / 간식먹기</div>
+
+      <div className={clsx(styles.foodTreatsWrapper)}>사료먹기 / 간식먹기</div>
     </div>
   );
 }
@@ -48,16 +48,16 @@ function GrassSVGWrapper() {
   return (
     <>
       <GrassSVG
-        top="61%"
+        top="62.1%"
         left="3%"
         width={"45px"}
-        leftHeight={55}
-        rightHeight={55}
+        leftHeight={25}
+        rightHeight={35}
         position="absolute"
         rotation={-17}
       />
       <GrassSVG
-        top="60.5%"
+        top="61.5%"
         left="62.5%"
         width={"50px"}
         leftHeight={25}
@@ -66,7 +66,7 @@ function GrassSVGWrapper() {
         rotation={5.4}
       />
       <GrassSVG
-        top="63%"
+        top="63.4%"
         left="84%"
         width={"50px"}
         leftHeight={35}
@@ -75,7 +75,7 @@ function GrassSVGWrapper() {
         rotation={18}
       />
       <GrassSVG
-        top="61.5%"
+        top="61.9%"
         left="15%"
         width={"80px"}
         leftHeight={40}
