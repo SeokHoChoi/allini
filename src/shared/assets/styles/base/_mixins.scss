@@ -21,6 +21,11 @@
   padding-left: $padding-left; // 왼쪽 패딩
 }
 
+@mixin position-center() {
+  left: 50%;
+  transform: translate(-50%);
+}
+
 @mixin pretendard-bold {
   font-family: "Pretendard Bold", sans-serif;
 }
