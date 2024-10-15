@@ -36,14 +36,16 @@
       position: absolute;
       z-index: 3;
       bottom: 25.7%;
-      left: 29.2%;
+      left: 50%;
+      transform: translate(-50%);
     }
 
     .bowl {
       position: absolute;
       z-index: 3;
       bottom: 27.5%;
-      left: 32%;
+      left: 50%;
+      transform: translate(-50%);
     }
 
     .toyBall {
@@ -58,7 +60,8 @@
       position: absolute;
       z-index: 2;
       bottom: 33%;
-      left: 30%;
+      left: 50%;
+      transform: translate(-50%);
     }
   }
 
