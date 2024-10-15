@@ -9,6 +9,7 @@
   background-color: #fff;
   font-family: "Pretendard Medium";
   @include transition-hidden;
+  z-index: 9999;
 
   li {
     max-width: 430px;
