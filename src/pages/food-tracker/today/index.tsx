@@ -5,9 +5,12 @@ import EmptyBowl from "@assets/icons/empty-bowl.svg";
 import Bowl from "@assets/icons/bowl.svg";
 import ToyBall from "@assets/icons/toy-ball.svg";
 import Dog from "@assets/icons/dog.svg";
+import Food from "@assets/icons/food.svg";
+import Treats from "@assets/icons/treats.svg";
 import GrassSVG from "@assets/icons/grassSVG";
 import CharacterSelector from "@ui/characterSelector";
 import { useCharacterSelector } from "@hooks/useCharacterSelector";
+import FoodSelector from "@widgets/today/foodSelector";
 
 const characters = [
   { path: "mongshil", label: "몽실이" },
@@ -39,7 +42,10 @@ export default function Today() {
         onSelectCharacter={selectCharacter}
       />
 
-      <div className={clsx(styles.foodTreatsWrapper)}>사료먹기 / 간식먹기</div>
+      <ul className={clsx(styles.foodTreatsWrapper)}>
+        <FoodSelector SVG={Food} title="사료 먹기" current="1/2" />
+        <FoodSelector SVG={Treats} title="간식 먹기" current="1/2" />
+      </ul>
     </div>
   );
 }
@@ -48,7 +54,7 @@ function GrassSVGWrapper() {
   return (
     <>
       <GrassSVG
-        top="62.1%"
+        top="62.2%"
         left="3%"
         width={"45px"}
         leftHeight={25}

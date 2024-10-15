@@ -2,9 +2,8 @@
   height: 100%;
   width: 100%;
   background-color: #f3f3f4;
-  background-color: aqua;
   position: relative;
-  left: 0;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -12,7 +11,7 @@
   .hillWrapper {
     position: absolute;
     width: 100%;
-    height: calc(100% + 194px);
+    height: calc(100% + 184px);
     z-index: 1;
 
     .sign {
@@ -26,7 +25,7 @@
       position: absolute;
       bottom: 32.9%;
       width: 100%;
-      max-width: 375px;
+      max-width: 430px;
       height: 66px;
       background: #00a789;
       clip-path: ellipse(55% 85% at 50% 100%);
@@ -43,14 +42,14 @@
     .bowl {
       position: absolute;
       z-index: 3;
-      bottom: 27%;
+      bottom: 27.5%;
       left: 32%;
     }
 
     .toyBall {
       position: absolute;
       z-index: 2;
-      bottom: 25%;
+      bottom: 25.5%;
       right: 13%;
       animation: shake 4s infinite;
     }
@@ -67,7 +66,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    max-width: 375px;
+    max-width: 430px;
     height: calc(40% + 20px);
     background: linear-gradient(to bottom, #00a789, #00836b);
   }
@@ -81,10 +80,12 @@
   }
 
   .foodTreatsWrapper {
-    background-color: red;
     z-index: 2;
     height: 194px;
     margin-bottom: 43.2px;
+
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -133,8 +134,11 @@
   }
 }
 
-@media (max-width: 362px) {
+@media (max-width: 429px) {
   .todayArea {
     height: 100vh;
+
+    .background {
+    }
   }
 }
