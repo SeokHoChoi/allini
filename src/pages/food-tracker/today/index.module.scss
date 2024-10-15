@@ -1,6 +1,7 @@
 .todayArea {
   height: 100%;
   width: 100%;
+  background-color: #f3f3f4;
   position: relative;
 
   .hillWrapper {
@@ -11,7 +12,7 @@
     .sign {
       position: absolute;
       bottom: 37%;
-      left: 17%;
+      left: 16%;
       z-index: 1;
     }
 
@@ -23,6 +24,35 @@
       height: 66px;
       background: #00a789;
       clip-path: ellipse(55% 85% at 50% 100%);
+    }
+
+    .emptyBowl {
+      position: absolute;
+      z-index: 1;
+      bottom: 25.7%;
+      left: 29.2%;
+    }
+
+    .bowl {
+      position: absolute;
+      z-index: 2;
+      bottom: 27%;
+      left: 32%;
+    }
+
+    .toyBall {
+      position: absolute;
+      z-index: 1;
+      bottom: 25%;
+      right: 13%;
+      animation: shake 3s infinite;
+    }
+
+    .dog {
+      position: absolute;
+      z-index: 1;
+      bottom: 33%;
+      left: 30%;
     }
   }
 
@@ -36,5 +66,23 @@
   }
 
   .content {
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
