@@ -109,7 +109,7 @@ function GrassSVGWrapper() {
       />
       <GrassSVG
         top="67%"
-        left="19%"
+        left="23%"
         width={"80px"}
         leftHeight={50}
         rightHeight={60}
