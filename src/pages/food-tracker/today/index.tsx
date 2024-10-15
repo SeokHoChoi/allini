@@ -5,8 +5,10 @@ import Sign from "@assets/icons/dog-heart-sign.svg";
 export default function Today() {
   return (
     <div className={clsx(styles.todayArea)}>
-      <Sign className={clsx(styles.sign)} />
-      <div className={clsx(styles.hill)}></div>
+      <div className={clsx(styles.hillWrapper)}>
+        <Sign className={clsx(styles.sign)} />
+        <div className={clsx(styles.hill)}></div>
+      </div>
       <div className={clsx(styles.background)}></div>
 
       <div className={clsx(styles.content)}>

@@ -3,21 +3,27 @@
   width: 100%;
   position: relative;
 
-  .sign {
+  .hillWrapper {
     position: absolute;
-    z-index: 1;
-    top: 58%;
-    left: 20%;
-  }
-
-  .hill {
-    position: absolute;
-    bottom: 32.9%;
     width: 100%;
-    max-width: 375px;
-    height: 66px;
-    background: #00a789;
-    clip-path: ellipse(55% 85% at 50% 100%);
+    height: 100%;
+
+    .sign {
+      position: absolute;
+      bottom: 37%;
+      left: 17%;
+      z-index: 1;
+    }
+
+    .hill {
+      position: absolute;
+      bottom: 32.9%;
+      width: 100%;
+      max-width: 375px;
+      height: 66px;
+      background: #00a789;
+      clip-path: ellipse(55% 85% at 50% 100%);
+    }
   }
 
   .background {
