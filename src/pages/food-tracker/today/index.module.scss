@@ -1,0 +1,26 @@
+.todayArea {
+  height: 100%;
+  width: 100%;
+
+  .background {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 375px;
+    height: 33%;
+    background: linear-gradient(to bottom, #00a789, #00836b);
+  }
+
+  .hill {
+    position: absolute;
+    bottom: 32.9%;
+    width: 100%;
+    max-width: 375px;
+    height: 66px;
+    background: #00a789;
+    clip-path: ellipse(55% 85% at 50% 100%);
+  }
+
+  .content {
+  }
+}
