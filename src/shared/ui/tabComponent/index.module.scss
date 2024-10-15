@@ -5,6 +5,7 @@
   height: 100%;
   min-width: 375px;
   max-width: 375px;
+  overflow: hidden;
 
   .tabWrapper {
     display: flex;
@@ -51,5 +52,6 @@
 
   .panelArea {
     margin: 0 auto;
+    height: 100%;
   }
 }
