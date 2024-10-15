@@ -2,12 +2,24 @@ import clsx from "clsx";
 import styles from "./index.module.scss";
 import Sign from "@assets/icons/dog-heart-sign.svg";
 import EmptyBowl from "@assets/icons/empty-bowl.svg";
+import DroneFly from "@assets/icons/dragonfly.svg";
 import Bowl from "@assets/icons/bowl.svg";
 import ToyBall from "@assets/icons/toy-ball.svg";
 import Dog from "@assets/icons/dog.svg";
 import GrassSVG from "@assets/icons/grassSVG";
+import CharacterSelector from "@ui/characterSelector";
+import { useCharacterSelector } from "@hooks/useCharacterSelector";
+
+const characters = [
+  { path: "mongshil", label: "몽실이" },
+  { path: "boksil", label: "복실이" },
+  { path: "tosil", label: "토실토실토실" },
+];
 
 export default function Today() {
+  const { selectedCharacter, selectCharacter } =
+    useCharacterSelector(characters);
+
   return (
     <div className={clsx(styles.todayArea)}>
       <div className={clsx(styles.hillWrapper)}>
@@ -21,11 +33,13 @@ export default function Today() {
       </div>
       <div className={clsx(styles.background)}></div>
 
-      <div className={clsx(styles.content)}>
-        <div>몽실이/복실이</div>
-        <div>강아지 사진, 밥그릇</div>
-        <div>사료먹기 / 간식먹기</div>
-      </div>
+      <CharacterSelector
+        className={clsx(styles.selectorArea)}
+        characters={characters}
+        selectedCharacter={selectedCharacter}
+        onSelectCharacter={selectCharacter}
+      />
+      <div>사료먹기 / 간식먹기</div>
     </div>
   );
 }
