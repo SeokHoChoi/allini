@@ -48,17 +48,6 @@
     padding: 12px;
     gap: 10px;
 
-    .badges {
-      display: flex;
-      gap: 8px;
-
-      .badge {
-        background-color: #e0e0e0;
-        border-radius: 12px;
-        font-size: 10px;
-      }
-    }
-
     .details {
       display: flex;
       flex-direction: column;
@@ -67,20 +56,24 @@
       .foodName,
       .ingredients {
         font-size: 12px;
-        margin: 4px 0;
       }
 
       .brand {
         @include pretendard-medium;
+        margin-bottom: 4px;
+        color: #606268;
       }
 
       .ingredients {
         @include pretendard-regular;
+        color: #9fa1a9;
       }
 
       .foodName {
         @include pretendard-semibold;
         font-size: 14px;
+        margin-bottom: 8px;
+        color: #393a3e;
       }
     }
   }
