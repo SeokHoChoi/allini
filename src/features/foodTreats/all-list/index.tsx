@@ -41,7 +41,10 @@ export default function AllList() {
 
   return (
     <div className={clsx(styles.allListArea)}>
-      <div>검색</div>
+      <div className={clsx(styles.searchWrapper)}>
+        <div>찾는 사료/간식이 없나요?</div>
+        <button>등록하기</button>
+      </div>
 
       <ul className={clsx(styles.listWrapper)}>
         {foods.map((food) => (
