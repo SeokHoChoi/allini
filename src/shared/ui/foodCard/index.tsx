@@ -2,6 +2,7 @@ import clsx from "clsx";
 import styles from "./index.module.scss";
 import Treats from "@assets/icons/treats.svg";
 import Food from "@assets/icons/food.svg";
+import Badge from "@ui/badge";
 
 interface FoodCardProps {
   data: {
@@ -26,19 +27,13 @@ export default function FoodCard({ data, className }: FoodCardProps) {
           className={styles.foodImage}
         />
         <div className={styles.labelIcon}>
-          {/* SVG content - "Food" or "Treat" */}
           <Food />
           <Treats />
         </div>
       </div>
       <div className={styles.infoContainer}>
-        <div className={styles.badges}>
-          {labels.map((label, index) => (
-            <span key={index} className={styles.badge}>
-              {label}
-            </span>
-          ))}
-        </div>
+        <Badge labels={labels} />
+
         <div className={styles.details}>
           <div className={styles.brand}>{brand}</div>
           <div className={styles.foodName}>{foodName}</div>
