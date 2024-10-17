@@ -47,7 +47,7 @@ export const handlers = [
 
     const filteredData = snacksData.filter((item) => {
       if (hasSnackProperty(item)) {
-        return item.snack.toLowerCase().includes(keyword.toLowerCase());
+        return item.snack.toLowerCase().includes(keyword.trim().toLowerCase());
       }
 
       return false;
@@ -86,7 +86,7 @@ export const handlers = [
 
     const filteredData = foodsData.filter((item) => {
       if (hasFoodProperty(item)) {
-        return item.food.toLowerCase().includes(keyword.toLowerCase());
+        return item.food.toLowerCase().includes(keyword.trim().toLowerCase());
       }
 
       return false;
