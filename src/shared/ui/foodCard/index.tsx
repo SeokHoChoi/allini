@@ -4,6 +4,7 @@ import Treats from "@assets/icons/treats.svg";
 import Dog from "@assets/icons/dog.svg";
 import Food from "@assets/icons/food.svg";
 import Badge from "@ui/badge";
+import TmpImg from "@assets/images/allini/pg2.jpeg";
 
 interface FoodCardProps {
   data: {
@@ -24,7 +25,7 @@ export default function FoodCard({ data, className }: FoodCardProps) {
     <li className={clsx(styles.foodCard, className)}>
       <div className={clsx(styles.imageContainer)}>
         <img
-          src={imageSrc || "@assets/images/allini/testimg.jpeg"}
+          src={imageSrc || TmpImg}
           alt="Dog Food"
           className={clsx(styles.foodImage)}
         />
