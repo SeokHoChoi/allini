@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import Treats from "@assets/icons/treats.svg";
+import Dog from "@assets/icons/dog.svg";
 import Food from "@assets/icons/food.svg";
 import Badge from "@ui/badge";
 
@@ -40,6 +41,8 @@ export default function FoodCard({ data, className }: FoodCardProps) {
           <div className={clsx(styles.ingredients)}>
             {ingredients.join(", ")}
           </div>
+
+          <Dog className={clsx(styles.bgDog)} />
         </div>
       </div>
     </div>
