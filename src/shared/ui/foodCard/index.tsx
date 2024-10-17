@@ -24,7 +24,7 @@ export default function FoodCard({ data, className }: FoodCardProps) {
     <li className={clsx(styles.foodCard, className)}>
       <div className={clsx(styles.imageContainer)}>
         <img
-          src={imageSrc || "/path/to/placeholder-image.png"}
+          src={imageSrc || "@assets/images/allini/testimg.jpeg"}
           alt="Dog Food"
           className={clsx(styles.foodImage)}
         />
