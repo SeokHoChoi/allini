@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import styles from "./index.module.scss";
-import { useCharacterSelector } from "@hooks/useCharacterSelector";
 
 interface Characters {
   path: string;
