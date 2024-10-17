@@ -20,24 +20,26 @@ export default function FoodCard({ data, className }: FoodCardProps) {
 
   return (
     <div className={clsx(styles.foodCard, className)}>
-      <div className={styles.imageContainer}>
+      <div className={clsx(styles.imageContainer)}>
         <img
           src={imageSrc || "/path/to/placeholder-image.png"}
           alt="Dog Food"
-          className={styles.foodImage}
+          className={clsx(styles.foodImage)}
         />
-        <div className={styles.labelIcon}>
+        <div className={clsx(styles.labelIcon)}>
           <Food />
           <Treats />
         </div>
       </div>
-      <div className={styles.infoContainer}>
+      <div className={clsx(styles.infoContainer)}>
         <Badge labels={labels} />
 
-        <div className={styles.details}>
-          <div className={styles.brand}>{brand}</div>
-          <div className={styles.foodName}>{foodName}</div>
-          <div className={styles.ingredients}>{ingredients.join(", ")}</div>
+        <div className={clsx(styles.details)}>
+          <div className={clsx(styles.brand)}>{brand}</div>
+          <div className={clsx(styles.foodName)}>{foodName}</div>
+          <div className={clsx(styles.ingredients)}>
+            {ingredients.join(", ")}
+          </div>
         </div>
       </div>
     </div>
