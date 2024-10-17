@@ -43,19 +43,20 @@ export default function AllList() {
     <div className={clsx(styles.allListArea)}>
       <div>검색</div>
 
-      <ul>
-        <FoodCard
-          data={{
-            imageSrc: "",
-            labels: ["알레르기", "선호도"],
-            brand: "페스룸",
-            foodName: "칠면조말랭이",
-            ingredients: ["고기", "곡류"],
-          }}
-          className={""}
-        />
+      <ul className={clsx(styles.listWrapper)}>
         {foods.map((food) => (
-          <li key={food.id}>{food.content}</li>
+          <FoodCard
+            key={food.id}
+            data={{
+              id: food.id,
+              imageSrc: "",
+              labels: ["알레르기", "선호도"],
+              brand: "페스룸",
+              foodName: "칠면조말랭이",
+              ingredients: ["고기", "곡류"],
+            }}
+            className={""}
+          />
         ))}
       </ul>
     </div>
