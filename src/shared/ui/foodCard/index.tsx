@@ -7,6 +7,7 @@ import Badge from "@ui/badge";
 
 interface FoodCardProps {
   data: {
+    id: string | number;
     imageSrc?: string;
     labels: string[];
     brand: string;
@@ -17,10 +18,10 @@ interface FoodCardProps {
 }
 
 export default function FoodCard({ data, className }: FoodCardProps) {
-  const { imageSrc, labels, brand, foodName, ingredients } = data;
+  const { id, imageSrc, labels, brand, foodName, ingredients } = data;
 
   return (
-    <div className={clsx(styles.foodCard, className)}>
+    <li className={clsx(styles.foodCard, className)}>
       <div className={clsx(styles.imageContainer)}>
         <img
           src={imageSrc || "/path/to/placeholder-image.png"}
@@ -45,6 +46,6 @@ export default function FoodCard({ data, className }: FoodCardProps) {
           <Dog className={clsx(styles.bgDog)} />
         </div>
       </div>
-    </div>
+    </li>
   );
 }
