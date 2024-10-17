@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useApi } from "@contexts/apiContext";
 import FoodCard from "@ui/foodCard";
+import Search from "@assets/icons/search.svg";
 
 interface Snack {
   id: number;
@@ -42,7 +43,10 @@ export default function AllList() {
   return (
     <div className={clsx(styles.allListArea)}>
       <div className={clsx(styles.searchWrapper)}>
-        <div>찾는 사료/간식이 없나요?</div>
+        <div className={clsx(styles.textWrapper)}>
+          <Search />
+          <span>찾는 사료/간식이 없나요?</span>
+        </div>
         <button>등록하기</button>
       </div>
 
