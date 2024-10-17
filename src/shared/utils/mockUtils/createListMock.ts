@@ -25,7 +25,6 @@ export const createListMock = (
     const feedIndex = Math.floor(Math.random() * feedsArr.length);
     const contentIndex = Math.floor(Math.random() * contentsArr.length);
     const allergy = Math.random() >= 0.5; // 50% chance of being true
-
     const isSnack = feed === "snack";
     const itemContent = `${i + 1} - ${contentsArr[contentIndex]}`;
     const feedValue = `${i + 1} - ${feedsArr[feedIndex]}`;
