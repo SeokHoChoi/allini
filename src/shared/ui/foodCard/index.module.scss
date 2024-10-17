@@ -1,0 +1,87 @@
+@use "@styles/base/mixins" as *;
+
+.foodCard {
+  display: flex;
+  max-width: calc(119px + (100% - 151px));
+  width: 100%;
+  height: 125px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+
+  .imageContainer {
+    width: 119px;
+    min-width: 119px;
+    position: relative;
+    background-color: #dadbde;
+    overflow: hidden;
+
+    .foodImage {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px 0 0 8px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .labelIcon {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      width: 52px;
+      height: 24px;
+      display: flex;
+      gap: 4px;
+    }
+
+    &:hover .foodImage {
+      transform: scale(1.1);
+    }
+  }
+
+  .infoContainer {
+    background-color: #fff;
+    min-width: 224px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    gap: 10px;
+
+    .badges {
+      display: flex;
+      gap: 8px;
+
+      .badge {
+        background-color: #e0e0e0;
+        border-radius: 12px;
+        font-size: 10px;
+      }
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+
+      .brand,
+      .foodName,
+      .ingredients {
+        font-size: 12px;
+        margin: 4px 0;
+      }
+
+      .brand {
+        @include pretendard-medium;
+      }
+
+      .ingredients {
+        @include pretendard-regular;
+      }
+
+      .foodName {
+        @include pretendard-semibold;
+        font-size: 14px;
+      }
+    }
+  }
+}

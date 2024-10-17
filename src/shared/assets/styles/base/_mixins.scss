@@ -30,6 +30,10 @@
   font-family: "Pretendard Bold", sans-serif;
 }
 
+@mixin pretendard-semibold {
+  font-family: "Pretendard SemiBold", sans-serif;
+}
+
 @mixin pretendard-medium {
   font-family: "Pretendard Medium", sans-serif;
 }

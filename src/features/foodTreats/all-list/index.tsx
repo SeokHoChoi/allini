@@ -1,6 +1,9 @@
+import clsx from "clsx";
+import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useApi } from "@contexts/apiContext";
+import FoodCard from "@ui/foodCard";
 
 interface Snack {
   id: number;
@@ -37,10 +40,24 @@ export default function AllList() {
   }
 
   return (
-    <ul>
-      {foods.map((food) => (
-        <li key={food.id}>{food.content}</li>
-      ))}
-    </ul>
+    <div className={clsx(styles.allListArea)}>
+      <div>검색</div>
+
+      <ul>
+        <FoodCard
+          data={{
+            imageSrc: "",
+            labels: ["알레르기", "선호도"],
+            brand: "페스룸",
+            foodName: "칠면조말랭이",
+            ingredients: ["고기", "곡류"],
+          }}
+          className={""}
+        />
+        {foods.map((food) => (
+          <li key={food.id}>{food.content}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
