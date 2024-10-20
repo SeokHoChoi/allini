@@ -1,15 +1,29 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import clsx from "clsx";
+import { EventInput } from "@fullcalendar/core";
 
-export default function CalendarCore() {
+interface CalendarCoreProps {
+  events?: EventInput[];
+  className?: string;
+}
+
+export default function CalendarCore({
+  events = [],
+  className = "",
+}: CalendarCoreProps) {
   return (
-    <FullCalendar
-      plugins={[dayGridPlugin]}
-      initialView="dayGridMonth"
-      events={[
-        { title: "Event 1", date: "2024-06-01" },
-        { title: "Event 2", date: "2024-06-07" },
-      ]}
-    />
+    <div className={clsx(className)}>
+      <FullCalendar
+        plugins={[dayGridPlugin]}
+        initialView="dayGridMonth"
+        headerToolbar={{
+          left: "prev",
+          center: "title",
+          right: "next",
+        }}
+        events={events}
+      />
+    </div>
   );
 }
