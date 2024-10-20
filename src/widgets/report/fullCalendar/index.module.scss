@@ -1,0 +1,48 @@
+.customCalendar {
+  :global {
+    .fc-header-toolbar {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1em 0;
+    }
+
+    .fc-toolbar-chunk {
+      display: flex;
+      align-items: center;
+    }
+
+    .fc-prev-button,
+    .fc-next-button {
+      background: none;
+      border: none;
+      color: #393a3e;
+      font-size: 1rem;
+      padding: 0.5rem;
+
+      &:hover {
+        background: none;
+        color: #393a3e;
+        opacity: 0.7;
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:active {
+        background: none !important;
+        border: none !important;
+        color: #393a3e !important;
+        opacity: 0.9;
+        box-shadow: none !important;
+      }
+    }
+
+    .fc-toolbar-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0 8px;
+    }
+  }
+}
