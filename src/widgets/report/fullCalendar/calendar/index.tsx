@@ -23,6 +23,16 @@ export default function CalendarCore({
           right: "next",
         }}
         events={events}
+        dayCellContent={(arg) => {
+          return (
+            <div className={"dayCell"}>
+              {arg.dayNumberText.replace("일", "")}
+            </div>
+          );
+        }}
+        dayMaxEventRows={1}
+        height="auto"
+        locale="kr"
       />
     </div>
   );
