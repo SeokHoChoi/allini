@@ -31,7 +31,7 @@ export default function AllList() {
 
   useEffect(() => {
     api
-      .searchSnack(`?domain=all&query=${query}`)
+      .searchSnack(`?domain=all&query=${query || ""}`)
       .then((res) => setFoods(res))
       .catch((error) => setError(error));
   }, [api, query]);

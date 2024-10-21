@@ -1,6 +1,8 @@
 import CalendarCore from "./calendar";
 import clsx from "clsx";
 import styles from "./index.module.scss";
+import OpenCalendar from "@assets/icons/open-calendar.svg";
+import CloseCalendar from "@assets/icons/close-calendar.svg";
 import { useState } from "react";
 
 export default function Calendar() {
@@ -11,9 +13,9 @@ export default function Calendar() {
   };
 
   return (
-    <>
-      <button onClick={toggleCalendar}>
-        {isCollapsed ? "Expand Calendar" : "Collapse Calendar"}
+    <div className={clsx(styles.calendarArea)}>
+      <button onClick={toggleCalendar} className={clsx(styles.toggleCalendar)}>
+        {isCollapsed ? <OpenCalendar /> : <CloseCalendar />}
       </button>
       <CalendarCore
         className={clsx(styles.customCalendar, {
@@ -27,6 +29,6 @@ export default function Calendar() {
         ]}
         isCollapsed={isCollapsed}
       />
-    </>
+    </div>
   );
 }
