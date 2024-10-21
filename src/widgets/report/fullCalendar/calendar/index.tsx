@@ -70,7 +70,7 @@ export default function CalendarCore({
           return DAY_NAMES[arg.date.getDay()];
         }}
         dayMaxEventRows={isCollapsed ? 0 : 1}
-        height={isCollapsed ? "200px" : "auto"}
+        height={isCollapsed ? "110px" : "auto"}
         locale="kr"
       />
     </div>
