@@ -7,8 +7,9 @@ export default function Calendar() {
     <CalendarCore
       className={clsx(styles.customCalendar)}
       events={[
-        { title: "Event 1", date: "2024-06-01" },
-        { title: "Event 2", date: "2024-06-07" },
+        { title: "Test Event 1 - This is..", date: "2024-10-01" },
+        { title: "Event 2", date: "2024-10-07" },
+        { title: "Event 3", date: "2024-10-07" },
       ]}
     />
   );

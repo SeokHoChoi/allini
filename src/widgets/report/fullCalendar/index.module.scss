@@ -1,10 +1,34 @@
+@use "@styles/base/mixins" as *;
+
 .customCalendar {
   :global {
     .fc-header-toolbar {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding: 1em 0;
+    }
+
+    .fc-col-header-cell-cushion {
+      text-transform: uppercase;
+    }
+
+    .fc-day-sun .fc-col-header-cell-cushion {
+      color: #e8805f;
+    }
+
+    .fc-day-sat .fc-col-header-cell-cushion {
+      color: #639cd9;
+    }
+
+    .fc-col-header-cell:not(.fc-day-sat):not(.fc-day-sun)
+      .fc-col-header-cell-cushion {
+      color: #7b7e86;
+    }
+
+    // 숫자 셀
+    .fc-daygrid-day-number {
+      color: #393a3e;
+      font-size: 14px;
     }
 
     .fc-toolbar-chunk {
@@ -39,10 +63,125 @@
       }
     }
 
+    // 월 제목 스타일 조정
     .fc-toolbar-title {
-      font-size: 1.1rem;
-      font-weight: bold;
+      @include pretendard-semibold;
+      font-size: 1rem;
       margin: 0 8px;
     }
+
+    // 오늘날짜 표시
+    .fc-day-today {
+      background-color: transparent !important;
+
+      .fc-daygrid-day-number {
+        background-color: #00b896;
+        color: #ffffff;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .fc-day-today:not(.fc-day-other) {
+      background-color: transparent !important;
+    }
+
+    // 테두리와 격자 선 제거
+    .fc-theme-standard td,
+    .fc-theme-standard th {
+      border: none;
+    }
+
+    .fc-theme-standard .fc-scrollgrid {
+      border: none;
+    }
+
+    // 날짜 셀 간격 조정
+    .fc-daygrid-day-frame {
+      padding: 0px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    // 요일 헤더 스타일 조정
+    .fc-col-header-cell {
+      padding: 0;
+      font-size: 10px;
+    }
+
+    // 이벤트 관련 스타일 수정
+    .fc-daygrid-day-events {
+      margin: 0;
+      min-height: 0 !important;
+      padding: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    // 이벤트 박스 배경색 조정
+    .fc-event {
+    }
+
+    .fc-event-title-container {
+      display: flex;
+      align-items: center;
+    }
+
+    // 이벤트가 있는 경우에만 표시
+    .fc-event-title {
+      max-width: 55px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 5px;
+      font-size: 0.8em;
+    }
+
+    .fc-daygrid-event-harness {
+      margin-top: 1px;
+    }
+
+    // 이벤트 점 스타일 조정
+    .fc-daygrid-event-dot {
+      margin: 0 4px 0 0;
+    }
+
+    // 더보기(+more) 링크 스타일 조정
+    .fc-more-link {
+      font-size: 0.85em;
+      color: #666;
+      text-decoration: none;
+      margin-top: 1px;
+      display: block;
+    }
+
+    // 셀 내부 컨텐츠 정렬 (날짜와 이벤트 사이 간격 조정)
+    .fc-daygrid-day-frame {
+      min-height: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .fc-daygrid-day-events {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
+}
+
+.dayCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
