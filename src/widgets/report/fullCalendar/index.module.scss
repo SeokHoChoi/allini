@@ -183,6 +183,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      margin: 0 !important;
     }
   }
 
@@ -229,6 +230,14 @@
 
     .fc-day-today:not(.fc-day-other) {
       background-color: transparent !important;
+    }
+
+    .fc-view-harness {
+      width: 100% !important;
+    }
+
+    .fc-scrollgrid-sync-table {
+      width: 100% !important;
     }
   }
 }

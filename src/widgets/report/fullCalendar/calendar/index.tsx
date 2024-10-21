@@ -91,7 +91,7 @@ export default function CalendarCore({
           return DAY_NAMES[arg.date.getDay()];
         }}
         dayMaxEventRows={isCollapsed ? 0 : 1}
-        height={isCollapsed ? "110px" : "auto"}
+        height={isCollapsed ? "100px" : "auto"}
         locale="kr"
         titleFormat={titleFormatter}
       />
