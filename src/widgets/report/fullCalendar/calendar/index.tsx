@@ -24,11 +24,13 @@ export default function CalendarCore({
 
   useEffect(() => {
     const newView = isCollapsed ? "dayGridWeek" : "dayGridMonth";
+    setCurrentView(newView);
 
-    if (calendarRef.current) {
-      setCurrentView(newView);
-      calendarRef.current.getApi().changeView(newView);
-    }
+    setTimeout(() => {
+      if (calendarRef.current) {
+        calendarRef.current.getApi().changeView(newView);
+      }
+    }, 0);
   }, [isCollapsed]);
 
   return (
