@@ -6,6 +6,9 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      margin: 0 !important;
+      padding-left: 0.5em;
+      color: #393a3e;
     }
 
     .fc-col-header-cell-cushion {
@@ -70,26 +73,31 @@
       margin: 0 8px;
     }
 
-    // 오늘날짜 표시
-    .fc-day-today {
-      background-color: transparent !important;
+    // dayGridWeek View에서 date에 적용
+    .custom-day-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
 
-      .fc-daygrid-day-number {
+    .dayCell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 34px;
+      width: 34px;
+
+      &.today {
         background-color: #00b896;
         color: #ffffff;
         border-radius: 50%;
-        width: 34px;
-        height: 34px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
 
-    .fc-day-today:not(.fc-day-other) {
+    .fc-day-today {
       background-color: transparent !important;
     }
-
     // 테두리와 격자 선 제거
     .fc-theme-standard td,
     .fc-theme-standard th {
@@ -112,7 +120,7 @@
 
     // 요일 헤더 스타일 조정
     .fc-col-header-cell {
-      padding: 0;
+      padding-bottom: 1.2em;
       font-size: 10px;
     }
 
@@ -177,6 +185,20 @@
       justify-content: center;
     }
   }
+
+  &.collapsed {
+    height: auto;
+    overflow: auto;
+
+    .fc-daygrid-day-frame {
+      min-height: 40px;
+    }
+
+    .fc-col-header-cell {
+      vertical-align: top;
+      padding-top: 0.5em;
+    }
+  }
 }
 
 .dayCell {
@@ -184,4 +206,29 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+// dayGridMonth View 에서의 date
+.calendarExpanded {
+  :global {
+    // 오늘날짜 표시
+    .fc-day-today:not(.fc-col-header-cell) {
+      background-color: transparent !important;
+
+      .fc-daygrid-day-number {
+        background-color: #00b896;
+        color: #ffffff;
+        border-radius: 50%;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .fc-day-today:not(.fc-day-other) {
+      background-color: transparent !important;
+    }
+  }
 }
