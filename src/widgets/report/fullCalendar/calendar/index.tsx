@@ -3,6 +3,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import clsx from "clsx";
 import { EventInput } from "@fullcalendar/core";
 import { useEffect, useRef, useState } from "react";
+import { VerboseFormattingArg } from "@fullcalendar/core/internal";
 
 interface CalendarCoreProps {
   events?: EventInput[];
@@ -32,6 +33,26 @@ export default function CalendarCore({
       }
     }, 0);
   }, [isCollapsed]);
+
+  const titleFormatter = (date: VerboseFormattingArg) => {
+    const year = date.date.year;
+    const month = date.date.month + 1; // 0부터 시작하므로 1을 더해줍니다.
+
+    // dayGridWeek일 경우
+    if (currentView === "dayGridWeek") {
+      const start = date.start; // 시작 날짜
+      const end = date.end; // 끝 날짜
+      const startDate = `${start.year}.${String(start.month + 1).padStart(
+        2,
+        "0"
+      )}.${String(start.day).padStart(2, "0")}`;
+      const endDate = `${String(end?.day).padStart(2, "0")}`;
+      return `${startDate} - ${endDate}`;
+    } else {
+      // dayGridWeek이 아닐 경우
+      return `${year}.${String(month).padStart(2, "0")}`;
+    }
+  };
 
   return (
     <div className={clsx(className)}>
@@ -72,6 +93,7 @@ export default function CalendarCore({
         dayMaxEventRows={isCollapsed ? 0 : 1}
         height={isCollapsed ? "110px" : "auto"}
         locale="kr"
+        titleFormat={titleFormatter}
       />
     </div>
   );
