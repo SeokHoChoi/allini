@@ -14,12 +14,12 @@ const FeedingStatus = ({
 
   return (
     <div className={clsx(styles.container)}>
-      {/* Time of Day */}
-      <span className={clsx(styles.timeIndicator)}>
-        {isAM ? "오전" : "오후"}
-      </span>
+      <div className={clsx(styles.indicatorWrapper)}>
+        <span className={clsx(styles.timeIndicator)}>
+          {isAM ? "오전" : "오후"}
+        </span>
+      </div>
 
-      {/* Progress Circle */}
       <div className={clsx(styles.progressWrapper)}>
         <svg viewBox="0 0 100 100" className={clsx(styles.progressCircle)}>
           {/* Background Circle */}
@@ -44,13 +44,13 @@ const FeedingStatus = ({
           />
         </svg>
 
-        {/* Percentage Text */}
         <div className={clsx(styles.percentageWrapper)}>
           <span className={clsx(styles.percentageText)}>{percentage}%</span>
         </div>
       </div>
 
-      {/* Feeding Status */}
+      <div className={clsx(styles.line)}></div>
+
       <div className={clsx(styles.statusWrapper)}>
         <StatusItem
           label={"사료"}
@@ -66,7 +66,6 @@ const FeedingStatus = ({
         />
       </div>
 
-      {/* Add Food Button */}
       <button
         onClick={!isComplete ? onAddFood : undefined}
         className={clsx(styles.addButton, {
@@ -75,7 +74,7 @@ const FeedingStatus = ({
         })}
         disabled={isComplete}
       >
-        음식 추가하기
+        {isComplete ? "배불러! *ฅ•ﻌ•ฅ*" : "밥 주세요! 🥦"}
       </button>
     </div>
   );
@@ -99,17 +98,17 @@ const StatusItem = ({
   return (
     <div className={clsx(styles.statusItem)}>
       <span className={clsx(styles.label)}>{label}</span>
-      <span className={clsx(styles.value)}>
+      <div className={clsx(styles.value)}>
         {isSnack && count === 0 ? (
-          <div>x</div>
+          <span className={clsx(styles.fraction)}>X</span>
         ) : (
           <div>
             <span>{count}</span>
-            <span>/</span>
-            <span>{maxCount}</span>
+            <span className={clsx(styles.fraction)}>/</span>
+            <span className={clsx(styles.fraction)}>{maxCount}</span>
           </div>
         )}
-      </span>
+      </div>
     </div>
   );
 };

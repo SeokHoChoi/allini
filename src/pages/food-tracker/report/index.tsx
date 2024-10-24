@@ -14,7 +14,7 @@ export default function Report() {
         <WrapperBox>
           <FeedingStatus
             isAM={true}
-            percentage={20}
+            percentage={100}
             mealCount={2}
             maxMealCount={2}
             snackCount={0}
