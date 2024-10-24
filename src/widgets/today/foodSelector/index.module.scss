@@ -34,3 +34,13 @@
     padding-bottom: 10px;
   }
 }
+
+@media (max-width: 345px) {
+  .SelectorArea {
+    margin-right: 5px;
+
+    button {
+      width: 162px;
+    }
+  }
+}
