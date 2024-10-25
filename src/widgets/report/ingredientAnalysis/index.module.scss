@@ -1,0 +1,87 @@
+// IngredientAnalysis.module.scss
+.container {
+  padding: 1rem;
+  max-width: 36rem;
+}
+
+.title {
+  color: #393a3e;
+  font-size: 16px;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.barGraphContainer {
+  display: flex;
+  height: 12px;
+  gap: 4px;
+}
+
+.bar {
+  border-radius: 6px;
+  height: 12px;
+  transition: width 0.3s ease;
+}
+
+.ingredientsList {
+  border-bottom: 1px solid #f3f3f4;
+  padding: 1rem 0;
+}
+
+.ingredientItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.ingredientInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.colorDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.ingredientName {
+  color: #393a3e;
+  font-size: 14px;
+}
+
+.percentage {
+  color: #393a3e;
+  font-size: 14px;
+}
+
+.allergyLevels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.allergyItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.allergyDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.allergyLabel {
+  color: #4f4f4f;
+  font-size: 10px;
+}
