@@ -53,7 +53,16 @@ export default function Home() {
 
   return (
     <div className={clsx(styles.homeArea)}>
-      <div className={clsx(styles.intro)}>상단</div>
+      <div className={clsx(styles.intro)}>
+        <div className={clsx(styles.infoWrapper)}>
+          <h2 className={clsx(styles.infoText)}>
+            <p>가장 스마트한</p>
+            <p>강아지 알레르기 관리,</p>
+          </h2>
+          <h2 className={clsx(styles.infoTitle)}>알리니</h2>
+          <button>지금 시작하기</button>
+        </div>
+      </div>
       <div className={clsx(styles.contentWrapper)}>
         <div className={clsx(styles.middleContent)}>
           <h3>사료나 간식 정보를 기록해요</h3>
