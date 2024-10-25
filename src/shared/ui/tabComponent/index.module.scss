@@ -6,6 +6,7 @@
   min-width: 375px;
   max-width: 430px;
   overflow-y: scroll;
+  z-index: 9;
 
   .tabWrapper {
     display: flex;

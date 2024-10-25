@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import SearchPanel from "@ui/searchPanel";
 import useDebounce from "@hooks/useDebounce";
 import { useApi } from "@contexts/apiContext";
+import clsx from "clsx";
+import styles from "./index.module.scss";
 
 interface ItemBase {
   id: number;
@@ -49,15 +51,19 @@ export default function Home() {
   }, [searched, searchType]);
 
   return (
-    <div>
-      <SearchPanel<SnackOrFood>
+    <div className={clsx(styles.homeArea)}>
+      <div className={clsx(styles.intro)}>상단</div>
+      <div>중단</div>
+      <div>하단</div>
+      {/* TODO: 디자인 시안 완성 후 사용여부 결정 */}
+      {/* <SearchPanel<SnackOrFood>
         storageKey={"home"}
         keyword={keyword}
         itemsList={searchList}
         changeSearchType={handleSearchType}
         onChange={handleSearch}
         searchType={searchType}
-      />
+      /> */}
     </div>
   );
 }
