@@ -4,9 +4,19 @@
   width: 100%;
   padding: 0 16px;
   overflow: hidden;
+
+  .selectorArea {
+    width: fit-content;
+    margin: 20px auto;
+  }
 }
 
 .statusWrapper {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.wrappBoxArea {
+  margin-bottom: 12px;
 }

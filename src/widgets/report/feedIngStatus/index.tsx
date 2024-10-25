@@ -74,7 +74,7 @@ const FeedingStatus = ({
         })}
         disabled={isComplete}
       >
-        {isComplete ? "배불러! *ฅ•ﻌ•ฅ*" : "밥 주세요! 🥦"}
+        {isComplete ? "배불러! ฅ•ﻌ•ฅ" : "음식 추가하기"}
       </button>
     </div>
   );
