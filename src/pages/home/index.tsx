@@ -4,6 +4,7 @@ import useDebounce from "@hooks/useDebounce";
 import { useApi } from "@contexts/apiContext";
 import clsx from "clsx";
 import styles from "./index.module.scss";
+import Footer from "@widgets/footer";
 
 interface ItemBase {
   id: number;
@@ -63,7 +64,9 @@ export default function Home() {
           {/* TODO:  사료/간식 정보 기록하는 화면에 대한 이미지 추가 예정 */}
           <div className={clsx(styles.infoImgWrapper)}>추후 이미지 추가</div>
         </div>
-        <div className={clsx(styles.bottomContent)}>하단</div>
+      </div>
+      <div className={clsx(styles.bottomContent)}>
+        <Footer />
       </div>
       {/* TODO: 디자인 시안 완성 후 사용여부 결정 */}
       {/* <SearchPanel<SnackOrFood>

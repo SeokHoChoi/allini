@@ -43,8 +43,10 @@
         height: 197px;
       }
     }
-
-    .bottomContent {
-    }
+  }
+  .bottomContent {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 }
