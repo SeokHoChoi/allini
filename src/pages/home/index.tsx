@@ -53,8 +53,17 @@ export default function Home() {
   return (
     <div className={clsx(styles.homeArea)}>
       <div className={clsx(styles.intro)}>상단</div>
-      <div>중단</div>
-      <div>하단</div>
+      <div className={clsx(styles.contentWrapper)}>
+        <div className={clsx(styles.middleContent)}>
+          <p>사료나 간식 정보를 기록해요</p>
+          <p>
+            강아지가 먹은 사료나 간식에 대한 정보를 입력하고 저장해보세요. 한 번
+            입력된 제품은 이후에도 쉽게 선택해서 사용할 수 있어요.
+          </p>
+          <div>추후 이미지 추가</div>
+        </div>
+        <div className={clsx(styles.bottomContent)}>하단</div>
+      </div>
       {/* TODO: 디자인 시안 완성 후 사용여부 결정 */}
       {/* <SearchPanel<SnackOrFood>
         storageKey={"home"}

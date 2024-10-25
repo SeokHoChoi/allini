@@ -12,4 +12,15 @@
     background-repeat: no-repeat;
     background-size: contain;
   }
+
+  .contentWrapper {
+    position: relative; // .intro의 absolute를 대비해 새로운 쌓임 맥락 생성
+    padding-top: calc(100% * 0.75); // intro 이미지의 비율만큼 패딩 추가
+
+    .middleContent {
+    }
+
+    .bottomContent {
+    }
+  }
 }
