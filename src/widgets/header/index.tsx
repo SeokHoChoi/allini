@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./index.module.scss";
-import LOGO from "@images/allini/logo_header.png";
-import ALLINI from "@images/allini/allini_header.png";
+import Allini from "@assets/icons/allini-h.svg";
 import HeaderLayout from "@layouts/headerLayout";
 import MobileHeader from "./mobileHeader";
 
 export default function Header() {
+  const location = useLocation();
+
+  const logoColor = location.pathname === "/" ? "#fff" : "#00B896";
+
   return (
     <HeaderLayout>
       <li>
         <h1>
           <Link className={styles.logoWrapper} to="/">
-            <img src={LOGO} alt="Allini" />
-            <img src={ALLINI} alt="알리니" />
+            <Allini color={logoColor} />
           </Link>
         </h1>
       </li>

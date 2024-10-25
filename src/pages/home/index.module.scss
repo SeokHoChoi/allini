@@ -1,0 +1,15 @@
+.homeArea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .intro {
+    background-image: url("@assets/images/allini/home-bg.png");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -53px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
