@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Hamburger from "@assets/icons/hamburger.svg";
 import Search from "@assets/icons/search-h.svg";
 import X from "@assets/icons/x.svg";
@@ -23,16 +23,16 @@ export default function MobileHeader() {
   return (
     <ul className={clsx(styles.mobileNavWrapper)}>
       <li>
-        <button>
-          {isOpen ? (
-            <div className={clsx(styles.loginBtnWrapper)}>
-              <span>로그인</span>
-              <Lock />
-            </div>
-          ) : (
+        {isOpen ? (
+          <Link to="/login" className={clsx(styles.loginBtnWrapper)}>
+            <span>로그인</span>
+            <Lock />
+          </Link>
+        ) : (
+          <button>
             <Search color={homeSVGColor} />
-          )}
-        </button>
+          </button>
+        )}
       </li>
       <li>
         <button onClick={toggleSidebar}>
