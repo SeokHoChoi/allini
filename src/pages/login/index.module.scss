@@ -63,12 +63,21 @@
       border: none;
       outline: none;
       background-color: #f3f3f4;
+      width: 100%;
     }
 
     .passwordInputWrapper {
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .passwordToggle {
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 9.5px;
     }
 
     @mixin placeholder($bg-url: "@images/etc/user.png") {

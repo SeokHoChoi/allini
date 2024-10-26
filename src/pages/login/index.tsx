@@ -1,3 +1,4 @@
+import { useState } from "react";
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import LOGO from "@images/allini/login_logo.png";
@@ -8,6 +9,12 @@ import Invisible from "@assets/icons/pw-invisible.svg";
 import Visible from "@assets/icons/pw-visible.svg";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setShowPassword(!showPassword);
+  };
   return (
     <section className={styles.loginArea}>
       <div className={styles.welcomeWrapper}>
@@ -35,11 +42,18 @@ export default function Login() {
             <div className={styles.passwordInputWrapper}>
               <input
                 className={clsx(styles.passwordInput)}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="비밀번호"
                 required
               />
+              <button
+                className={styles.passwordToggle}
+                onClick={togglePasswordVisibility}
+                type="button"
+              >
+                {showPassword ? <Visible /> : <Invisible />}
+              </button>
             </div>
           </div>
           <button className={styles.loginButton} type="submit">
