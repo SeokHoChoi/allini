@@ -2,8 +2,8 @@ import { useState } from "react";
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import LOGO from "@images/allini/login_logo.png";
-import GOGLE from "@images/social/gogle.png";
-import KAKAO from "@images/social/kakao.png";
+import Google from "@assets/icons/google.svg";
+import Kakao from "@assets/icons/kakao.svg";
 import ALLINI from "@images/allini/allini_text.png";
 import Invisible from "@assets/icons/pw-invisible.svg";
 import Visible from "@assets/icons/pw-visible.svg";
@@ -202,10 +202,10 @@ export default function Login() {
         </div>
         <div className={styles.socialLoginWrapper}>
           <button className={styles.googleLogin}>
-            <img src={GOGLE} alt="구글 로그인" />
+            <Google />
           </button>
           <button className={styles.kakaoLogin}>
-            <img src={KAKAO} alt="카카오 로그인" />
+            <Kakao />
           </button>
         </div>
       </div>
