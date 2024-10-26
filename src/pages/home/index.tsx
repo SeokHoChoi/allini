@@ -5,6 +5,7 @@ import { useApi } from "@contexts/apiContext";
 import clsx from "clsx";
 import styles from "./index.module.scss";
 import Footer from "@widgets/footer";
+import { Link } from "react-router-dom";
 
 interface ItemBase {
   id: number;
@@ -60,7 +61,7 @@ export default function Home() {
             <p>강아지 알레르기 관리,</p>
           </h2>
           <h2 className={clsx(styles.infoTitle)}>알리니</h2>
-          <button>지금 시작하기</button>
+          <Link to="/login">지금 시작하기</Link>
         </div>
       </div>
       <div className={clsx(styles.contentWrapper)}>
