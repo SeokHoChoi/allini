@@ -6,6 +6,7 @@ export default class AlliniApi {
     this.getSnackById = this.getSnackById.bind(this);
     this.searchFood = this.searchFood.bind(this);
     this.getFoodById = this.getFoodById.bind(this);
+    this.login = this.login.bind(this);
   }
 
   async searchSnack(query: string) {
@@ -22,5 +23,13 @@ export default class AlliniApi {
 
   async getFoodById(foodId: string) {
     return this.httpClient.get(`/foods/${foodId}`);
+  }
+
+  async login(email: string, password: string) {
+    const response = await this.httpClient.post("/login", {
+      email,
+      password,
+    });
+    return response;
   }
 }
