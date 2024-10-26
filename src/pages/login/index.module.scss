@@ -1,7 +1,8 @@
 .loginArea {
   width: 100%;
   margin: 0 auto;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   padding: 0 16px;
   flex-direction: column;
@@ -166,6 +167,18 @@
     border: none;
     background-color: #00b896;
     margin-bottom: 13px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(#00b896, 5%);
+    }
+
+    &.loginButtonDisabled {
+      background-color: #cccccc;
+      opacity: 0.7;
+      pointer-events: none;
+    }
   }
 
   .anotherPageWrapper {
