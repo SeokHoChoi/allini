@@ -1,8 +1,11 @@
+import clsx from "clsx";
 import styles from "./index.module.scss";
 import LOGO from "@images/allini/login_logo.png";
 import GOGLE from "@images/social/gogle.png";
 import KAKAO from "@images/social/kakao.png";
 import ALLINI from "@images/allini/allini_text.png";
+import Invisible from "@assets/icons/pw-invisible.svg";
+import Visible from "@assets/icons/pw-visible.svg";
 
 export default function Login() {
   return (
@@ -29,13 +32,15 @@ export default function Login() {
               placeholder="이메일"
               required
             />
-            <input
-              className={styles.passwordInput}
-              type="password"
-              name="password"
-              placeholder="비밀번호"
-              required
-            />
+            <div className={styles.passwordInputWrapper}>
+              <input
+                className={clsx(styles.passwordInput)}
+                type="password"
+                name="password"
+                placeholder="비밀번호"
+                required
+              />
+            </div>
           </div>
           <button className={styles.loginButton} type="submit">
             로그인
