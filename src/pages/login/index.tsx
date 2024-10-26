@@ -22,6 +22,7 @@ interface ValidationState {
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [validation, setValidation] = useState<ValidationState>({
     email: { isError: false, message: "앗!" },
     password: { isError: false, message: "앗!" },
@@ -31,6 +32,9 @@ export default function Login() {
   /** 로그인 API Handler 임시 구현 */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (isLoading) return;
+
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
@@ -65,6 +69,8 @@ export default function Login() {
       }));
       return;
     }
+
+    setIsLoading(true);
 
     try {
       // TODO: 여기에 로그인 API 호출
@@ -102,6 +108,8 @@ export default function Login() {
           message: "앗! 아이디 또는 비밀번호를 다시 한 번 확인해주세요.",
         },
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -173,8 +181,14 @@ export default function Login() {
             </div>
           </div>
 
-          <button className={styles.loginButton} type="submit">
-            로그인
+          <button
+            className={clsx(styles.loginButton, {
+              [styles.loginButtonDisabled]: isLoading,
+            })}
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "로그인 중..." : "로그인"}
           </button>
         </form>
         <div className={styles.anotherPageWrapper}>
