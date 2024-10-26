@@ -3,11 +3,15 @@ import styles from "./index.module.scss";
 import Allini from "@assets/icons/allini-h.svg";
 import HeaderLayout from "@layouts/headerLayout";
 import MobileHeader from "./mobileHeader";
+import { useSidebar } from "@contexts/sidebarContext";
 
 export default function Header() {
+  const {
+    state: { isOpen },
+  } = useSidebar();
   const location = useLocation();
 
-  const logoColor = location.pathname === "/" ? "#fff" : "#00B896";
+  const logoColor = location.pathname === "/" && !isOpen ? "#fff" : "#00B896";
 
   return (
     <HeaderLayout>

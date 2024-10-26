@@ -6,7 +6,6 @@
   .listWrapper {
     max-width: 1440px;
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,4 +17,11 @@
   backdrop-filter: blur(5px);
   background-color: transparent;
   border-bottom: none;
+}
+
+.sidebarOpen {
+  backdrop-filter: none;
+  background-color: #fff;
+  border-bottom: 1px solid #eaeaea;
+  padding: 3.5px 0;
 }
