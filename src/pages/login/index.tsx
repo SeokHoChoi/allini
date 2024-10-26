@@ -7,9 +7,103 @@ import KAKAO from "@images/social/kakao.png";
 import ALLINI from "@images/allini/allini_text.png";
 import Invisible from "@assets/icons/pw-invisible.svg";
 import Visible from "@assets/icons/pw-visible.svg";
+import { useApi } from "@contexts/apiContext";
+
+interface ValidationState {
+  email: {
+    isError: boolean;
+    message: string;
+  };
+  password: {
+    isError: boolean;
+    message: string;
+  };
+}
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const [validation, setValidation] = useState<ValidationState>({
+    email: { isError: false, message: "앗!" },
+    password: { isError: false, message: "앗!" },
+  });
+  const api = useApi();
+
+  /** 로그인 API Handler 임시 구현 */
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    // 초기화
+    setValidation({
+      email: { isError: false, message: "" },
+      password: { isError: false, message: "" },
+    });
+
+    // 클라이언트 측 유효성 검사
+    if (!email && !password) {
+      setValidation({
+        email: { isError: true, message: "앗! 이메일이거나 잘못 입력했어요." },
+        password: { isError: true, message: "앗! 비밀번호를 입력해주세요." },
+      });
+      return;
+    }
+
+    if (!email) {
+      setValidation((prev) => ({
+        ...prev,
+        email: { isError: true, message: "앗! 이메일이거나 잘못 입력했어요." },
+      }));
+      return;
+    }
+
+    if (!password) {
+      setValidation((prev) => ({
+        ...prev,
+        password: { isError: true, message: "앗! 비밀번호를 입력해주세요." },
+      }));
+      return;
+    }
+
+    try {
+      // TODO: 여기에 로그인 API 호출
+      const response = await api.login(email, password);
+
+      // 임시로 서버 에러 시뮬레이션 (아이디, 비밀번호 별도가 아닌 로그인 실패로 응답 예정)
+      if (response) {
+        setValidation({
+          email: {
+            isError: true,
+            message: "앗! 아이디 또는 비밀번호를 다시 한 번 확인해주세요.",
+          },
+          password: {
+            isError: true,
+            message: "앗! 아이디 또는 비밀번호를 다시 한 번 확인해주세요.",
+          },
+        });
+      } else {
+        // 성공적인 로그인 시 에러 상태 리셋
+        setValidation({
+          email: { isError: false, message: "" },
+          password: { isError: false, message: "" },
+        });
+        // TODO: 리다이렉트 등의 추가 처리
+      }
+    } catch (error) {
+      // 서버 에러 처리
+      setValidation({
+        email: {
+          isError: true,
+          message: "앗! 아이디 또는 비밀번호를 다시 한 번 확인해주세요.",
+        },
+        password: {
+          isError: true,
+          message: "앗! 아이디 또는 비밀번호를 다시 한 번 확인해주세요.",
+        },
+      });
+    }
+  };
 
   const togglePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -30,32 +124,55 @@ export default function Login() {
         </h2>
       </div>
       <div className={styles.loginForm}>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className={styles.inputWrapper}>
-            <input
-              className={styles.emailInput}
-              type="email"
-              name="email"
-              placeholder="이메일"
-              required
-            />
-            <div className={styles.passwordInputWrapper}>
+            <div className={styles.inputContainer}>
               <input
-                className={clsx(styles.passwordInput)}
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="비밀번호"
+                className={clsx(styles.emailInput, {
+                  [styles.errorInput]: validation.email.isError,
+                })}
+                type="email"
+                name="email"
+                placeholder="이메일"
                 required
               />
-              <button
-                className={styles.passwordToggle}
-                onClick={togglePasswordVisibility}
-                type="button"
+              {validation.email.isError && (
+                <p className={styles.errorMessage}>
+                  {validation.email.message}
+                </p>
+              )}
+            </div>
+            <div className={styles.inputContainer}>
+              <div
+                className={clsx(styles.passwordInputWrapper, {
+                  [styles.errorInput]: validation.password.isError,
+                })}
               >
-                {showPassword ? <Visible /> : <Invisible />}
-              </button>
+                <input
+                  className={clsx(styles.passwordInput, {
+                    [styles.errorInput]: validation.email.isError,
+                  })}
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="비밀번호"
+                  required
+                />
+                <button
+                  className={styles.passwordToggle}
+                  onClick={togglePasswordVisibility}
+                  type="button"
+                >
+                  {showPassword ? <Visible /> : <Invisible />}
+                </button>
+              </div>
+              {validation.password.isError && (
+                <p className={styles.errorMessage}>
+                  {validation.password.message}
+                </p>
+              )}
             </div>
           </div>
+
           <button className={styles.loginButton} type="submit">
             로그인
           </button>
