@@ -1,6 +1,28 @@
 .container {
   width: 100%;
 
+  .label {
+    display: none;
+    font-size: 14px;
+    color: #4a4c51;
+    margin-bottom: 8px;
+
+    &.errorLabel {
+      color: #ed2f2f;
+    }
+
+    .required {
+      color: #ed2f2f;
+      margin-left: 2px;
+    }
+  }
+
+  &.signupContainer {
+    .label {
+      display: block;
+    }
+  }
+
   .inputWrapper {
     width: 100%;
     height: 40px;
@@ -13,6 +35,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &.signupInput {
+      border: 1px solid #e1e1e1;
+
+      &:focus-within {
+        border-color: #393a3e;
+      }
+    }
   }
 
   .input {
@@ -35,6 +65,17 @@
       background: url("@images/etc/fail-unlock.png") no-repeat 5px center;
     }
 
+    &.signupInput {
+      &::placeholder {
+        background: none;
+        padding-left: 0;
+      }
+
+      &.errorInput::placeholder {
+        background: none;
+      }
+    }
+
     // Webkit 버전
     &::-webkit-input-placeholder {
       background: url("@images/etc/unlock.png") no-repeat 5px center;
@@ -48,6 +89,15 @@
       background: url("@images/etc/fail-unlock.png") no-repeat 5px center;
     }
 
+    &.signupInput::-webkit-input-placeholder {
+      background: none;
+      padding-left: 0;
+    }
+
+    &.signupInput.errorInput::-webkit-input-placeholder {
+      background: none;
+    }
+
     // MS 버전
     &:-ms-input-placeholder {
       background: url("@images/etc/unlock.png") no-repeat 5px center;
@@ -59,6 +109,15 @@
 
     &.errorInput:-ms-input-placeholder {
       background: url("@images/etc/fail-unlock.png") no-repeat 5px center;
+    }
+
+    &.signupInput:-ms-input-placeholder {
+      background: none;
+      padding-left: 0;
+    }
+
+    &.signupInput.errorInput:-ms-input-placeholder {
+      background: none;
     }
   }
 
