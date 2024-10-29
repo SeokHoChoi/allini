@@ -7,6 +7,7 @@ import Kakao from "@assets/icons/kakao.svg";
 import ALLINI from "@images/allini/allini_text.png";
 import { useApi } from "@contexts/apiContext";
 import FormInput from "@ui/formInput";
+import { Link } from "react-router-dom";
 
 interface ValidationState {
   email: {
@@ -143,7 +144,9 @@ export default function Login() {
           </button>
         </form>
         <div className={styles.anotherPageWrapper}>
-          <button className={styles.signupButton}>회원가입</button>
+          <Link to="/signup" className={styles.signupButton}>
+            회원가입
+          </Link>
           <p>
             {/* Link 태그 or 팝업 버튼으로 변경 예정 */}
             <a className={styles.findAccountBtn} href="/find-account">
