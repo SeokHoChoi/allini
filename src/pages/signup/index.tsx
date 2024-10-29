@@ -11,6 +11,21 @@ export default function Signup() {
         }}
         required
       />
+      <FormInput.PasswordInput
+        error={{
+          isError: true,
+          message: "",
+        }}
+        required
+      />
+      <FormInput.PasswordInput
+        error={{
+          isError: true,
+          message: "",
+        }}
+        required
+        isConfirm
+      />
     </div>
   );
 }

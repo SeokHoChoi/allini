@@ -22,10 +22,13 @@ export default function EmailInput({
   const isSignup = pathname === "/signup";
 
   const getErrorMessage = () => {
+    if (error.message) return error.message;
+
     if (isSignup && error.isDuplicate) {
       return "중복된 이메일입니다.";
     }
-    return error.message;
+
+    return "";
   };
 
   return (
