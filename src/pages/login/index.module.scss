@@ -49,113 +49,6 @@
     align-items: center;
     margin-bottom: 48px;
     gap: 8px;
-
-    .inputContainer {
-      width: 100%;
-    }
-    .emailInput,
-    .passwordInputWrapper {
-      width: 100%;
-      height: 40px;
-      padding-left: 1em;
-      outline: none;
-      border-radius: 10px;
-      background-color: #f3f3f4;
-      border: 1px solid transparent;
-      transition: border-color 0.3s ease;
-      font-size: 14px;
-      color: #393a3e;
-    }
-    .passwordInput {
-      border: none;
-      outline: none;
-      background-color: #f3f3f4;
-      width: 100%;
-    }
-
-    .errorMessage {
-      color: #ed2f2f;
-      font-size: 0.75rem;
-      margin-top: 8px;
-      padding-left: 1em;
-    }
-
-    .errorInput {
-      border-color: #ed2f2f;
-    }
-
-    .passwordInputWrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .passwordToggle {
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-right: 9.5px;
-    }
-
-    @mixin placeholder($bg-url: "@images/etc/user.png", $error: false) {
-      background: url(if($error, "@images/etc/fail-user.png", $bg-url))
-        no-repeat 5px center;
-      color: #bebebe;
-      background-position: 0;
-      font-size: 0.875rem;
-      padding-left: 1.5em;
-    }
-
-    .emailInput::placeholder {
-      @include placeholder("@images/etc/user.png");
-    }
-
-    .emailInput.errorInput::placeholder {
-      @include placeholder("@images/etc/fail-user.png", true);
-    }
-
-    .passwordInput::placeholder {
-      @include placeholder("@images/etc/unlock.png");
-    }
-
-    .passwordInput.errorInput::placeholder {
-      @include placeholder("@images/etc/fail-unlock.png", true);
-    }
-
-    // Webkit 버전
-    .emailInput::-webkit-input-placeholder {
-      @include placeholder("@images/etc/user.png");
-    }
-
-    .emailInput.errorInput::-webkit-input-placeholder {
-      @include placeholder("@images/etc/fail-user.png", true);
-    }
-
-    .passwordInput::-webkit-input-placeholder {
-      @include placeholder("@images/etc/unlock.png");
-    }
-
-    .passwordInput.errorInput::-webkit-input-placeholder {
-      @include placeholder("@images/etc/fail-unlock.png", true);
-    }
-
-    // MS 버전
-    .emailInput:-ms-input-placeholder {
-      @include placeholder("@images/etc/user.png");
-    }
-
-    .emailInput.errorInput:-ms-input-placeholder {
-      @include placeholder("@images/etc/fail-user.png", true);
-    }
-
-    .passwordInput:-ms-input-placeholder {
-      @include placeholder("@images/etc/unlock.png");
-    }
-
-    .passwordInput.errorInput:-ms-input-placeholder {
-      @include placeholder("@images/etc/fail-unlock.png", true);
-    }
   }
 
   .loginButton {
@@ -202,6 +95,7 @@
     color: #777777;
     text-decoration: none;
   }
+
   .socialLoginWrapper {
     display: flex;
     justify-content: center;

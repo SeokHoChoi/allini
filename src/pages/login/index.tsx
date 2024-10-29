@@ -5,9 +5,8 @@ import LOGO from "@images/allini/login_logo.png";
 import Google from "@assets/icons/google.svg";
 import Kakao from "@assets/icons/kakao.svg";
 import ALLINI from "@images/allini/allini_text.png";
-import Invisible from "@assets/icons/pw-invisible.svg";
-import Visible from "@assets/icons/pw-visible.svg";
 import { useApi } from "@contexts/apiContext";
+import FormInput from "@ui/formInput";
 
 interface ValidationState {
   email: {
@@ -21,7 +20,6 @@ interface ValidationState {
 }
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [validation, setValidation] = useState<ValidationState>({
     email: { isError: false, message: "앗!" },
@@ -113,10 +111,6 @@ export default function Login() {
     }
   };
 
-  const togglePasswordVisibility = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setShowPassword(!showPassword);
-  };
   return (
     <section className={styles.loginArea}>
       <div className={styles.welcomeWrapper}>
@@ -134,51 +128,8 @@ export default function Login() {
       <div className={styles.loginForm}>
         <form onSubmit={handleSubmit}>
           <div className={styles.inputWrapper}>
-            <div className={styles.inputContainer}>
-              <input
-                className={clsx(styles.emailInput, {
-                  [styles.errorInput]: validation.email.isError,
-                })}
-                type="email"
-                name="email"
-                placeholder="이메일"
-                required
-              />
-              {validation.email.isError && (
-                <p className={styles.errorMessage}>
-                  {validation.email.message}
-                </p>
-              )}
-            </div>
-            <div className={styles.inputContainer}>
-              <div
-                className={clsx(styles.passwordInputWrapper, {
-                  [styles.errorInput]: validation.password.isError,
-                })}
-              >
-                <input
-                  className={clsx(styles.passwordInput, {
-                    [styles.errorInput]: validation.email.isError,
-                  })}
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  placeholder="비밀번호"
-                  required
-                />
-                <button
-                  className={styles.passwordToggle}
-                  onClick={togglePasswordVisibility}
-                  type="button"
-                >
-                  {showPassword ? <Visible /> : <Invisible />}
-                </button>
-              </div>
-              {validation.password.isError && (
-                <p className={styles.errorMessage}>
-                  {validation.password.message}
-                </p>
-              )}
-            </div>
+            <FormInput.EmailInput error={validation.email} required />
+            <FormInput.PasswordInput error={validation.password} required />
           </div>
 
           <button
