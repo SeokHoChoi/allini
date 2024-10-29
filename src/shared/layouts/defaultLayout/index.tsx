@@ -13,7 +13,6 @@ export default function DefaultLayout() {
       <main className={styles.mainArea}>
         <Outlet />
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }

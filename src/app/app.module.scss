@@ -5,11 +5,12 @@
   background-color: #00836b;
   background-image: url("@assets/images/allini/a-bg.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   display: flex;
   justify-content: flex-end;
   min-height: 669px;
+  overflow: hidden;
 
   .wrapper {
     background-color: #fff;

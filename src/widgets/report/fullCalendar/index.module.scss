@@ -189,7 +189,7 @@
 
   &.collapsed {
     height: auto;
-    overflow: auto;
+    overflow: hidden;
 
     .fc-daygrid-day-frame {
       min-height: 40px;
