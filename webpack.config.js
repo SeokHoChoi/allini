@@ -27,19 +27,41 @@ module.exports = {
               modules: {
                 localIdentName: "[name]__[local]--[hash:base64:5]", // CSS Module 클래스명 설정
               },
+              importLoaders: 2, // postcss-loader와 sass-loader를 위한 설정
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [["autoprefixer"]],
+              },
             },
           },
           "sass-loader",
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         exclude: /\.module\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 2, // postcss-loader와 sass-loader를 위한 설정
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [["autoprefixer"]],
+              },
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
         test: /\.(jpg|jpeg|gif|png|eot|woff|ttf)$/i,
