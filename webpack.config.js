@@ -3,6 +3,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin"); // 추가한 부분
 
+const isDevelopment = process.env.NODE_ENV === "development";
+
 module.exports = {
   module: {
     rules: [
@@ -27,18 +29,25 @@ module.exports = {
               modules: {
                 localIdentName: "[name]__[local]--[hash:base64:5]", // CSS Module 클래스명 설정
               },
+              sourceMap: isDevelopment,
               importLoaders: 2, // postcss-loader와 sass-loader를 위한 설정
             },
           },
           {
             loader: "postcss-loader",
             options: {
+              sourceMap: isDevelopment,
               postcssOptions: {
                 plugins: [["autoprefixer"]],
               },
             },
           },
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: isDevelopment,
+            },
+          },
         ],
       },
       {
@@ -49,18 +58,25 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
+              sourceMap: isDevelopment,
               importLoaders: 2, // postcss-loader와 sass-loader를 위한 설정
             },
           },
           {
             loader: "postcss-loader",
             options: {
+              sourceMap: isDevelopment,
               postcssOptions: {
                 plugins: [["autoprefixer"]],
               },
             },
           },
-          "sass-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: isDevelopment,
+            },
+          },
         ],
       },
       {
@@ -83,7 +99,8 @@ module.exports = {
       },
     ],
   },
-  mode: "none",
+  mode: process.env.NODE_ENV || "development",
+  devtool: isDevelopment ? "eval-source-map" : false,
   entry: "./src/app/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
