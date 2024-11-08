@@ -1,15 +1,51 @@
-.renderTest {
+@use "@styles/base/mixins" as *;
+
+.area {
   height: 100vh;
+  background-color: #00836b;
+  background-image: url("@assets/images/allini/a-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 669px;
+  overflow: hidden;
+
+  .wrapper {
+    background-color: #fff;
+    width: 430px;
+    max-width: 430px;
+    height: 100%;
+    margin: 0;
+
+    box-shadow: 0 0 20px rgba(223, 223, 223, 0.4),
+      0 0 4px rgba(223, 223, 223, 0.4);
+
+    margin-right: calc(29.7% - 215px);
+
+    @media (max-width: 750px) {
+      margin-right: calc(50% - 215px); // 400px대 화면용
+    }
+
+    @media (max-width: 390px) {
+      margin-right: calc(55% - 215px); // iPhone 12 Pro
+    }
+
+    @media (max-width: 380px) {
+      margin-right: calc(57% - 215px); // iPhone SE 등 작은 화면용
+    }
+  }
 }
 
 .pretendardBold {
-  font-family: "Pretendard Bold", sans-serif;
+  @include pretendard-bold;
 }
 
 .pretendardMedium {
-  font-family: "Pretendard Medium", sans-serif;
+  @include pretendard-medium;
 }
 
 .pretendardRegular {
-  font-family: "Pretendard Regular", sans-serif;
+  @include pretendard-regular;
 }

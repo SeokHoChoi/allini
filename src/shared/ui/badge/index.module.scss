@@ -1,0 +1,15 @@
+.badges {
+  display: flex;
+  gap: 8px;
+
+  .badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 6px;
+    background-color: #eff5fb;
+    border-radius: 12px;
+    font-size: 10px;
+    color: #5a8ec5;
+  }
+}

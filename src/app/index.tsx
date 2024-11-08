@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./reset.css";
+import "@styles/base/index.scss";
 import { ApiProvider } from "@contexts/apiContext";
 import { SearchModalProvider } from "@contexts/searchModalContext";
-import Routes from "../shared/routes/routes";
+import Routes from "./routes/routes";
 
 async function enableMocking() {
   if (process.env.NODE_ENV !== "development") {

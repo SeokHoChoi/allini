@@ -1,0 +1,29 @@
+@use "@styles/base/mixins" as *;
+
+.mobileNavWrapper {
+  @include flex();
+
+  button {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    @include flex();
+  }
+
+  .loginBtnWrapper {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    @include flex();
+    background-color: #f3f3f4;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+
+    span {
+      color: #7b7e86;
+      font-size: 12px;
+      @include pretendard-medium;
+    }
+  }
+}

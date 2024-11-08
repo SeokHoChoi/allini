@@ -1,0 +1,77 @@
+@use "@styles/base/mixins" as *;
+@use "@styles/base/variables" as colors;
+
+.sidebar {
+  font-size: 1rem;
+  width: 100%;
+  max-width: 430px;
+  position: absolute;
+  background-color: #fff;
+  font-family: "Pretendard Medium";
+  @include transition-hidden;
+  z-index: 9990;
+  margin-top: 4px;
+
+  li {
+    max-width: 430px;
+
+    a,
+    button {
+      @include transition-hidden;
+      text-decoration: none;
+      line-height: 21.6px;
+      color: #393a3e;
+      display: block;
+
+      &:hover {
+        color: #606268;
+        background-color: #f3f3f4;
+      }
+
+      &.selected {
+        transition: all 0s;
+        color: colors.$color-primary;
+        font-family: "Pretendard SemiBold";
+      }
+    }
+  }
+
+  &.open {
+    max-height: 400px;
+
+    li {
+      a,
+      button {
+        @include transition-open;
+      }
+    }
+  }
+
+  .recordButton {
+    background: none;
+    border: none;
+    color: #393a3e;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+
+    &:hover {
+      color: #606268;
+      background-color: #f3f3f4;
+    }
+  }
+
+  .subList {
+    @include transition-hidden;
+
+    &.open {
+      @include transition-open(200px, 0, 0);
+
+      li {
+        a {
+          @include transition-open(200px, 16px, 35px);
+        }
+      }
+    }
+  }
+}

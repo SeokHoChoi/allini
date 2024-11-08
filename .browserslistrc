@@ -1,0 +1,11 @@
+# 프로덕션 환경
+[production]
+>0.2% # 전 세계 사용률 0.2% 이상인 브라우저
+not dead # 공식 지원이 중단되지 않은 브라우저
+not op_mini all # Opera Mini 브라우저 제외
+
+# 개발 환경
+[development]
+last 1 chrome version # 최신 크롬 버전
+last 1 firefox version # 최신 파이어폭스 버전
+last 1 safari version # 최신 사파리 버전

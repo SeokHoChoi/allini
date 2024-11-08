@@ -1,0 +1,58 @@
+@use "@styles/base/variables" as colors;
+
+.tabArea {
+  width: 100%;
+  height: 100%;
+  min-width: 375px;
+  max-width: 430px;
+  overflow-y: scroll;
+  z-index: 9;
+
+  .tabWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      z-index: 9998;
+
+      a {
+        color: #777777; // 기본 색상
+        text-decoration: none;
+        font-family: "Pretendard Medium";
+        font-size: 0.875rem;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        width: 100%;
+        padding-top: 0.78em;
+        padding-bottom: 0.7em;
+        border-bottom: 1.5px solid #eaeaea;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.9;
+        }
+
+        &:active {
+          opacity: 0.8;
+        }
+
+        &.selected {
+          transition: all 0.3s;
+          color: colors.$color-primary; // 선택된 색상
+          border-color: colors.$color-primary;
+          font-family: "Pretendard SemiBold";
+        }
+      }
+    }
+  }
+
+  .panelArea {
+    margin: 0 auto;
+    height: 100%;
+  }
+}

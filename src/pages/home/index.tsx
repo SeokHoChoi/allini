@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import SearchPanel from "@components/searchPanel";
+import SearchPanel from "@ui/searchPanel";
 import useDebounce from "@hooks/useDebounce";
 import { useApi } from "@contexts/apiContext";
+import clsx from "clsx";
+import styles from "./index.module.scss";
+import Footer from "@widgets/footer";
+import { Link } from "react-router-dom";
 
 interface ItemBase {
   id: number;
@@ -49,15 +53,40 @@ export default function Home() {
   }, [searched, searchType]);
 
   return (
-    <div>
-      <SearchPanel<SnackOrFood>
+    <div className={clsx(styles.homeArea)}>
+      <div className={clsx(styles.intro)}>
+        <div className={clsx(styles.infoWrapper)}>
+          <h2 className={clsx(styles.infoText)}>
+            <p>가장 스마트한</p>
+            <p>강아지 알레르기 관리,</p>
+          </h2>
+          <h2 className={clsx(styles.infoTitle)}>알리니</h2>
+          <Link to="/login">지금 시작하기</Link>
+        </div>
+      </div>
+      <div className={clsx(styles.contentWrapper)}>
+        <div className={clsx(styles.middleContent)}>
+          <h3>사료나 간식 정보를 기록해요</h3>
+          <p>
+            강아지가 먹은 사료나 간식에 대한 정보를 입력하고 저장해보세요. 한 번
+            입력된 제품은 이후에도 쉽게 선택해서 사용할 수 있어요.
+          </p>
+          {/* TODO:  사료/간식 정보 기록하는 화면에 대한 이미지 추가 예정 */}
+          <div className={clsx(styles.infoImgWrapper)}>추후 이미지 추가</div>
+        </div>
+        <div className={clsx(styles.bottomContent)}>
+          <Footer />
+        </div>
+      </div>
+      {/* TODO: 디자인 시안 완성 후 사용여부 결정 */}
+      {/* <SearchPanel<SnackOrFood>
         storageKey={"home"}
         keyword={keyword}
         itemsList={searchList}
         changeSearchType={handleSearchType}
         onChange={handleSearch}
         searchType={searchType}
-      />
+      /> */}
     </div>
   );
 }

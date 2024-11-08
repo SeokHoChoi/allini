@@ -1,0 +1,151 @@
+@use "@styles/base/mixins" as *;
+
+.todayArea {
+  height: 100%;
+  width: 100%;
+  background-color: #f3f3f4;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  .hillWrapper {
+    position: absolute;
+    width: 100%;
+    height: calc(100% + 184px);
+    z-index: 1;
+
+    .sign {
+      position: absolute;
+      bottom: 37%;
+      left: 16%;
+      z-index: 2;
+    }
+
+    .hill {
+      position: absolute;
+      bottom: 32.9%;
+      width: 100%;
+      max-width: 430px;
+      height: 66px;
+      background: #00a789;
+      clip-path: ellipse(55% 85% at 50% 100%);
+      z-index: 1;
+    }
+
+    .emptyBowl {
+      position: absolute;
+      z-index: 3;
+      bottom: 25.7%;
+      @include position-center;
+    }
+
+    .bowl {
+      position: absolute;
+      z-index: 3;
+      bottom: 27.5%;
+      @include position-center;
+    }
+
+    .toyBall {
+      position: absolute;
+      z-index: 2;
+      bottom: 25.5%;
+      right: 13%;
+      animation: shake 4s infinite;
+    }
+
+    .dog {
+      position: absolute;
+      z-index: 2;
+      bottom: 33%;
+      @include position-center;
+    }
+  }
+
+  .background {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 430px;
+    height: calc(40% + 20px);
+    background: linear-gradient(to bottom, #00a789, #00836b);
+  }
+
+  .selectorArea {
+    position: absolute;
+    z-index: 1;
+    @include position-center;
+    top: 20px;
+  }
+
+  .foodTreatsWrapper {
+    z-index: 2;
+    height: 194px;
+    margin-bottom: 43.2px;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    @media (max-width: 400px) {
+      gap: 13px;
+    }
+
+    @media (max-width: 345px) {
+      gap: 7px;
+    }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1440px) {
+  .todayArea {
+    .hillWrapper {
+      .hill {
+        top: 60.3%;
+      }
+
+      .bowl {
+        bottom: 24%;
+      }
+
+      .toyBall {
+        bottom: 19.5%;
+      }
+    }
+
+    .background {
+      background: linear-gradient(
+        to bottom,
+        #00a789 0%,
+        #00a789 30%,
+        #00836b 100%
+      );
+    }
+  }
+}
+
+@media (max-width: 429px) {
+  .todayArea {
+    height: 100vh;
+  }
+}

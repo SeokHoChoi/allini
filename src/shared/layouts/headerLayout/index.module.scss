@@ -1,16 +1,27 @@
 .area {
   width: 100%;
+  z-index: 10;
+  border-bottom: 1px solid #eaeaea;
 
   .listWrapper {
-    // 반응형 시안이 나오기 전까지 iPhone SE 사이즈만 적용
-    max-width: 375px; // iPhone SE 사이즈
+    max-width: 1440px;
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.75em 0.75em 0.75em 1em;
+    padding: 0.4em 0.75em 0.4em 1em;
   }
+}
 
+.borderBottom {
+  backdrop-filter: blur(5px);
+  background-color: transparent;
+  border-bottom: none;
+}
+
+.sidebarOpen {
+  backdrop-filter: none;
+  background-color: #fff;
   border-bottom: 1px solid #eaeaea;
+  padding: 3.5px 0;
 }

@@ -1,0 +1,46 @@
+.SelectorArea {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 32px;
+
+  button {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 165px;
+    height: 114px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+
+    .titleText {
+      color: #4a4c51;
+      font-size: 14px;
+    }
+    .currentText {
+      color: #afb1b7;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .SelectorArea {
+    padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 345px) {
+  .SelectorArea {
+    margin-right: 5px;
+
+    button {
+      width: 162px;
+    }
+  }
+}

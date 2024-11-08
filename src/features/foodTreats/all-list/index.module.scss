@@ -1,0 +1,50 @@
+@use "@styles/base/mixins" as *;
+
+.allListArea {
+  background-color: #f3f3f4cc;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .searchWrapper {
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+
+    .textWrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      span {
+        @include pretendard-regular;
+        color: #393a3e;
+        font-size: 12px;
+      }
+    }
+
+    button {
+      background-color: #00b896;
+      border: none;
+      color: #ffffff;
+      font-size: 12px;
+      padding: 8px 16px;
+      letter-spacing: 0.2px;
+      border-radius: 18px;
+      @include pretendard-semibold;
+    }
+  }
+
+  .listWrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 77px;
+  }
+}
