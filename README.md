@@ -1,6 +1,5 @@
 # Allini - 반려동물 알레르기 관리 웹앱
-
-<!-- ![프로젝트 대표사진](<대표사진 URL>) -->
+![main](https://github.com/user-attachments/assets/d3b72b4c-7e07-4749-aa16-05d2c38f3137)
 
 ## 프로젝트 소개
 
@@ -21,19 +20,22 @@ Allini는 반려동물 알레르기 증상과 식이 정보를 추적하고 관�
 - **Testing**: Storybook, MSW, Jest
 - **Monitoring**: Sentry
 
-<!-- ## 주요 기능 화면
+## 주요 기능 화면
 
 ### 1. 간식 및 사료 등록
+<img width="375" alt="e2" src="https://github.com/user-attachments/assets/445b008a-e28a-4c97-94df-a75a643b32b0">
+<img width="375" alt="e" src="https://github.com/user-attachments/assets/ec431253-0650-4907-8465-0b07a4943a6e">
 
-![간식 및 사료 등록](<간식 및 사료 등록 GIF URL>)
 
-### 2. 알레르기 증상 추적
+### 2. 간식/사료 및 알레르기 증상 기록 및 추적
 
-![알레르기 증상 추적](<알레르기 증상 추적 GIF URL>)
+<img width="375" alt="report" src="https://github.com/user-attachments/assets/d2f6292d-67a6-4dc2-807f-56f8a3887d5c">
 
-### 3. AI 기반 제안
 
-![AI 기반 제안](<AI 기반 제안 GIF URL>) -->
+### 3. 로그인
+![login1](https://github.com/user-attachments/assets/861fac48-ca52-4332-9894-0ff65b9fc340)
+
+<!-- ### 4. AI 기반 제안 구현 예정 -->
 
 ## 프로젝트 설치 및 실행
 
