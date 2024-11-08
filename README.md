@@ -14,7 +14,8 @@ Allini는 반려동물 알레르기 증상과 식이 정보를 추적하고 관�
 
 ## 기술 스택
 
-- **Front-end**: React, TypeScript, Next.js
+- **Front-end**: React, TypeScript
+- **Beac-end**: Express, MySQL
 - **State Management**: React Context API
 - **UI Library**: SCSS, clsx
 - **Testing**: Storybook, MSW, Jest
@@ -74,7 +75,7 @@ src/
 ├── widgets/
 ```
 
-### 프로젝트 개선 계획
+## 프로젝트 개선 계획
 
 향후 Allini 프로젝트에서 추가로 구현할 계획은 다음과 같습니다:
 
